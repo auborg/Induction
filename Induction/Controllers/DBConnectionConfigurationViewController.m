@@ -150,13 +150,14 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 - (void)connect:(id)sender {
     id <DBConnection> connection = nil;
-    NSLog(@"URL: %@", self.connectionURL);
     
     // TODO Remove testing
     if ([[self.connectionURL host] length] == 0) {
 //        self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
-        self.connectionURL = [NSURL URLWithString:@"mysql://root@localhost/world"];
+        self.connectionURL = [NSURL URLWithString:@"mysql://root@localhost"];
     }
+    
+    NSLog(@"URL: %@", self.connectionURL);
     
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
