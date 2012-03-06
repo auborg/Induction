@@ -3,6 +3,10 @@
 
 *Induction is still in its early alpha stage of development, and has a long way to go before it's production-ready. A development roadmap will be formalized soon, and made available in the GitHub project wiki. This will define the feature set for a 1.0 release, and serve to carve up the work across contributors.*
 
+## Installation
+
+You can download compiled version of Induction on [Github downloads page](https://github.com/Induction/Induction/downloads), unzip it and run as usual Mac OS X application.
+
 ## Writing a Database Adapter
 
 Database adapters for Induction are designed to be easy to write. Adapters are packaged as bundles, with their primary class implementing the `DBAdapter` protocol. Here is a rundown of the roles and responsibilities of the adapter protocols (note, these interfaces are not final, and subject to evolve and change as the project matures):
