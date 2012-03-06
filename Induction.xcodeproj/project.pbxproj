@@ -29,6 +29,7 @@
 		F854FB3F14ECAB44009AEDAB /* DBResultSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854FB3E14ECAB44009AEDAB /* DBResultSetView.xib */; };
 		F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
 		F8662EEE14EC8E5B00F0520B /* DBResultSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */; };
+		F86943831505B20B00CD0C46 /* MySQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F86943771505A6C300CD0C46 /* MySQLAdapter.bundle */; };
 		F873FC5014D7B9E9002C0ADC /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = F873FC4F14D7B9E9002C0ADC /* HTML */; };
 		F888F57E14DB40990094B805 /* SQLSyntaxHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */; };
 		F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A2C41B14F5CFC10093682A /* DBPaginator.m */; };
@@ -37,6 +38,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F86943761505A6C300CD0C46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F869435A1505A68300CD0C46;
+			remoteInfo = MySQLAdapter;
+		};
+		F869437E1505B08D00CD0C46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F86943591505A68300CD0C46;
+			remoteInfo = MySQLAdapter;
+		};
 		F884AD3814F3017800AEC751 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */;
@@ -74,6 +89,7 @@
 			dstPath = Adapters;
 			dstSubfolderSpec = 13;
 			files = (
+				F86943831505B20B00CD0C46 /* MySQLAdapter.bundle in Copy Database Adapters */,
 				F8C9D03A14F301C3005BE0B4 /* PostgreSQLAdapter.bundle in Copy Database Adapters */,
 				F8C9D03914F301BB005BE0B4 /* RedisAdapter.bundle in Copy Database Adapters */,
 			);
@@ -120,6 +136,7 @@
 		F8595FBC14C34BB100FD15BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8662EEC14EC8E5B00F0520B /* DBResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBResultSetViewController.h; sourceTree = "<group>"; };
 		F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBResultSetViewController.m; sourceTree = "<group>"; };
+		F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MySQLAdapter.xcodeproj; path = Adapters/MySQLAdapter/MySQLAdapter.xcodeproj; sourceTree = "<group>"; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
 		F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PostgreSQLAdapter.xcodeproj; path = Adapters/PostgreSQLAdapter/PostgreSQLAdapter.xcodeproj; sourceTree = "<group>"; };
 		F884AD3A14F3017E00AEC751 /* RedisAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RedisAdapter.xcodeproj; path = Adapters/RedisAdapter/RedisAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -268,6 +285,7 @@
 				F873FC4F14D7B9E9002C0ADC /* HTML */,
 				F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */,
 				F884AD3A14F3017E00AEC751 /* RedisAdapter.xcodeproj */,
+				F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,6 +315,14 @@
 				F8595FBC14C34BB100FD15BE /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F86943701505A6C300CD0C46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F86943771505A6C300CD0C46 /* MySQLAdapter.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F884AD3214F3017800AEC751 /* Products */ = {
@@ -340,6 +366,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F869437F1505B08D00CD0C46 /* PBXTargetDependency */,
 				F8C9D03614F301AA005BE0B4 /* PBXTargetDependency */,
 				F8C9D03814F301AA005BE0B4 /* PBXTargetDependency */,
 			);
@@ -368,6 +395,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = F86943701505A6C300CD0C46 /* Products */;
+					ProjectRef = F869436F1505A6C300CD0C46 /* MySQLAdapter.xcodeproj */;
+				},
+				{
 					ProductGroup = F884AD3214F3017800AEC751 /* Products */;
 					ProjectRef = F884AD3114F3017800AEC751 /* PostgreSQLAdapter.xcodeproj */;
 				},
@@ -384,6 +415,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		F86943771505A6C300CD0C46 /* MySQLAdapter.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MySQLAdapter.bundle;
+			remoteRef = F86943761505A6C300CD0C46 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F884AD3914F3017800AEC751 /* PostgreSQLAdapter.bundle */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -444,6 +482,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F869437F1505B08D00CD0C46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MySQLAdapter;
+			targetProxy = F869437E1505B08D00CD0C46 /* PBXContainerItemProxy */;
+		};
 		F8C9D03614F301AA005BE0B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PostgreSQLAdapter;
