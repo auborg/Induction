@@ -54,6 +54,8 @@
     [columnIndexSet enumerateIndexesUsingBlock:^(NSUInteger columnIndex, BOOL *stop) {
         NSTableColumn *tableColumn = [[NSTableColumn alloc] initWithIdentifier:[(id <DBResultSet>)self.representedObject identifierForTableColumnAtIndex:columnIndex]];
         [[tableColumn headerCell] setTitle:[tableColumn identifier]];
+        // TODO size columns according to type (e.g. set max width for number and bool values)  
+//        [tableColumn setMinWidth:100.0f];
         [tableColumn setEditable:NO];
 
         if ([(id <DBResultSet>)self.representedObject respondsToSelector:@selector(valueTypeForTableColumnAtIndex:)]) {
@@ -95,10 +97,17 @@
         }
     }];
     
-    
     _records = [(id <DBResultSet>)self.representedObject recordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [(id <DBResultSet>)self.representedObject numberOfRecords])]];
-    [self.outlineView setSortDescriptors:[NSArray arrayWithObject:[[self.outlineView outlineTableColumn] sortDescriptorPrototype]]];
+    
+    NSSortDescriptor *outlineTableColumnSortDescriptorPrototype = [[self.outlineView outlineTableColumn] sortDescriptorPrototype];
+    if (outlineTableColumnSortDescriptorPrototype) {
+        [self.outlineView setSortDescriptors:[NSArray arrayWithObject:outlineTableColumnSortDescriptorPrototype]];
+    }
+    
     [self.outlineView reloadData];
+    
+    [self.outlineView expandItem:nil expandChildren:YES];
+//    [self.outlineView sizeToFit];
 }
 
 #pragma mark - NSOutlineViewDataSource

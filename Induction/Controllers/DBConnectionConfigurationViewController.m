@@ -154,7 +154,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     // TODO Remove testing
     if ([[self.connectionURL host] length] == 0) {
 //        self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
-        self.connectionURL = [NSURL URLWithString:@"mysql://root@localhost"];
+//        self.connectionURL = [NSURL URLWithString:@"mysql://root@localhost"];
+//    self.connectionURL = [NSURL URLWithString:@"mongodb://127.0.0.1"];
+
     }
     
     NSLog(@"URL: %@", self.connectionURL);
@@ -216,6 +218,8 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
             [[self.portField cell] setPlaceholderString:@"5432"];
         } else if ([[url scheme] isEqualToString:@"mysql"]) {
             [[self.portField cell] setPlaceholderString:@"3306"];
+        } else if ([[url scheme] isEqualToString:@"mongodb"]) {
+            [[self.portField cell] setPlaceholderString:@"27017"];
         }
     }
     

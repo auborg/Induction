@@ -58,7 +58,7 @@ static NSUInteger const kExploreDefaultPageSize = 256;
     
     [self.leftArrowPageButton setEnabled:[_paginator hasPreviousPage]];
     [self.rightArrowPageButton setEnabled:[_paginator hasNextPage]];
-    
+        
     self.pageTextField.stringValue = [_paginator localizedDescriptionOfCurrentRange];
     
     self.resultSetViewController.representedObject = [(id <DBExplorableDataSource>)self.representedObject resultSetForRecordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:[_paginator currentRange]] error:nil];
