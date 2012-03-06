@@ -26,8 +26,8 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         [mutableURLString appendFormat:@":%d", [port integerValue]];
     }
     
-    if (database && [database length] > 0) {
-        [mutableURLString appendFormat:@"%@", database];
+    if (database && [database length] > 0 && [host length] > 0) {
+        [mutableURLString appendFormat:@"/%@", [database stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]]];
     }
     
     return [NSString stringWithString:mutableURLString];
@@ -45,7 +45,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         return nil;
     }
     
-    return obj;
+    return [obj stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
 }
 
 - (BOOL)getObjectValue:(__autoreleasing id *)obj forString:(NSString *)string errorDescription:(NSString *__autoreleasing *)error {
@@ -60,7 +60,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     static NSCharacterSet *_illegalDatabaseParameterCharacterSet = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _illegalDatabaseParameterCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" ,:;@!#$%&'()[]{}\"\\/|"];
+        _illegalDatabaseParameterCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" ,:;@!#$%&^'()[]{}\"\\/|"];
     });
     
     return [partialString rangeOfCharacterFromSet:_illegalDatabaseParameterCharacterSet].location == NSNotFound;
@@ -128,6 +128,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     
     self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
+    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {
