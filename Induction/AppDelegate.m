@@ -26,6 +26,26 @@
 	return YES;
 }
 
+- (BOOL)application:(NSApplication *)sender 
+           openFile:(NSString *)filename
+{
+    // TODO test for connection before showing window
+    DBConnectionWindowController *connectionController = [[DBConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    [connectionController showWindow:self];
+    connectionController.configurationViewController.connectionURL = [NSURL fileURLWithPath:filename];
+    [connectionController.configurationViewController connect:self];
+
+    return YES;
+}
+
+- (void)application:(NSApplication *)sender 
+          openFiles:(NSArray *)filenames
+{
+    for (NSString *filename in filenames) {
+        [self application:sender openFile:filename];
+    }
+}
+
 #pragma mark -
 
 - (IBAction)newWindow:(id)sender {
