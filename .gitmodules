@@ -1,0 +1,3 @@
+[submodule "Adapters"]
+	path = Adapters
+	url = https://mattt@github.com/Induction/Adapters.git
