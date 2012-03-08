@@ -74,6 +74,7 @@
                     case DBDecimalValue:
                     case DBIntegerValue:
                         [[[tableColumn dataCell] formatter] setNumberStyle:NSNumberFormatterDecimalStyle];
+                        [[tableColumn dataCell] setAlignment:NSRightTextAlignment];
                         break;
                     case DBDateValue: {
                         DateCell *dateCell = [[DateCell alloc] init];
@@ -107,6 +108,7 @@
     [self.outlineView reloadData];
     
     [self.outlineView expandItem:nil expandChildren:YES];
+    [self.outlineView.tableColumns makeObjectsPerformSelector:@selector(sizeToCells)];
 //    [self.outlineView sizeToFit];
 }
 
