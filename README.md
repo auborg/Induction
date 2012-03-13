@@ -95,7 +95,7 @@ To get a better idea of what's planned, here's a list of features expected to sh
 
 ## How Can I Help?
 
-If you're interested in working on a particular feature, [open an Issue](https://github.com/Induction/Induction/issues) (or join an existing one if possible).
+If you're interested in working on a particular feature, [open an Issue](https://github.com/Induction/Induction/issues) (or join an existing one if it exists).
 
 Communicate your intent, collect feedback, and submit pull requests. Just the minimal bureaucratic process to reduce the duplication of efforts--that's all I'm looking for. As best I can, I'll try to do the same myself.
 
