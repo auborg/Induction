@@ -29,7 +29,7 @@ Data is like electricity: It appears in endless variety, employing adapters and 
 
 ## Roadmap
 
-Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta. There is no ETA, other than "it will ship when it's ready". But if you're looking for a general timeframe, I'd say we're on track to ship something by the end of the Summer.
+Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta. There is no official ETA, other than "it will ship when it's ready". But if you're looking a (totally off-the-record) timeframe, I'd say we're on track to ship something stable by the end of the Summer.
 
 To get a better idea of what's planned, here's a list of features expected to ship before an official release (tentative / less likely features indicated by †):
 
