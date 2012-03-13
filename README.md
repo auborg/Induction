@@ -1,7 +1,85 @@
 # Induction
 **A Polyglot Database Client for Mac OS X**
 
-*Induction is still in its early alpha stage of development, and has a long way to go before it's production-ready. A development roadmap will be formalized soon, and made available in the GitHub project wiki. This will define the feature set for a 1.0 release, and serve to carve up the work across contributors.*
+## Roadmap
+
+Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta.
+
+To get a better idea of what's planned, here's a list of features expected to ship before an official release (tentative / less likely features indicated by †):
+
+### Explore
+
+- Popovers for expanded detail of text and blob cells
+- Copy selection as JSON, XML, CSV, etc.
+- Cell formatting for null objects
+- Cell formatting for detected kinds of fields (percentages, currency, URLs, JSON, image data, etc.)†
+- Support for geospatial data†
+- Improved pagination controls
+- Schema / data source information panel
+- Search controller for filtering / finding records
+- General improvements to table / outline view
+- Write support (create / modify / destroy records)†
+- Importing / Exporting records†
+- Show associated records in outline (e.g. one-to-many records by foreign key in relational DBs)†
+
+### Query
+
+- Overhauled query editor
+  - Polyglot syntax highlighting
+  - Token autocompletion / validation
+  - Line numbers
+- Saved queries
+- Export results to [Heroku Postgres Data Clips](https://postgres.heroku.com/blog/past/2012/1/31/simple_data_sharing_with_data_clips/), Gist, etc.
+- Query builder (no SQL / commands)
+- Query planner / explainer visualization†
+
+### Visualize
+
+- Integration of visualization framework ([Lies, Damned lies (coming soon)](https://github.com/Induction/LiesDamnedLies))
+- Query builder (no SQL / commands)
+- Share as image, data, web page, etc.
+
+### General
+
+- Overhauled connection configuration panel
+  - Improved UI
+  - Favorites
+- Image assets for icons (e.g. source list, tab bar icons, image assets for database types)
+- Database selector for open connections
+- Preferences (if necessary)†
+- URL scheme support (e.g. `postgres://`)†
+- Improved database file support (e.g. SQLite)
+- Add / remove menubar items as necessary
+
+### Infrastructure
+
+- Settle on class name-spacing
+- Iterate on database adapter protocols
+  - Figure out how to handle connection / database relationship (conflated for certain adapters, like Redis or Postgres, where connections have a database context)
+  - Add hooks for better error handling (e.g. `NSError **` parameters)
+  - Add method for specifying source list icon
+  - Improve flow for loading plugins and determining whether they're supported on the current machine (or require software installation)
+  - Add methods for write operations†
+  - Add more database value types†
+- Vastly improve core database adapters
+  - Stability / robustness
+  - Performance (lazy evaluation, query cursors, asynchronous dispatch, etc.)
+  - Error handling
+- Continually improve and optimize table / outline view and general app performance
+
+## How Can I Help?
+
+If you're interested in working on a particular feature, [open an Issue](https://github.com/Induction/Induction/issues) (or join an existing one if possible).
+
+Communicate your intent, collect feedback, and submit pull requests. Just the minimal bureaucratic process to reduce the duplication of efforts--that's all I'm looking for. As best I can, I'll try to do the same myself.
+
+If you're interested in contributing to the design of the application, contact me directly, and we'll work something out. Design is an entirely different beast that doesn't quite lend itself to the same process of open source collaboration.
+
+### Adapters
+
+Adapters are being maintained and managed [as a separate repository](https://github.com/Induction/Adapters). If you wish to work on a new or existing adapter, you can do so in that project.
+
+---
 
 ### Explore, Query, Visualize
 
