@@ -1,6 +1,32 @@
 # Induction
 **A Polyglot Database Client for Mac OS X**
 
+### Explore, Query, Visualize
+
+Focus on the data, not the database. Induction is a new kind of tool designed for understanding and communicating relationships in data. Explore rows and columns, query to get exactly what you want, and visualize that data in powerful ways.
+
+### SQL? NoSQL? It Don't Matter
+
+Data is just data, after all. Induction supports PostgreSQL, MySQL, SQLite, Redis, and MongoDB  out-of-the-box, and has an extensible architecture that makes it easy to write adapters for anything else you can think of.
+
+### Free As In "Free to Kick Ass"
+
+The full source code for Induction [is available on GitHub](https://github.com/Induction/Induction). I'm excited to build something insanely great, and I invite you to join me on this codeventure. Bug reports, feature requests, patches, well-wishes, and rap demo tapes are always welcome.
+
+### What's In A Name?
+
+<dl>
+  <dt>
+    Induction <em class="pronunciation">(ən"dʌk'ʃən)</em>
+  </dt>
+  <dd>The generation of an electric current by a varying magnetic field</dd>
+  <dd>The derivation of general principles from specific instances</dd>
+</dl>
+
+Data is like electricity: It appears in endless variety, employing adapters and transformers to become more useful. But no matter what, data is power. From data, we derive knowledge and understanding through a process of induction.
+
+---
+
 ## Roadmap
 
 Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta.
@@ -79,36 +105,6 @@ If you're interested in contributing to the design of the application, contact m
 
 Adapters are being maintained and managed [as a separate repository](https://github.com/Induction/Adapters). If you wish to work on a new or existing adapter, you can do so in that project.
 
----
-
-### Explore, Query, Visualize
-
-Focus on the data, not the database. Induction is a new kind of tool designed for understanding and communicating relationships in data. Explore rows and columns, query to get exactly what you want, and visualize that data in powerful ways.
-
-### SQL? NoSQL? It Don't Matter
-
-Data is just data, after all. Induction supports PostgreSQL, MySQL, SQLite, Redis, and MongoDB  out-of-the-box, and has an extensible architecture that makes it easy to write adapters for anything else you can think of.
-
-### Free As In "Free to Kick Ass"
-
-The full source code for Induction [is available on GitHub](https://github.com/Induction/Induction). I'm excited to build something insanely great, and I invite you to join me on this codeventure. Bug reports, feature requests, patches, well-wishes, and rap demo tapes are always welcome.
-
-### What's In A Name?
-
-<dl>
-  <dt>
-    Induction <em class="pronunciation">(ən"dʌk'ʃən)</em>
-  </dt>
-  <dd>The generation of an electric current by a varying magnetic field</dd>
-  <dd>The derivation of general principles from specific instances</dd>
-</dl>
-
-Data is like electricity: It appears in endless variety, employing adapters and transformers to become more useful. But no matter what, data is power. From data, we derive knowledge and understanding through a process of induction.
-
-### So Who's Behind All Of This?
-
-Induction was created by [Mattt Thompson](http://twitter.com/mattt/), with the help of his friends and colleagues at [Heroku](http://www.heroku.com/), particularly those on the [Heroku Postgres](https://postgres.heroku.com/) team.
-
 ## Requirements
 
 Induction requires Xcode 4.2 or above, and targets Mac OS 10.7. 
@@ -118,6 +114,12 @@ Some adapters, such as for MySQL and MongoDB, require libraries not included in 
 ## Downloads
 
 Pre-compiled binaries of Induction are available in the [downloads](https://github.com/Induction/Induction/downloads) section of the repository. A more sustainable distribution strategy is actively being worked towards.
+
+## Credit
+
+Induction was created by [Mattt Thompson](http://twitter.com/mattt/), with the help of his friends and colleagues at [Heroku](http://www.heroku.com/), particularly those on the [Heroku Postgres](https://postgres.heroku.com/) team.
+
+Thanks to everyone who has [contributed to the project so far](https://github.com/Induction/Induction/contributors).
 
 ## Contact
 
