@@ -129,6 +129,8 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
+    
+    self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {
@@ -166,9 +168,16 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [bundle loadAndReturnError:nil];
         
+//        if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
+//            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
+//                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
+//            }
+//        }
+        
+        NSURL *url = [NSURL URLWithString:@"postgres://localhost"];
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
-                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
+            if ([[bundle principalClass] canConnectWithURL:url]) {
+                connection = [[bundle principalClass] connectionWithURL:url error:nil];
             }
         }
     }

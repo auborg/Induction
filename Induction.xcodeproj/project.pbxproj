@@ -21,6 +21,8 @@
 		F820301614D21BEA00950BAF /* DBDatabaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301414D21BEA00950BAF /* DBDatabaseView.xib */; };
 		F820301914D2218200950BAF /* DBConnectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301814D2218100950BAF /* DBConnectionWindowController.m */; };
 		F820301B14D2235100950BAF /* DBConnectionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301A14D2235100950BAF /* DBConnectionWindow.xib */; };
+		F837FD231517D30E0003BED6 /* DBResultSetPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */; };
+		F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */; };
 		F852DCEE14D35D7E00C029C8 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCEC14D35D7E00C029C8 /* QueryViewController.m */; };
 		F852DCEF14D35D7E00C029C8 /* QueryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCED14D35D7E00C029C8 /* QueryView.xib */; };
 		F852DCF314D35E4E00C029C8 /* VisualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCF114D35E4E00C029C8 /* VisualizeViewController.m */; };
@@ -118,6 +120,9 @@
 		F820301714D2218100950BAF /* DBConnectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnectionWindowController.h; sourceTree = "<group>"; };
 		F820301814D2218100950BAF /* DBConnectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBConnectionWindowController.m; sourceTree = "<group>"; };
 		F820301A14D2235100950BAF /* DBConnectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DBConnectionWindow.xib; path = ../DBConnectionWindow.xib; sourceTree = "<group>"; };
+		F837FD201517D30E0003BED6 /* DBResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBResultSetPopoverViewController.h; sourceTree = "<group>"; };
+		F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBResultSetPopoverViewController.m; sourceTree = "<group>"; };
+		F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBResultSetPopoverView.xib; sourceTree = "<group>"; };
 		F852DCEB14D35D7E00C029C8 /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
 		F852DCEC14D35D7E00C029C8 /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 		F852DCED14D35D7E00C029C8 /* QueryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryView.xib; sourceTree = "<group>"; };
@@ -183,6 +188,9 @@
 				F8662EEC14EC8E5B00F0520B /* DBResultSetViewController.h */,
 				F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */,
 				F854FB3E14ECAB44009AEDAB /* DBResultSetView.xib */,
+				F837FD201517D30E0003BED6 /* DBResultSetPopoverViewController.h */,
+				F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */,
+				F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */,
 				F842904F14F30F1500B1CDFB /* Connection */,
 				F842905014F30F1F00B1CDFB /* Database */,
 				F842905114F30F2700B1CDFB /* Explore */,
@@ -490,6 +498,7 @@
 				F852DCF414D35E4E00C029C8 /* VisualizeView.xib in Resources */,
 				F873FC5014D7B9E9002C0ADC /* HTML in Resources */,
 				F854FB3F14ECAB44009AEDAB /* DBResultSetView.xib in Resources */,
+				F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +521,7 @@
 				F888F57E14DB40990094B805 /* SQLSyntaxHighlighter.m in Sources */,
 				F8662EEE14EC8E5B00F0520B /* DBResultSetViewController.m in Sources */,
 				F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */,
+				F837FD231517D30E0003BED6 /* DBResultSetPopoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

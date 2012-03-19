@@ -28,10 +28,17 @@
 @private
     __strong NSArray *_records;
 }
+
+- (void)doubleClick:(id)sender;
 @end
 
 @implementation DBResultSetViewController
 @synthesize outlineView = _outlineView;
+@synthesize popover = _popover;
+
+- (void)awakeFromNib {
+    [self.outlineView setDoubleAction:@selector(doubleClick:)];
+}
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
@@ -108,8 +115,24 @@
     [self.outlineView reloadData];
     
     [self.outlineView expandItem:nil expandChildren:YES];
-    [self.outlineView.tableColumns makeObjectsPerformSelector:@selector(sizeToCells)];
+//    [self.outlineView.tableColumns makeObjectsPerformSelector:@selector(sizeToCells)];
+    
+    for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
+        if ([tableColumn respondsToSelector:@selector(sizeToCells)]) {
+            [tableColumns performSelector:@selector(sizeToCells)];
+        }
+    }
+
 //    [self.outlineView sizeToFit];
+}
+
+#pragma mark - IBAction
+
+- (void)doubleClick:(id)sender {
+    NSLog(@"Double Click!");
+    NSLog(@"Cell: %@", self.outlineView.selectedCell);
+    NSLog(@"Rect: %@", NSStringFromRect([self.outlineView frameOfCellAtColumn:[self.outlineView selectedColumn] row:[self.outlineView selectedRow]]));
+    [self.popover showRelativeToRect:[self.outlineView frameOfCellAtColumn:[self.outlineView selectedColumn] row:[self.outlineView selectedRow]] ofView:self.outlineView preferredEdge:NSMinYEdge];
 }
 
 #pragma mark - NSOutlineViewDataSource
@@ -156,7 +179,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
     return [(id <DBRecord>)item valueForKey:[tableColumn identifier]];
 }
 
-#pragma mark - NSOutlineViewController
+#pragma mark - NSOutlineViewControllerDelegate
 
 - (void)outlineView:(NSOutlineView *)outlineView 
 sortDescriptorsDidChange:(NSArray *)oldDescriptors 
@@ -164,5 +187,7 @@ sortDescriptorsDidChange:(NSArray *)oldDescriptors
     _records = [_records sortedArrayUsingDescriptors:outlineView.sortDescriptors];
     [self.outlineView reloadData];
 }
+
+
 
 @end

@@ -11,8 +11,9 @@
 
 #import "DBAdapter.h"
 
-@interface DBResultSetViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface DBResultSetViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate, NSPopoverDelegate>
 
-@property (strong, nonatomic) IBOutlet NSOutlineView *outlineView;
+@property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
+@property (weak, nonatomic) IBOutlet NSPopover *popover;
 
 @end
