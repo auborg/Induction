@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
 @property (weak, nonatomic) IBOutlet NSPopover *popover;
 
+- (IBAction)copyAsJSON:(id)sender;
+
 @end

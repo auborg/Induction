@@ -135,6 +135,21 @@
     [self.popover showRelativeToRect:[self.outlineView frameOfCellAtColumn:[self.outlineView selectedColumn] row:[self.outlineView selectedRow]] ofView:self.outlineView preferredEdge:NSMinYEdge];
 }
 
+- (IBAction)copyAsJSON:(id)sender {
+    NSLog(@"Copy As JSON");
+    NSLog(@"Records: %@", _records);
+    NSMutableArray *mutableRecords = [NSMutableArray array];
+    for (id <DBRecord> record in [_records objectsAtIndexes:[self.outlineView selectedRowIndexes]]) {
+        NSLog(@"record: %@", record);
+        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
+        for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
+            [mutableDictionary setObject:[record valueForKey:[tableColumn identifier]] forKey:[tableColumn identifier]];
+        }
+        [mutableRecords addObject:mutableDictionary];
+    }
+    NSLog(@"%@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:mutableRecords options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+}
+
 #pragma mark - NSOutlineViewDataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView 
@@ -187,7 +202,6 @@ sortDescriptorsDidChange:(NSArray *)oldDescriptors
     _records = [_records sortedArrayUsingDescriptors:outlineView.sortDescriptors];
     [self.outlineView reloadData];
 }
-
 
 
 @end
