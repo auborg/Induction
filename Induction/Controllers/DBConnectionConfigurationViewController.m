@@ -128,7 +128,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     
     self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
-    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];    
+    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
+    
+    self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {

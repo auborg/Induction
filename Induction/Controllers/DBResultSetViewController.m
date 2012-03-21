@@ -117,6 +117,19 @@
                         [[tableColumn dataCell] setAlignment:NSRightTextAlignment];
                         break;
                     case DBDateValue: {
+                        
+                        static NSDateFormatter * _DBResultSetDateFormatter = nil;
+                        static dispatch_once_t onceToken;
+                        dispatch_once(&onceToken, ^{
+                            _DBResultSetDateFormatter = [[NSDateFormatter alloc] init];
+                            [_DBResultSetDateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                            [_DBResultSetDateFormatter setTimeStyle:NSDateFormatterNoStyle];
+                        });
+                        
+                        [[tableColumn dataCell] setFormatter:_DBResultSetDateFormatter];
+                        break;
+                    };
+                    case DBDateTimeValue: {
                         DateCell *dateCell = [[DateCell alloc] init];
                         [tableColumn setDataCell:dateCell];
                         break;

@@ -123,6 +123,8 @@
 		F837FD201517D30E0003BED6 /* DBResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBResultSetPopoverViewController.h; sourceTree = "<group>"; };
 		F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBResultSetPopoverViewController.m; sourceTree = "<group>"; };
 		F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBResultSetPopoverView.xib; sourceTree = "<group>"; };
+		F837FD81151A1DBA0003BED6 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = Adapters/DBAdapter.h; sourceTree = SOURCE_ROOT; };
+		F837FD82151A1DBA0003BED6 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = Adapters/SQLAdapter.h; sourceTree = SOURCE_ROOT; };
 		F852DCEB14D35D7E00C029C8 /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
 		F852DCEC14D35D7E00C029C8 /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
 		F852DCED14D35D7E00C029C8 /* QueryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryView.xib; sourceTree = "<group>"; };
@@ -148,8 +150,6 @@
 		F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLSyntaxHighlighter.m; sourceTree = "<group>"; };
 		F8A2C41A14F5CFC10093682A /* DBPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPaginator.h; path = Induction/Helpers/DBPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* DBPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPaginator.m; path = Induction/Helpers/DBPaginator.m; sourceTree = SOURCE_ROOT; };
-		F8A4827814EC880300EF7050 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAdapter.h; sourceTree = "<group>"; };
-		F8A4827A14EC8ADB00EF7050 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLAdapter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 				F8202F8C14D0C2DC00950BAF /* AppDelegate.h */,
 				F8202F8D14D0C2DC00950BAF /* AppDelegate.m */,
 				F8202F9714D0C2DC00950BAF /* MainMenu.xib */,
-				F8202F9E14D0C2DC00950BAF /* Models */,
+				F837FD80151A1DAE0003BED6 /* Adapter Protocols */,
 				F8202FBA14D0C2DC00950BAF /* Views */,
 				F8202F8E14D0C2DC00950BAF /* Controllers */,
 				F8A2C41D14F5CFC70093682A /* Helpers */,
@@ -200,15 +200,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		F8202F9E14D0C2DC00950BAF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F8A4827814EC880300EF7050 /* DBAdapter.h */,
-				F8A4827A14EC8ADB00EF7050 /* SQLAdapter.h */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		F8202FBA14D0C2DC00950BAF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +219,15 @@
 				F8202F9314D0C2DC00950BAF /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F837FD80151A1DAE0003BED6 /* Adapter Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F837FD81151A1DBA0003BED6 /* DBAdapter.h */,
+				F837FD82151A1DBA0003BED6 /* SQLAdapter.h */,
+			);
+			name = "Adapter Protocols";
 			sourceTree = "<group>";
 		};
 		F842904F14F30F1500B1CDFB /* Connection */ = {
