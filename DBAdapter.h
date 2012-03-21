@@ -7,6 +7,7 @@ typedef enum {
     DBDecimalValue,
     DBStringValue,
     DBDateValue,
+    DBDateTimeValue,
     DBBlobValue,
 } DBValueType;
 
