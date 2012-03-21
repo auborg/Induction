@@ -113,7 +113,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @synthesize databaseField = _databaseField;
 
 - (void)awakeFromNib {
-    for (NSTextField *field in [NSArray arrayWithObjects:self.URLField, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
+    for (NSTextField *field in [NSArray arrayWithObjects:self.URLField, self.schemePopupButton, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
         [self bindURLParameterTextField:field];
     }
     
@@ -128,12 +128,14 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     
     self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
-    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
+    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];    
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {
     if ([textField isEqual:self.URLField]) {
         [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL" options:[NSDictionary dictionaryWithObject:NSStringFromClass([DBRemovePasswordURLValueTransformer class]) forKey:NSValueTransformerNameBindingOption]];
+    } else if ([textField isEqual:self.schemePopupButton]) {
+        [textField bind:@"selectedObject" toObject:self withKeyPath:@"connectionURL.scheme" options:nil];
     } else if ([textField isEqual:self.hostnameField]) {
         [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.host" options:nil];
     } else if ([textField isEqual:self.usernameField]) {
