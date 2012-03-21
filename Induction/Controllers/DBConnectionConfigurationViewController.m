@@ -129,8 +129,6 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
-    
-    self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {
@@ -154,30 +152,21 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 - (void)connect:(id)sender {
     id <DBConnection> connection = nil;
     
-    // TODO Remove testing
-    if ([[self.connectionURL host] length] == 0) {
-//        self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
-//        self.connectionURL = [NSURL URLWithString:@"mysql://root@localhost"];
-//    self.connectionURL = [NSURL URLWithString:@"mongodb://127.0.0.1"];
-
-    }
-    
     NSLog(@"URL: %@", self.connectionURL);
     
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [bundle loadAndReturnError:nil];
         
-//        if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-//            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
-//                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
-//            }
-//        }
-        
-        NSURL *url = [NSURL URLWithString:@"postgres://localhost"];
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-            if ([[bundle principalClass] canConnectWithURL:url]) {
-                connection = [[bundle principalClass] connectionWithURL:url error:nil];
+            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
+                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
+            }
+        }
+        
+        if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
+            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
+                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
             }
         }
     }
