@@ -29,7 +29,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
         return [[[[self outlineTableColumn] dataCell] font] pointSize];
     }
     
-    return 12.0f;
+    return kDBResultSetOutlineViewDefaultFontSize;
 }
 
 - (void)setFontSize:(CGFloat)fontSize {
