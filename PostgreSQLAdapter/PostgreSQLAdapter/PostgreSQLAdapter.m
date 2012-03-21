@@ -54,19 +54,28 @@ static NSString * PostgreSQLConnectionStringFromURL(NSURL *url) {
 
 static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
     static NSDateFormatter *_postgresDateFormatter = nil;
+    static NSDataDetector *_postgresDateDataDetector = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _postgresDateFormatter = [[NSDateFormatter alloc] init];
+        [_postgresDateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
         [_postgresDateFormatter setDateFormat:@"yyyy'-'MM'-'dd HH':'mm':'ssZZ"];
+        
+        _postgresDateDataDetector = [[NSDataDetector alloc] initWithTypes:NSTextCheckingTypeDate error:nil];
     });
-    
+        
     if ([timestamp rangeOfString:@"."].location != NSNotFound) {
         timestamp = [NSString stringWithFormat:@"%@ +0000", [timestamp substringToIndex:[timestamp rangeOfString:@"."].location]];
     } else {
         timestamp = [NSString stringWithFormat:@"%@ +0000", timestamp];
     }
     
-    return [_postgresDateFormatter dateFromString:timestamp];
+    NSDate *date = [_postgresDateFormatter dateFromString:timestamp];
+    if (date) {
+        return date;
+    }
+    
+    return [[[_postgresDateDataDetector matchesInString:timestamp options:0 range:NSMakeRange(0, [timestamp length])] lastObject] date];
 }
 
 #pragma mark -
@@ -287,7 +296,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 }
 
 - (NSUInteger)numberOfRecords {
-    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
+    return fmaxf([[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue], 0); 
 }
 
 #pragma mark - 
@@ -344,10 +353,12 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
             field->_type = DBDecimalValue;
             break;
         case DATEOID:
+            field->_type = DBDateValue;
+            break;
         case TIMEOID:
         case TIMESTAMPOID:
         case TIMESTAMPTZOID:
-            field->_type = DBDateValue;
+            field->_type = DBDateTimeValue;
             break;    
         case VARCHAROID:
         case TEXTOID:        
@@ -380,12 +391,17 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
             value = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
             break;
         case DBDateValue:
+        case DBDateTimeValue:
             value = NSDateFromPostgreSQLTimestamp([[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding]);
             break;
         default:
             break;
     }
-            
+
+    if (!value) {
+        value = [NSNull null];
+    }
+
     return value;
 }
 
