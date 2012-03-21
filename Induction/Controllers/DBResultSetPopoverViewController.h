@@ -10,6 +10,6 @@
 
 @interface DBResultSetPopoverViewController : NSViewController
 
-@property (weak, nonatomic) IBOutlet NSTextView *textView;
+@property (strong, nonatomic) IBOutlet NSTextView *textView;
 
 @end

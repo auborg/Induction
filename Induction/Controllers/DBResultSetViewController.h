@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet NSPopover *popover;
 
 - (IBAction)copyAsJSON:(id)sender;
+- (IBAction)copyAsXML:(id)sender;
+- (IBAction)copyAsTSV:(id)sender;
 
 @end

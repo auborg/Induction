@@ -15,21 +15,26 @@
 @end
 
 @implementation NSOutlineView (Convenience)
-
 - (void)replaceOutlineTableColumnWithTableColumn:(NSTableColumn *)tableColumn {
     NSTableColumn *outlineTableColumn = [self outlineTableColumn];
     [self setOutlineTableColumn:tableColumn];
     [self removeTableColumn:outlineTableColumn];
 }
-
 @end
+
+#pragma mark -
 
 @interface DBResultSetViewController () {
 @private
     __strong NSArray *_records;
 }
 
+@property (readonly) NSArray *selectedRecords;
+@property (readonly) id <DBRecord> clickedRecord;
+@property (readonly) id clickedValue;
+
 - (void)doubleClick:(id)sender;
+
 @end
 
 @implementation DBResultSetViewController
@@ -37,8 +42,38 @@
 @synthesize popover = _popover;
 
 - (void)awakeFromNib {
+    [self.outlineView setNextResponder:self];
+    [self setNextResponder:[self.outlineView enclosingScrollView]];
+    
     [self.outlineView setDoubleAction:@selector(doubleClick:)];
 }
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (NSArray *)selectedRecords {
+    return [_records objectsAtIndexes:[self.outlineView selectedRowIndexes]];
+}
+
+- (id <DBRecord>)clickedRecord {
+    if ([self.outlineView clickedRow] >= 0) {
+        return [_records objectAtIndex:[self.outlineView clickedRow]];
+    }
+    
+    return nil;
+}
+
+- (id)clickedValue {
+    id <DBRecord> record = self.clickedRecord;
+    if (record && [self.outlineView clickedColumn] >= 0) {
+        return [record valueForKey:[[self.outlineView.tableColumns objectAtIndex:[self.outlineView clickedColumn]] identifier]];
+    }
+    
+    return nil;
+}
+
+#pragma mark - NSViewController
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
@@ -61,8 +96,6 @@
     [columnIndexSet enumerateIndexesUsingBlock:^(NSUInteger columnIndex, BOOL *stop) {
         NSTableColumn *tableColumn = [[NSTableColumn alloc] initWithIdentifier:[(id <DBResultSet>)self.representedObject identifierForTableColumnAtIndex:columnIndex]];
         [[tableColumn headerCell] setTitle:[tableColumn identifier]];
-        // TODO size columns according to type (e.g. set max width for number and bool values)  
-//        [tableColumn setMinWidth:100.0f];
         [tableColumn setEditable:NO];
 
         if ([(id <DBResultSet>)self.representedObject respondsToSelector:@selector(valueTypeForTableColumnAtIndex:)]) {
@@ -115,39 +148,82 @@
     [self.outlineView reloadData];
     
     [self.outlineView expandItem:nil expandChildren:YES];
-//    [self.outlineView.tableColumns makeObjectsPerformSelector:@selector(sizeToCells)];
     
     for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
         if ([tableColumn respondsToSelector:@selector(sizeToCells)]) {
             [tableColumns performSelector:@selector(sizeToCells)];
         }
     }
-
-//    [self.outlineView sizeToFit];
 }
 
 #pragma mark - IBAction
 
-- (void)doubleClick:(id)sender {
-    NSLog(@"Double Click!");
-    NSLog(@"Cell: %@", self.outlineView.selectedCell);
-    NSLog(@"Rect: %@", NSStringFromRect([self.outlineView frameOfCellAtColumn:[self.outlineView selectedColumn] row:[self.outlineView selectedRow]]));
-    [self.popover showRelativeToRect:[self.outlineView frameOfCellAtColumn:[self.outlineView selectedColumn] row:[self.outlineView selectedRow]] ofView:self.outlineView preferredEdge:NSMinYEdge];
+- (IBAction)doubleClick:(id)sender {
+    if (self.clickedValue) {
+        self.popover.contentViewController.representedObject = self.clickedValue;
+        [self.popover showRelativeToRect:[self.outlineView frameOfCellAtColumn:[self.outlineView clickedColumn] row:[self.outlineView clickedRow]] ofView:self.outlineView preferredEdge:NSMaxYEdge];
+    }
+}
+
+- (IBAction)copy:(id)sender {
+    [self copyAsTSV:sender];
 }
 
 - (IBAction)copyAsJSON:(id)sender {
-    NSLog(@"Copy As JSON");
-    NSLog(@"Records: %@", _records);
     NSMutableArray *mutableRecords = [NSMutableArray array];
-    for (id <DBRecord> record in [_records objectsAtIndexes:[self.outlineView selectedRowIndexes]]) {
-        NSLog(@"record: %@", record);
+    for (id <DBRecord> record in self.selectedRecords) {
         NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
         for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
             [mutableDictionary setObject:[record valueForKey:[tableColumn identifier]] forKey:[tableColumn identifier]];
         }
         [mutableRecords addObject:mutableDictionary];
     }
-    NSLog(@"%@", [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:mutableRecords options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+    
+    id object = [mutableRecords count] == 1 ? [mutableRecords lastObject] : mutableRecords;
+    NSString *JSON = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
+        
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
+    [pasteboard setString:JSON forType:NSPasteboardTypeString];
+}
+
+- (IBAction)copyAsXML:(id)sender {
+    NSXMLElement *collectionElement = [[NSXMLElement alloc] initWithName:@"records"];
+    for (id <DBRecord> record in self.selectedRecords) {
+        NSXMLElement *recordElement = [[NSXMLElement alloc] initWithName:@"record"];
+        for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
+            [recordElement addChild:[[NSXMLElement alloc] initWithName:[tableColumn identifier] stringValue:[record valueForKey:[tableColumn identifier]]]];
+        }
+        [collectionElement addChild:recordElement];
+    }
+    
+    NSXMLElement *element = [collectionElement childCount] == 1 ? [[collectionElement children] lastObject] : collectionElement;
+    [element detach];
+    
+    NSXMLDocument *XMLDocument = [NSXMLDocument documentWithRootElement:element];
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
+    [pasteboard setString:[XMLDocument description] forType:NSPasteboardTypeString];
+}
+
+- (IBAction)copyAsTSV:(id)sender {
+    NSMutableArray *mutableRows = [NSMutableArray array];
+    for (id <DBRecord> item in self.selectedRecords) {
+        NSArray *keys = [self.outlineView.tableColumns valueForKeyPath:@"identifier"];
+        NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[keys count]];
+        for (NSString *key in keys) {
+            [mutableValues addObject:[item valueForKey:key]];
+        }
+        
+        [mutableRows addObject:[mutableValues componentsJoinedByString:@"\t"]];
+    }
+    
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    [pasteboard clearContents];
+    [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
+    [pasteboard setString:[mutableRows componentsJoinedByString:@"\n"] forType:NSPasteboardTypeString];
 }
 
 #pragma mark - NSOutlineViewDataSource
@@ -203,5 +279,14 @@ sortDescriptorsDidChange:(NSArray *)oldDescriptors
     [self.outlineView reloadData];
 }
 
+- (void)outlineView:(NSOutlineView *)outlineView 
+    willDisplayCell:(id)cell 
+     forTableColumn:(NSTableColumn *)tableColumn 
+               item:(id)item 
+{
+    if ([[item valueForKey:[tableColumn identifier]] isEqual:[NSNull null]]) {
+        [cell setStringValue:@"NULL"];
+    }
+}
 
 @end

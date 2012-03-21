@@ -12,13 +12,14 @@
 @synthesize textView = _textView;
 
 - (void)awakeFromNib {
-    
+    [self.textView setEditable:NO];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-    
-    [self.textView insertText:representedObject];
+    if (representedObject) {
+        [self.textView setString:[representedObject description]];
+    }
 }
 
 @end
