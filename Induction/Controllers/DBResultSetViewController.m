@@ -10,11 +10,48 @@
 
 #import "DateCell.h"
 
-@interface NSOutlineView (Convenience)
+static CGFloat const kDBResultSetOutlineViewDefaultFontSize = 12.0f;
+static CGFloat const kDBResultSetOutlineViewMinimumFontSize = 8.0f;
+static CGFloat const kDBResultSetOutlineViewMaximumFontSize = 36.0f;
+static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result-set.font-size";
+
+@interface NSOutlineView (Induction)
+@property (assign) CGFloat fontSize;
+
+- (void)resetFontSize;
 - (void)replaceOutlineTableColumnWithTableColumn:(NSTableColumn *)tableColumn;
 @end
 
-@implementation NSOutlineView (Convenience)
+@implementation NSOutlineView (Induction)
+
+- (CGFloat)fontSize {
+    if ([self.tableColumns count] > 0) {
+        return [[[[self outlineTableColumn] dataCell] font] pointSize];
+    }
+    
+    return 12.0f;
+}
+
+- (void)setFontSize:(CGFloat)fontSize {
+    self.rowHeight = self.rowHeight - (self.fontSize - fontSize);
+    for (NSTableColumn *tableColumn in self.tableColumns) {
+        [[tableColumn dataCell] setFont:[NSFont systemFontOfSize:fontSize]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:fontSize forKey:kDBResultSetOutlineViewFontSize];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)resetFontSize {
+    CGFloat fontSize = [[NSUserDefaults standardUserDefaults] floatForKey:kDBResultSetOutlineViewFontSize];
+    if (fontSize == 0.0f) {
+        fontSize = kDBResultSetOutlineViewDefaultFontSize;
+    }
+    
+    self.fontSize = fontSize;
+}
+
 - (void)replaceOutlineTableColumnWithTableColumn:(NSTableColumn *)tableColumn {
     NSTableColumn *outlineTableColumn = [self outlineTableColumn];
     [self setOutlineTableColumn:tableColumn];
@@ -45,6 +82,7 @@
     [self.outlineView setNextResponder:self];
     [self setNextResponder:[self.outlineView enclosingScrollView]];
     
+    [self.outlineView resetFontSize];
     [self.outlineView setDoubleAction:@selector(doubleClick:)];
 }
 
@@ -97,6 +135,7 @@
         NSTableColumn *tableColumn = [[NSTableColumn alloc] initWithIdentifier:[(id <DBResultSet>)self.representedObject identifierForTableColumnAtIndex:columnIndex]];
         [[tableColumn headerCell] setTitle:[tableColumn identifier]];
         [tableColumn setEditable:NO];
+        [[tableColumn dataCell] setFont:[[[self.outlineView outlineTableColumn] dataCell] font]];
 
         if ([(id <DBResultSet>)self.representedObject respondsToSelector:@selector(valueTypeForTableColumnAtIndex:)]) {
             DBValueType type = [(id <DBResultSet>)self.representedObject valueTypeForTableColumnAtIndex:columnIndex];
@@ -159,7 +198,6 @@
     }
     
     [self.outlineView reloadData];
-    
     [self.outlineView expandItem:nil expandChildren:YES];
     
     for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
@@ -237,6 +275,14 @@
     [pasteboard clearContents];
     [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
     [pasteboard setString:[mutableRows componentsJoinedByString:@"\n"] forType:NSPasteboardTypeString];
+}
+
+- (IBAction)incrementFontSize:(id)sender {
+    [self.outlineView setFontSize:fminf([self.outlineView fontSize] + 1.0f, kDBResultSetOutlineViewMaximumFontSize)];
+}
+
+- (IBAction)decrementFontSize:(id)sender {
+    [self.outlineView setFontSize:fmaxf([self.outlineView fontSize] - 1.0f, kDBResultSetOutlineViewMinimumFontSize)];
 }
 
 #pragma mark - NSOutlineViewDataSource
