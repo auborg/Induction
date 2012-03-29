@@ -8,6 +8,8 @@
 
 #import "DBConnectionConfigurationViewController.h"
 
+static NSString * const kInductionPreviousConnectionURLKey = @"com.induction.connection.previous.url";
+
 static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NSString *user, NSString *password, NSNumber *port, NSString *database) {
     NSMutableString *mutableURLString = [NSMutableString stringWithFormat:@"%@://", scheme];
     if (user && [user length] > 0) {
@@ -130,7 +132,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     
-    self.connectionURL = [NSURL URLWithString:@"postgres://localhost"];
+    self.connectionURL = [[NSUserDefaults standardUserDefaults] URLForKey:kInductionPreviousConnectionURLKey];
+    
+    [self.URLField becomeFirstResponder];
 }
 
 - (void)bindURLParameterTextField:(NSTextField *)textField {
@@ -176,6 +180,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     }
     
     if (connection) {
+        [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
         [connection open];
         [self.delegate connectionConfigurationControllerDidConnectWithConnection:connection];
     }
