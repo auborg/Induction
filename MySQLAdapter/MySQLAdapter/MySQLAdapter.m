@@ -164,7 +164,7 @@
     _connection = connection;
     _name = name;
     _stringEncoding = NSUTF8StringEncoding;
-    
+        
     MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_list_tables(_connection->_mysql_connection, NULL)];
     NSString *fieldName = [[[resultSet fields] lastObject] name];
     NSMutableArray *mutableTables = [NSMutableArray array];
@@ -263,10 +263,49 @@
     MySQLField *field = [[MySQLField alloc] init];
     field->_index = fieldIndex;
     
-    MYSQL_FIELD *myfield = mysql_fetch_field_direct(result, (int)fieldIndex);
-    field->_name = [NSString stringWithCString:myfield->name encoding:NSUTF8StringEncoding];
+    MYSQL_FIELD *mysql_field = mysql_fetch_field_direct(result, (int)fieldIndex);
+    field->_name = [NSString stringWithCString:mysql_field->name encoding:NSUTF8StringEncoding];
     
-    field->_type = DBStringValue;
+    switch (mysql_field->type) {
+        case MYSQL_TYPE_BIT:
+            field->_type = DBBooleanValue;
+            break;
+        case MYSQL_TYPE_SHORT:
+        case MYSQL_TYPE_LONG:
+        case MYSQL_TYPE_INT24:
+        case MYSQL_TYPE_LONGLONG:
+            field->_type = DBIntegerValue;
+            break;
+        case MYSQL_TYPE_FLOAT:
+        case MYSQL_TYPE_DOUBLE:
+        case MYSQL_TYPE_DECIMAL:
+        case MYSQL_TYPE_NEWDECIMAL:
+            field->_type = DBDecimalValue;
+            break;
+        case MYSQL_TYPE_ENUM:
+            field->_type = DBEnumValue;
+            break;
+        case MYSQL_TYPE_SET:
+            field->_type = DBSetValue;
+            break;
+        case MYSQL_TYPE_DATE:
+            field->_type = DBDateValue;
+            break;
+        case MYSQL_TYPE_DATETIME:
+            field->_type = DBDateTimeValue;
+            break;
+        case MYSQL_TYPE_TINY_BLOB:
+        case MYSQL_TYPE_MEDIUM_BLOB:
+        case MYSQL_TYPE_LONG_BLOB:
+        case MYSQL_TYPE_BLOB:
+            field->_type = DBBlobValue;
+            break;
+        case MYSQL_TYPE_GEOMETRY:
+            field->_type = DBGeometryValue;
+        default:
+            field->_type = DBStringValue;
+            break;
+    }
      
     return field;
 }
@@ -321,8 +360,8 @@
     __strong NSArray *_tuples;
 }
 
-- (id)tupleValueAtIndex:(NSUInteger)tupleIndex 
-          forFieldNamed:(NSString *)fieldName;
+- (NSArray *)tupleValuesAtIndex:(NSUInteger)tupleIndex;
+
 @end
 
 @implementation MySQLResultSet
@@ -336,6 +375,10 @@
 }
 
 - (id)initWithMySQLResult:(void *)result {
+    if (result == NULL) {
+        return nil;
+    }
+    
     self = [super init];
     if (!self) {
         return nil;
@@ -346,7 +389,7 @@
     _fieldsCount = mysql_num_fields(_mysql_result);
     
     NSMutableArray *mutableFields = [[NSMutableArray alloc] initWithCapacity:_fieldsCount];
-    NSIndexSet *fieldIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,_fieldsCount)];
+    NSIndexSet *fieldIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, _fieldsCount)];
     [fieldIndexSet enumerateIndexesWithOptions:NSEnumerationConcurrent usingBlock:^(NSUInteger fieldIndex, BOOL *stop) {
         MySQLField *field = [MySQLField fieldInMySQLResult:result atIndex:fieldIndex];
         [mutableFields addObject:field];
@@ -361,15 +404,9 @@
     
     NSMutableArray *mutableTuples = [[NSMutableArray alloc] initWithCapacity:_tuplesCount];
     NSIndexSet *tupleIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, _tuplesCount)];
-    NSArray *fieldNames = [_fieldsKeyedByName allKeys];
-    
     [tupleIndexSet enumerateIndexesWithOptions:0 usingBlock:^(NSUInteger tupleIndex, BOOL *stop) {
-        NSMutableDictionary *mutableKeyedTupleValues = [[NSMutableDictionary alloc] initWithCapacity:_fieldsCount];
-        [fieldNames enumerateObjectsWithOptions:0 usingBlock:^(id fieldName, NSUInteger idx, BOOL *stop) {
-            id value = [self tupleValueAtIndex:tupleIndex forFieldNamed:fieldName];
-            [mutableKeyedTupleValues setObject:value forKey:fieldName];
-        }];
-        MySQLTuple *tuple = [[MySQLTuple alloc] initWithValuesKeyedByFieldName:mutableKeyedTupleValues];
+        NSDictionary *valuesKeyedByFieldName = [NSDictionary dictionaryWithObjects:[self tupleValuesAtIndex:tupleIndex] forKeys:[_fields valueForKeyPath:@"name"]];
+        MySQLTuple *tuple = [[MySQLTuple alloc] initWithValuesKeyedByFieldName:valuesKeyedByFieldName];
         [mutableTuples addObject:tuple];
     }];
     
@@ -378,19 +415,41 @@
     return self;
 }
 
-- (id)tupleValueAtIndex:(NSUInteger)tupleIndex 
-          forFieldNamed:(NSString *)fieldName 
-{
-    
+- (NSArray *)tupleValuesAtIndex:(NSUInteger)tupleIndex {
     mysql_data_seek(_mysql_result, tupleIndex);
     MYSQL_ROW row = mysql_fetch_row(_mysql_result);
     
-    NSUInteger fieldIndex = [[_fieldsKeyedByName objectForKey:fieldName] index];;
-    if (row[fieldIndex] != NULL) {
-        return [NSString stringWithCString:row[fieldIndex] encoding:NSUTF8StringEncoding];
-    } else {
-        return [NSNull null];
+    NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:_fieldsCount];
+    for (MySQLField *field in _fields) {
+        id value = nil;
+        if (row[field.index] != NULL) {
+            value = [NSString stringWithCString:row[field.index] encoding:NSUTF8StringEncoding];
+            
+            if (!value) {
+                value = @"";
+            } else {
+                switch (field.type) {
+                    case DBIntegerValue:
+                        value = [NSNumber numberWithInteger:[value integerValue]];
+                        break;
+                    case DBDecimalValue:
+                        value = [NSNumber numberWithFloat:[value floatValue]];
+                        break;
+                    case DBBooleanValue:
+                        value = [NSNumber numberWithBool:[value boolValue]];
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } else {
+            value = [NSNull null];
+        }
+        
+        [mutableValues addObject:value];
     }
+    
+    return mutableValues;
 }
 
 - (NSUInteger)numberOfFields {
