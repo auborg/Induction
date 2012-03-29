@@ -9,6 +9,14 @@ typedef enum {
     DBDateValue,
     DBDateTimeValue,
     DBBlobValue,
+    DBEnumValue,
+    DBSetValue,
+    DBGeometryValue,
+    DBGeographicValue,
+    DBJSONValue,
+    DBXMLValue,
+    DBURLValue,
+    DBIPAddressValue,
 } DBValueType;
 
 @protocol DBConnection;
