@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
 		F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
 		F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
@@ -98,6 +99,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F8202F9414D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 			files = (
 				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
+				D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +299,7 @@
 				F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */,
 				F87EE36615082F920023C67D /* RedisAdapter.xcodeproj */,
 				F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */,
+				1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,6 +317,7 @@
 				F852DCF514D3609A00C029C8 /* WebKit.framework */,
 				F8595FB714C34BB100FD15BE /* Cocoa.framework */,
 				F8595FB914C34BB100FD15BE /* Other Frameworks */,
+				8495A64B8D754525BD0656FB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				F8595FB014C34BB100FD15BE /* Frameworks */,
 				F8595FB114C34BB100FD15BE /* Resources */,
 				F806D64314F2DE2500CE7DB6 /* Copy Database Adapters */,
+				B4234C0C2865495BBEBC80A3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -504,6 +511,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B4234C0C2865495BBEBC80A3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F8595FAF14C34BB100FD15BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -604,28 +628,36 @@
 		};
 		F8595FD214C34BB100FD15BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = Induction/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Induction;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		F8595FD314C34BB100FD15BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/local/include;
 				INFOPLIST_FILE = Induction/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Induction;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
