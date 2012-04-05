@@ -36,8 +36,6 @@ To get a better idea of what's planned, here's a list of features expected to sh
 ### Explore
 
 - Popovers for expanded detail of text and blob cells
-- Copy selection as JSON, XML, CSV, etc.
-- Cell formatting for null objects
 - Cell formatting for detected kinds of fields (percentages, currency, URLs, JSON, image data, etc.)†
 - Support for geospatial data†
 - Improved pagination controls
@@ -47,6 +45,8 @@ To get a better idea of what's planned, here's a list of features expected to sh
 - Write support (create / modify / destroy records)†
 - Importing / Exporting records†
 - Show associated records in outline (e.g. one-to-many records by foreign key in relational DBs)†
+- ~~Copy selection as JSON, XML, CSV, etc.~~
+- ~~Cell formatting for null objects~~
 
 ### Query
 
@@ -56,7 +56,7 @@ To get a better idea of what's planned, here's a list of features expected to sh
   - Line numbers
 - Saved queries
 - Export results to [Heroku Postgres Data Clips](https://postgres.heroku.com/blog/past/2012/1/31/simple_data_sharing_with_data_clips/), Gist, etc.
-- Query builder (no SQL / commands)
+- Query builder (no SQL / commands)†
 - Query planner / explainer visualization†
 
 ### Visualize
