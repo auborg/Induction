@@ -93,7 +93,7 @@ static NSDictionary * SQLNormalWordsStyleAttributes() {
 
 #pragma mark - NSTextStorageDelegate
 
-- (void)textStorageDidProcessEditing:(NSNotification *)notification {    
+- (void)textStorageWillProcessEditing:(NSNotification *)notification {
 	NSTextStorage *textStorage = [notification object];
 	NSString *string = [textStorage string];
     NSRange stringRange = NSMakeRange(0, [string length]);
@@ -101,6 +101,7 @@ static NSDictionary * SQLNormalWordsStyleAttributes() {
     NSLayoutManager *layoutManager = [[textStorage layoutManagers] objectAtIndex:0];
     
     _tagger.string = [textStorage string];
+    
     [_tagger enumerateTagsInRange:stringRange scheme:NSLinguisticTagSchemeTokenType options:NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerOmitOther usingBlock:^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop) {
         if (NSMaxRange(tokenRange) != NSMaxRange(stringRange)) {
             NSString *token = [string substringWithRange:tokenRange];

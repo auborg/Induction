@@ -160,8 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
+				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,7 +635,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(PODS_ROOT)/Headers/**",
+				);
 				INFOPLIST_FILE = Induction/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Induction;
@@ -653,7 +656,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"$(PODS_ROOT)/Headers/**",
+				);
 				INFOPLIST_FILE = Induction/Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Induction;

@@ -10,13 +10,15 @@
 
 @class DBDatabaseViewController;
 @class DBResultSetViewController;
+@class NoodleLineNumberView;
 
 @interface QueryViewController : NSViewController
 
-@property (strong, nonatomic) IBOutlet DBDatabaseViewController *databaseViewController;
-@property (strong, nonatomic) IBOutlet DBResultSetViewController *resultsTableViewController;
-@property (strong, nonatomic) IBOutlet NSBox *contentBox;
-@property (strong, nonatomic) IBOutlet NSTextView *textView;
+@property (strong) IBOutlet DBDatabaseViewController *databaseViewController;
+@property (strong) IBOutlet DBResultSetViewController *resultsTableViewController;
+@property (strong) IBOutlet NSBox *contentBox;
+@property (strong) IBOutlet NSTextView *textView;
+@property (strong) IBOutlet NoodleLineNumberView *lineNumberView;
 
 - (IBAction)execute:(id)sender;
 
