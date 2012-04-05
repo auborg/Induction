@@ -438,7 +438,7 @@
 										<int key="NSCellFlags2">33554432</int>
 										<object class="NSCustomResource" key="NSContents">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">NSActionTemplate</string>
+											<string key="NSResourceName">NSColumnViewTemplate</string>
 										</object>
 										<string key="NSCellIdentifier">_NS:328</string>
 										<int key="NSAlign">0</int>
@@ -1013,8 +1013,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">NSActionTemplate</string>
-			<string key="NS.object.0">{15, 15}</string>
+			<string key="NS.key.0">NSColumnViewTemplate</string>
+			<string key="NS.object.0">{13, 10}</string>
 		</object>
 	</data>
 </archive>
