@@ -71,13 +71,16 @@ typedef enum {
 
 @property (readonly) id <DBConnection> connection;
 @property (readonly) NSString *name;
-@property (readonly) NSDictionary *metadata;
 
 - (NSUInteger)numberOfDataSourceGroups;
 - (NSString *)dataSourceGroupAtIndex:(NSUInteger)index;
 
 - (NSUInteger)numberOfDataSourcesInGroup:(NSString *)group;
 - (id <DBDataSource>)dataSourceInGroup:(NSString *)group atIndex:(NSUInteger)index;
+
+@optional
+
+@property (readonly) NSDictionary *metadata;
 
 @end
 
@@ -87,9 +90,10 @@ typedef enum {
 
 @property (readonly) NSString *name;
 @property (readonly) NSUInteger numberOfRecords;
-@property (readonly) NSDictionary *metadata;
 
 @optional
+
+@property (readonly) NSDictionary *metadata;
 
 - (DBSourceListIconType)sourceListIconType;
 
@@ -150,6 +154,6 @@ typedef enum {
 
 @optional
 
-@property (nonatomic, readonly) NSArray *children;
+@property (readonly) NSArray *children;
 
 @end
