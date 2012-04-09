@@ -62,6 +62,7 @@ typedef enum {
 @optional
 
 @property (readonly) NSArray *availableDatabases;
++ (id <DBConnection>)connectionBySelectingDatabase:(id <DBDatabase>)database;
 
 @end
 

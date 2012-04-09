@@ -9,15 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "DBAdapter.h"
 
+@class MongoDBAdapter;
+@class MongoDBConnection;
+@class MongoDBDatabase;
+@class MongoDBCollection;
+@class MongoDBResultSet;
+@class MongoDBDocument;
 
 @interface MongoDBAdapter : NSObject <DBAdapter>
 @end
 
 @interface MongoDBConnection : NSObject <DBConnection>
 
-- (id <DBResultSet>)runCommand:(id)command 
-                    onDatabase:(id <DBDatabase>)database
-                         error:(NSError **)error;
+- (id <DBResultSet>)resultSetByRunningCommand:(id)command 
+                                   onDatabase:(MongoDBDatabase *)database
+                                        error:(NSError **)error;
+
+- (void)runCommand:(id)command 
+        onDatabase:(id <DBDatabase>)database
+           success:(void (^)(MongoDBResultSet *resultSet, NSTimeInterval elapsedTime))success
+           failure:(void (^)(NSError *error))failure;
 
 @end
 

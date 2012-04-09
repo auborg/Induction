@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SQLAdapter.h"
 
+extern NSString * const MySQLErrorDomain;
+
 @interface MySQLAdapter : NSObject <DBAdapter>
 @end
 

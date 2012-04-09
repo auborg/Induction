@@ -25,13 +25,13 @@
     #define TIMESTAMPTZOID  1184
 #endif
 
-static dispatch_queue_t postgres_queue() {
-    static dispatch_queue_t _postgres_queue;
-    if (_postgres_queue == NULL) {
-        _postgres_queue = dispatch_queue_create("com.induction.postgres", 0);
+static dispatch_queue_t induction_postgres_adapter_queue() {
+    static dispatch_queue_t _induction_postgres_adapter_queue;
+    if (_induction_postgres_adapter_queue == NULL) {
+        _induction_postgres_adapter_queue = dispatch_queue_create("com.induction.postgres.adapter.queue", 0);
     }
     
-    return _postgres_queue;
+    return _induction_postgres_adapter_queue;
 }
 
 NSString * const PostgreSQLErrorDomain = @"com.heroku.client.postgresql.error";
@@ -107,7 +107,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
              success:(void (^)(id <DBConnection> connection))success
              failure:(void (^)(NSError *error))failure
 {    
-    dispatch_async(postgres_queue(), ^(void) {
+    dispatch_async(induction_postgres_adapter_queue(), ^(void) {
         PostgreSQLConnection *connection = [[PostgreSQLConnection alloc] initWithURL:url];
         NSError *error = nil;    
         BOOL connected = [connection open:&error];
@@ -181,7 +181,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 }
 
 - (BOOL)close:(NSError **)error {
-    if (_pgconn == nil) { 
+    if (!_pgconn) { 
         return NO; 
     }
    
@@ -217,7 +217,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
            success:(void (^)(id <SQLResultSet> resultSet, NSTimeInterval elapsedTime))success
            failure:(void (^)(NSError *error))failure
 {
-    dispatch_async(postgres_queue(), ^(void) {
+    dispatch_async(induction_postgres_adapter_queue(), ^(void) {
         CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
         PGresult *pgresult = PQexec(_pgconn, [SQL UTF8String]);
         CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
@@ -293,7 +293,6 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
     
     NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name ASC"];
     NSMutableArray *mutableTables = [NSMutableArray array];
-    
     [[[_connection resultSetByExecutingSQL:SQL error:nil] tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         PostgreSQLTable *table = [[PostgreSQLTable alloc] initWithDatabase:self name:[(id <SQLTuple>)obj valueForKey:@"table_name"] stringEncoding:NSUTF8StringEncoding];
         [mutableTables addObject:table];
@@ -464,25 +463,28 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
             encoding:(NSStringEncoding)encoding 
 {
     id value = nil;
-    switch (_type) {
-        case DBBooleanValue:
-            value = [NSNumber numberWithBool:((*(char *)bytes) == 't')];
-            break;
-        case DBIntegerValue:
-            value = [NSNumber numberWithInteger:[[[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding] integerValue]];
-            break;
-        case DBDecimalValue:
-            value = [NSNumber numberWithDouble:[[[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding] doubleValue]];
-            break;
-        case DBStringValue:
-            value = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
-            break;
-        case DBDateValue:
-        case DBDateTimeValue:
-            value = NSDateFromPostgreSQLTimestamp([[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding]);
-            break;
-        default:
-            break;
+    
+    if (bytes != NULL) {
+        switch (_type) {
+            case DBBooleanValue:
+                value = [NSNumber numberWithBool:((*(char *)bytes) == 't')];
+                break;
+            case DBIntegerValue:
+                value = [NSNumber numberWithInteger:[[[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding] integerValue]];
+                break;
+            case DBDecimalValue:
+                value = [NSNumber numberWithDouble:[[[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding] doubleValue]];
+                break;
+            case DBStringValue:
+                value = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
+                break;
+            case DBDateValue:
+            case DBDateTimeValue:
+                value = NSDateFromPostgreSQLTimestamp([[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding]);
+                break;
+            default:
+                break;
+        }
     }
 
     if (!value) {

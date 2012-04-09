@@ -10,7 +10,22 @@
 
 #import <mysql.h>
 
+static dispatch_queue_t induction_mysql_adapter_queue() {
+    static dispatch_queue_t _induction_mysql_adapter_queue;
+    if (_induction_mysql_adapter_queue == NULL) {
+        _induction_mysql_adapter_queue = dispatch_queue_create("com.induction.mysql.adapter.queue", DISPATCH_QUEUE_SERIAL);
+    }
+    
+    return _induction_mysql_adapter_queue;
+}
+
+NSString * const MySQLErrorDomain = @"com.heroku.client.mysql.error";
+
 @implementation MySQLAdapter
+
++ (NSString *)localizedName {
+    return NSLocalizedString(@"MySQL", nil);
+}
 
 + (NSString *)primaryURLScheme {
     return @"mysql";
@@ -20,10 +35,27 @@
     return [[url scheme] isEqualToString:[self primaryURLScheme]];
 }
 
-+ (id <DBConnection>)connectionWithURL:(NSURL *)url 
-                                 error:(NSError **)error
++ (void)connectToURL:(NSURL *)url 
+             success:(void (^)(id<DBConnection>))success 
+             failure:(void (^)(NSError *))failure 
 {
-    return [[MySQLConnection alloc] initWithURL:url];
+    dispatch_async(induction_mysql_adapter_queue(), ^(void) {
+        MySQLConnection *connection = [[MySQLConnection alloc] initWithURL:url];
+        NSError *error = nil;
+        BOOL connected = [connection open:&error];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (connected) {
+                if (success) {
+                    success(connection);
+                }
+            } else {
+                if (failure) {
+                    failure(error);
+                }
+            }
+        });
+    });
 }
 
 @end
@@ -31,16 +63,17 @@
 #pragma mark -
 
 @interface MySQLConnection () {
-@public
-    MYSQL *_mysql_connection;
 @private
+    MYSQL *_mysql_connection;
     __strong NSURL *_url;
+    __strong MySQLDatabase *_database;
 }
 
 @end
 
 @implementation MySQLConnection
 @synthesize url = _url;
+@synthesize database = _database;
 
 - (void)dealloc {
     if (_mysql_connection) {
@@ -60,11 +93,9 @@
     return self;
 }
 
-- (BOOL)open {
+- (BOOL)open:(NSError *__autoreleasing *)error {
 	[self close:nil];
-    
-	mysql_close(_mysql_connection);
-    
+        
     _mysql_connection = mysql_init(NULL);
     
     const char *host = [[_url host] UTF8String];
@@ -74,59 +105,106 @@
     unsigned int port = [[_url port] unsignedIntValue];
     const char *socket = MYSQL_UNIX_ADDR;
     
-    mysql_real_connect(_mysql_connection, host, user, password, database, port, socket, 0);
+    if (!mysql_real_connect(_mysql_connection, host, user, password, database, port, socket, 0)) {
+        NSMutableDictionary *mutableUserInfo = [NSMutableDictionary dictionary];
+        [mutableUserInfo setValue:NSLocalizedString(@"Connection Error", nil) forKey:NSLocalizedDescriptionKey];
+        [mutableUserInfo setValue:[NSString stringWithUTF8String:mysql_error(_mysql_connection)] forKey:NSLocalizedRecoverySuggestionErrorKey];
+        [mutableUserInfo setValue:_url forKey:NSURLErrorKey];
+        
+        NSUInteger code = mysql_errno(_mysql_connection);
+        *error = [[NSError alloc] initWithDomain:MySQLErrorDomain code:code userInfo:mutableUserInfo];
+        
+        return NO;
+    }
+    
+    _database = [[self availableDatabases] lastObject];
+    mysql_select_db(_mysql_connection, [[_database name] UTF8String]);
     
     return YES;
 }
 
-- (BOOL)close {
-    //	if (_pgconn == nil) { return NO; }
-    //	if (isConnected == NO) { return NO; }
-    //	
-    //	[self appendSQLLog:[NSString stringWithString:@"Disconnected from database.\n"]];
+- (BOOL)close:(NSError *__autoreleasing *)error {
+    if (!_mysql_connection) { 
+        return NO; 
+    }
+    
 	mysql_close(_mysql_connection);
-    //	_pgconn = nil;
-    //	isConnected = NO;
+
 	return YES;
 }
 
-- (BOOL)reset {
+- (BOOL)reset:(NSError *__autoreleasing *)error {
+    if (!_mysql_connection) { 
+        return NO; 
+    }
+    
     mysql_refresh(_mysql_connection, 0);
+    
     return mysql_stat(_mysql_connection) == MYSQL_STATUS_READY;
 }
 
-- (id <SQLResultSet>)executeSQL:(NSString *)SQL 
-                          error:(NSError *__autoreleasing *)error 
+- (id <SQLResultSet>)resultSetByExecutingSQL:(NSString *)SQL 
+                                       error:(NSError *__autoreleasing *)error
 {
-    MYSQL_RES *myql_result = nil;
-    
-    int code = mysql_query(_mysql_connection, [SQL UTF8String]);
-    if (code == 0) {
+    MYSQL_RES *mysql_result = nil;
+    NSInteger status = mysql_query(_mysql_connection, [SQL UTF8String]);
+    if (status == 0) {
 		if (mysql_field_count(_mysql_connection) != 0) {
-			myql_result = mysql_store_result(_mysql_connection);
+			mysql_result = mysql_store_result(_mysql_connection);
 		} else {
 			return nil;
 		}
 	} else {
-        //		if ([SQL length] < 1024) {
-        //			NSLog (@"Problem in queryString error code is : %d, query is : %@-\n", theQueryCode, query);
-        //		} else {
-        //			NSLog (@"Problem in queryString error code is : %d, query is (truncated) : %@-\n", theQueryCode, [query substringToIndex:1024]);
-        //		}
-        //		
-        //        NSLog(@"Error message is : %@\n", [self getLastErrorMessage]);
-		
+//        *error = [[NSError alloc] initWithDomain:MySQLErrorDomain code:mysql_errno(_mysql_connection) userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithUTF8String:mysql_error(_mysql_connection)] forKey:NSLocalizedDescriptionKey]];
+        
         return nil;
 	}
     
-    return [[MySQLResultSet alloc] initWithMySQLResult:myql_result];
+    return [[MySQLResultSet alloc] initWithMySQLResult:mysql_result];
+}
+
+- (void)executeSQL:(NSString *)SQL 
+           success:(void (^)(id<SQLResultSet>, NSTimeInterval))success 
+           failure:(void (^)(NSError *))failure
+{
+    dispatch_async(induction_mysql_adapter_queue(), ^(void) {
+        MYSQL_RES *mysql_result = nil;
+        
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        NSInteger status = mysql_query(_mysql_connection, [SQL UTF8String]);
+        CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        
+        MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_result];
+        NSError *error = nil;
+        
+        if (status == 0) {
+            if (mysql_field_count(_mysql_connection) != 0) {
+                mysql_result = mysql_store_result(_mysql_connection);
+                resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_result];
+            }
+        } else {
+            error = [[NSError alloc] initWithDomain:MySQLErrorDomain code:mysql_errno(_mysql_connection) userInfo:[NSDictionary dictionaryWithObject:[NSString stringWithUTF8String:mysql_error(_mysql_connection)] forKey:NSLocalizedDescriptionKey]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            } else {
+                if (success) {
+                    success(resultSet, (endTime - startTime));
+                }
+            }
+        });
+    });
 }
 
 
-- (NSArray *)databases {
-    MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_list_dbs(_mysql_connection, NULL)]; 
+- (NSArray *)availableDatabases {
+    NSString *SQL = @"SHOW DATABASES";
     NSMutableArray *mutableDatabases = [[NSMutableArray alloc] init];
-    [[resultSet tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [[[self resultSetByExecutingSQL:SQL error:nil] tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         MySQLDatabase *database = [[MySQLDatabase alloc] initWithConnection:self name:[(MySQLTuple *)obj valueForKey:@"Database"] stringEncoding:NSUTF8StringEncoding];
         [mutableDatabases addObject:database];
     }];
@@ -163,8 +241,10 @@
     _connection = connection;
     _name = name;
     _stringEncoding = NSUTF8StringEncoding;
-        
-    MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_list_tables(_connection->_mysql_connection, NULL)];
+    
+    
+    NSString *SQL = @"SHOW TABLES";
+    MySQLResultSet *resultSet = [_connection resultSetByExecutingSQL:SQL error:nil];
     NSString *fieldName = [[[resultSet fields] lastObject] name];
     NSMutableArray *mutableTables = [NSMutableArray array];
     [[resultSet tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -181,12 +261,24 @@
     return _name;
 }
 
-- (NSOrderedSet *)dataSourceGroupNames {
-    return [NSOrderedSet orderedSetWithObject:NSLocalizedString(@"Tables", nil)];
+- (NSDictionary *)metadata {
+    return nil;
 }
 
-- (NSArray *)dataSourcesForGroupNamed:(NSString *)groupName {
-    return _tables;
+- (NSUInteger)numberOfDataSourceGroups {
+    return 1;
+}
+
+- (NSString *)dataSourceGroupAtIndex:(NSUInteger)index {
+    return NSLocalizedString(@"Tables", nil);
+}
+
+- (NSUInteger)numberOfDataSourcesInGroup:(NSString *)group {
+    return [_tables count];
+}
+
+- (id <DBDataSource>)dataSourceInGroup:(NSString *)group atIndex:(NSUInteger)index {
+    return [_tables objectAtIndex:index];
 }
 
 @end
@@ -225,17 +317,45 @@
     return _name;
 }
 
-//- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
-//    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
-//}
-//
-//- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
-//    return [[_database connection] executeSQL:query error:error];
-//}
-//
-//- (NSUInteger)numberOfRecords {
-//    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
-//}
+- (NSUInteger)numberOfRecords {
+    NSString *SQL = [NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name];
+    return MAX([[[[[[_database connection] resultSetByExecutingSQL:SQL error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue], 0); 
+}
+
+#pragma mark -
+
+- (void)fetchResultSetForRecordsAtIndexes:(NSIndexSet *)indexes 
+                                  success:(void (^)(id<DBResultSet>))success 
+                                  failure:(void (^)(NSError *))failure 
+{
+    NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]];
+    [[_database connection] executeSQL:SQL success:^(id<SQLResultSet> resultSet, __unused NSTimeInterval elapsedTime) {
+        if (success) {
+            success(resultSet);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+#pragma mark -
+
+- (void)fetchResultSetForQuery:(NSString *)query 
+                       success:(void (^)(id<DBResultSet>, NSTimeInterval))success 
+                       failure:(void (^)(NSError *))failure 
+{
+    [[_database connection] executeSQL:query success:^(id<SQLResultSet> resultSet, NSTimeInterval elapsedTime) {
+        if (success) {
+            success(resultSet, elapsedTime);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
 
 @end
 
@@ -313,7 +433,36 @@
               length:(NSUInteger)length 
             encoding:(NSStringEncoding)encoding 
 {
-    return [[NSString alloc] initWithBytes:bytes length:length encoding:encoding];    
+    id value = nil;
+    
+    if (bytes != NULL) {
+        switch (_type) {
+            case DBBooleanValue:
+                value = [NSNumber numberWithBool:((*(char *)bytes) == 't')];
+                break;
+            case DBIntegerValue:
+                value = [NSNumber numberWithInteger:[[NSString stringWithUTF8String:bytes] integerValue]];
+                break;
+            case DBDecimalValue:
+                value = [NSNumber numberWithDouble:[[NSString stringWithUTF8String:bytes] doubleValue]];
+                break;
+            case DBStringValue:
+                value = [NSString stringWithUTF8String:bytes];
+                break;
+            case DBDateValue:
+            case DBDateTimeValue:
+                value = [NSString stringWithUTF8String:bytes];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    if (!value) {
+        value = [NSNull null];
+    }
+    
+    return value;
 }
 
 @end
@@ -419,33 +568,8 @@
     MYSQL_ROW row = mysql_fetch_row(_mysql_result);
     
     NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:_fieldsCount];
-    for (MySQLField *field in _fields) {
-        id value = nil;
-        if (row[field.index] != NULL) {
-            value = [NSString stringWithCString:row[field.index] encoding:NSUTF8StringEncoding];
-            
-            if (!value) {
-                value = @"";
-            } else {
-                switch (field.type) {
-                    case DBIntegerValue:
-                        value = [NSNumber numberWithInteger:[value integerValue]];
-                        break;
-                    case DBDecimalValue:
-                        value = [NSNumber numberWithFloat:[value floatValue]];
-                        break;
-                    case DBBooleanValue:
-                        value = [NSNumber numberWithBool:[value boolValue]];
-                        break;
-                    default:
-                        break;
-                }
-            }
-        } else {
-            value = [NSNull null];
-        }
-        
-        [mutableValues addObject:value];
+    for (MySQLField *field in _fields) {        
+        [mutableValues addObject:[field objectForBytes:row[field.index] length:sizeof(row[field.index]) encoding:NSUTF8StringEncoding]];
     }
     
     return mutableValues;

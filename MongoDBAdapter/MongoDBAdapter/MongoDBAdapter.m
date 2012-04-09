@@ -11,6 +11,10 @@
 
 @implementation MongoDBAdapter
 
++ (NSString *)localizedName {
+    return NSLocalizedString(@"MongoDB", nil);
+}
+
 + (NSString *)primaryURLScheme {
     return @"mongodb";
 }
@@ -19,16 +23,13 @@
     return [[url scheme] isEqualToString:[self primaryURLScheme]] && [url host];
 }
 
-+ (id<DBConnection>)connectionWithURL:(NSURL *)url error:(NSError *__autoreleasing *)error {
++ (id <DBConnection>)connectionWithURL:(NSURL *)url error:(NSError *__autoreleasing *)error {
     return [[MongoDBConnection alloc] initWithURL:url];
 }
 
 @end
 
 #pragma mark -
-
-@interface MongoDBConnection ()
-@end
 
 @implementation MongoDBConnection {
 @public
@@ -50,8 +51,8 @@
     return self;
 }
 
-- (BOOL)open {
-    //    [self close];    
+- (BOOL)open:(NSError *__autoreleasing *)error {
+    [self close:nil];    
     
     mongo_connection_options options;
     strcpy(options.host, [[_url host] UTF8String]);
@@ -74,7 +75,7 @@
     }
 }
 
-- (BOOL)close {
+- (BOOL)close:(NSError *__autoreleasing *)error {
     if (!_mongo_connection) {
         return NO;
     }
@@ -86,11 +87,27 @@
     return YES;
 }
 
-- (BOOL)reset {
+// TODO
+- (BOOL)reset:(NSError *__autoreleasing *)error {
     return NO;
 }
 
-- (NSArray *)databases {
+- (id <DBResultSet>)resultSetByRunningCommand:(id)command 
+                                   onDatabase:(MongoDBDatabase *)database
+                                        error:(NSError **)error
+{
+    return nil;
+}
+
+- (void)runCommand:(id)command 
+        onDatabase:(id <DBDatabase>)database
+           success:(void (^)(MongoDBResultSet *resultSet, NSTimeInterval elapsedTime))success
+           failure:(void (^)(NSError *error))failure
+{
+    return;
+}
+
+- (NSArray *)availableDatabases {
     bson queryBSON, outBSON;
     bson_buffer buffer;
     
