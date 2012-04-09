@@ -1,10 +1,25 @@
 #import <Foundation/Foundation.h>
 #import "DBAdapter.h"
 
+@protocol SQLConnection;
+@protocol SQLDatabase;
+@protocol SQLTable;
+@protocol SQLField;
+@protocol SQLTuple;
 @protocol SQLResultSet;
+
+#pragma mark -
+
 @protocol SQLConnection <DBConnection>
 
-- (id <SQLResultSet>)executeSQL:(NSString *)SQL error:(NSError **)error;
+- (void)executeSQL:(NSString *)SQL
+           success:(void (^)(id <SQLResultSet> resultSet, NSTimeInterval elapsedTime))success
+           failure:(void (^)(NSError *error))failure;
+
+- (id <SQLResultSet>)resultSetByExecutingSQL:(NSString *)SQL 
+                                       error:(NSError *__autoreleasing *)error;
+
+@property (readonly) NSArray *availableDatabases;
 
 @end
 
@@ -12,12 +27,12 @@
 
 @protocol SQLDatabase <DBDatabase>
 
-@property (readonly, nonatomic) id <SQLConnection> connection;
+@property (readonly) id <SQLConnection> connection;
 
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSStringEncoding stringEncoding;
+@property (readonly) NSString *name;
+@property (readonly) NSStringEncoding stringEncoding;
 
-@property (readonly, nonatomic) NSArray *tables;
+@property (readonly) NSArray *tables;
 
 - (id)initWithConnection:(id <SQLConnection>)connection 
                     name:(NSString *)name
@@ -29,7 +44,6 @@
 
 @protocol SQLTable <DBDataSource, DBExplorableDataSource, DBQueryableDataSource, DBVisualizableDataSource>
 
-@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSStringEncoding stringEncoding;
 
 - (id)initWithDatabase:(id <SQLDatabase>)database

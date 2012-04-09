@@ -19,68 +19,111 @@ typedef enum {
     DBIPAddressValue,
 } DBValueType;
 
+typedef enum {
+    DBSourceListIconDatabase,
+    DBSourceListIconTable,
+    DBSourceListIconBucket,
+    DBSourceListIconGear,
+    DBSourceListIconView,
+} DBSourceListIconType;
+
 @protocol DBConnection;
+@protocol DBDatabase;
+@protocol DBDataSource;
+@protocol DBResultSet;
+@protocol DBRecord;
+
+#pragma mark -
+
 @protocol DBAdapter <NSObject>
 
++ (NSString *)localizedName;
 + (NSString *)primaryURLScheme;
-+ (BOOL)canConnectWithURL:(NSURL *)url;
-+ (id <DBConnection>)connectionWithURL:(NSURL *)url 
-                                 error:(NSError **)error;
++ (BOOL)canConnectToURL:(NSURL *)url;
++ (void)connectToURL:(NSURL *)url
+             success:(void (^)(id <DBConnection> connection))success
+             failure:(void (^)(NSError *error))failure;
 
 @end
 
+#pragma mark -
+
 @protocol DBConnection <NSObject>
 
-@property (nonatomic, readonly) NSURL *url;
-@property (nonatomic, readonly) NSArray *databases;
+@property (readonly) NSURL *url;
+@property (readonly) id <DBDatabase> database;
 
 - (id)initWithURL:(NSURL *)url;
 
-- (BOOL)open;
-- (BOOL)close;
-- (BOOL)reset;
+- (BOOL)open:(NSError **)error;
+- (BOOL)close:(NSError **)error;
+- (BOOL)reset:(NSError **)error;
+
+@optional
+
+@property (readonly) NSArray *availableDatabases;
+
 @end
 
 #pragma mark -
 
 @protocol DBDatabase <NSObject>
 
-@property (nonatomic, readonly) id <DBConnection> connection;
-@property (nonatomic, readonly) NSOrderedSet *dataSourceGroupNames;
-@property (nonatomic, readonly) NSString *name;
+@property (readonly) id <DBConnection> connection;
+@property (readonly) NSString *name;
+@property (readonly) NSDictionary *metadata;
 
-- (NSArray *)dataSourcesForGroupNamed:(NSString *)groupName;
+- (NSUInteger)numberOfDataSourceGroups;
+- (NSString *)dataSourceGroupAtIndex:(NSUInteger)index;
+
+- (NSUInteger)numberOfDataSourcesInGroup:(NSString *)group;
+- (id <DBDataSource>)dataSourceInGroup:(NSString *)group atIndex:(NSUInteger)index;
 
 @end
 
 #pragma mark -
 
-@protocol DBResultSet;
 @protocol DBDataSource <NSObject>
 
-- (NSUInteger)numberOfRecords;
+@property (readonly) NSString *name;
+@property (readonly) NSUInteger numberOfRecords;
+@property (readonly) NSDictionary *metadata;
+
+@optional
+
+- (DBSourceListIconType)sourceListIconType;
 
 @end
 
 @protocol DBExplorableDataSource <NSObject>
 
-- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes                                                          
-                                           error:(NSError **)error;
+- (void)fetchResultSetForRecordsAtIndexes:(NSIndexSet *)indexes
+                                  success:(void (^)(id <DBResultSet> resultSet))success
+                                  failure:(void (^)(NSError *error))failure;
 
 @end
 
 @protocol DBQueryableDataSource <NSObject>
 
-- (id <DBResultSet>)resultSetForQuery:(NSString *)query 
-                                error:(NSError **)error;
+- (void)fetchResultSetForQuery:(NSString *)query
+                       success:(void (^)(id <DBResultSet> resultSet, NSTimeInterval elapsedTime))success
+                       failure:(void (^)(NSError *error))failure;
+
+@optional
+
++ (NSString *)queryLanguage;
+
+- (NSString *)queryPlanForQuery:(NSString *)query
+                          error:(NSError **)error;
 
 @end
 
 @protocol DBVisualizableDataSource <NSObject>
 
-- (id <DBResultSet>)resultSetForDimension:(NSExpression *)dimension
-                                 measures:(NSArray *)measures
-                                    error:(NSError **)error;
+- (void)fetchResultSetForDimension:(NSExpression *)dimension
+                          measures:(NSArray *)measures
+                           success:(void (^)(id <DBResultSet> resultSet))success
+                           failure:(void (^)(NSError *error))failure;
 
 @end
 
@@ -93,7 +136,9 @@ typedef enum {
 
 - (NSUInteger)numberOfFields;
 - (NSString *)identifierForTableColumnAtIndex:(NSUInteger)index;
+
 @optional
+
 - (DBValueType)valueTypeForTableColumnAtIndex:(NSUInteger)index;
 - (NSCell *)dataCellForTableColumnAtIndex:(NSUInteger)index;
 - (NSSortDescriptor *)sortDescriptorPrototypeForTableColumnAtIndex:(NSUInteger)index;

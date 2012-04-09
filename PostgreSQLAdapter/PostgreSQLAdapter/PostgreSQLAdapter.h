@@ -14,11 +14,11 @@ extern NSString * const PostgreSQLErrorDomain;
 #pragma mark -
 
 @interface PostgreSQLAdapter : NSObject <DBAdapter>
-
 @end
 
-@interface PostgreSQLConnection : NSObject <SQLConnection>
+#pragma mark -
 
+@interface PostgreSQLConnection : NSObject <SQLConnection>
 @end
 
 #pragma mark -

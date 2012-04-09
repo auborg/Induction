@@ -16,7 +16,7 @@
     return @"sqlite";
 }
 
-+ (BOOL)canConnectWithURL:(NSURL *)url {
++ (BOOL)canConnectToURL:(NSURL *)url {
     return [[NSSet setWithObjects:@"sqlite", @"sqlite3", @"file", nil] containsObject:[url scheme]];    
 }
 
@@ -41,7 +41,6 @@
 
 @implementation SQLiteConnection
 @synthesize url = _url;
-@dynamic databases;
 
 - (void)dealloc {
     if (_sqlite3_connection) {
@@ -61,7 +60,7 @@
 }
 
 - (BOOL)open {
-	[self close];
+	[self close:nil];
     
     _sqlite3_connection = NULL;
     
@@ -195,17 +194,17 @@
     return _name;
 }
 
-- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
-    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
-}
-
-- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
-    return [[_database connection] executeSQL:query error:error];
-}
-
-- (NSUInteger)numberOfRecords {
-    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
-}
+//- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
+//    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
+//}
+//
+//- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
+//    return [[_database connection] executeSQL:query error:error];
+//}
+//
+//- (NSUInteger)numberOfRecords {
+//    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
+//}
 
 @end
 

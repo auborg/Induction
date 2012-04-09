@@ -16,7 +16,7 @@
     return @"redis";
 }
 
-+ (BOOL)canConnectWithURL:(NSURL *)url {
++ (BOOL)canConnectToURL:(NSURL *)url {
     return [[url scheme] isEqualToString:@"redis"];
 }
 

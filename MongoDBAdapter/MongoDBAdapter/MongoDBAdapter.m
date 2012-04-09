@@ -15,7 +15,7 @@
     return @"mongodb";
 }
 
-+ (BOOL)canConnectWithURL:(NSURL *)url {
++ (BOOL)canConnectToURL:(NSURL *)url {
     return [[url scheme] isEqualToString:[self primaryURLScheme]] && [url host];
 }
 

@@ -16,7 +16,7 @@
     return @"mysql";
 }
 
-+ (BOOL)canConnectWithURL:(NSURL *)url {
++ (BOOL)canConnectToURL:(NSURL *)url {
     return [[url scheme] isEqualToString:[self primaryURLScheme]];
 }
 
@@ -41,7 +41,6 @@
 
 @implementation MySQLConnection
 @synthesize url = _url;
-@dynamic databases;
 
 - (void)dealloc {
     if (_mysql_connection) {
@@ -62,7 +61,7 @@
 }
 
 - (BOOL)open {
-	[self close];
+	[self close:nil];
     
 	mysql_close(_mysql_connection);
     
@@ -226,17 +225,17 @@
     return _name;
 }
 
-- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
-    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
-}
-
-- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
-    return [[_database connection] executeSQL:query error:error];
-}
-
-- (NSUInteger)numberOfRecords {
-    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
-}
+//- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
+//    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
+//}
+//
+//- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
+//    return [[_database connection] executeSQL:query error:error];
+//}
+//
+//- (NSUInteger)numberOfRecords {
+//    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
+//}
 
 @end
 
