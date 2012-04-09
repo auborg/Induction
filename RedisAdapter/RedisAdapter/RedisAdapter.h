@@ -4,14 +4,16 @@
 @class RedisResultSet;
 
 @interface RedisAdapter : NSObject <DBAdapter>
-
 @end
+
+#pragma mark -
 
 @interface RedisConnection : NSObject <DBConnection, DBDatabase>
-
 @end
 
-@interface RedisDataSource : NSObject <DBDataSource>
+#pragma mark -
+
+@interface RedisDataSource : NSObject <DBDataSource, DBExplorableDataSource, DBQueryableDataSource>
 
 - (id)initWithName:(NSString *)name
               keys:(NSArray *)keys
@@ -36,6 +38,8 @@
 
 @end
 
+#pragma mark -
+
 @interface RedisRecord : NSObject <DBRecord>
 
 - (id)initWithKey:(NSString *)key
@@ -43,22 +47,19 @@
 
 @end
 
-@interface RedisHash : RedisRecord
+#pragma mark -
 
+@interface RedisHash : RedisRecord
 @end
 
 @interface RedisList : RedisRecord
-
 @end
 
 @interface RedisSet : RedisRecord
-
 @end
 
 @interface RedisSortedSet : RedisRecord
-
 @end
 
 @interface RedisString : RedisRecord
-
 @end

@@ -373,7 +373,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
                                   success:(void (^)(id <DBResultSet> resultSet))success
                                   failure:(void (^)(NSError *error))failure
 {
-    [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] success:^(id<SQLResultSet> resultSet, __unused NSTimeInterval elapsedTime) {
+    [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d", _name, [indexes count], [indexes firstIndex]] success:^(id<SQLResultSet> resultSet, __unused NSTimeInterval elapsedTime) {
         if (success) {
             success(resultSet);
         }

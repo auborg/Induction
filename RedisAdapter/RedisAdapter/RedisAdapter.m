@@ -10,7 +10,21 @@
 
 #import "ObjCHiredis.h"
 
+static dispatch_queue_t induction_redis_adapter_queue() {
+    static dispatch_queue_t _induction_redis_adapter_queue;
+    if (_induction_redis_adapter_queue == NULL) {
+        _induction_redis_adapter_queue = dispatch_queue_create("com.induction.redis.adapter.queue", 0);
+    }
+    
+    return _induction_redis_adapter_queue;
+}
+
+
 @implementation RedisAdapter
+
++ (NSString *)localizedName {
+    return NSLocalizedString(@"Redis", nil);
+}
 
 + (NSString *)primaryURLScheme {
     return @"redis";
@@ -20,10 +34,27 @@
     return [[url scheme] isEqualToString:@"redis"];
 }
 
-+ (id <DBConnection>)connectionWithURL:(NSURL *)url 
-                                 error:(NSError **)error
++ (void)connectToURL:(NSURL *)url 
+             success:(void (^)(id<DBConnection>))success 
+             failure:(void (^)(NSError *))failure
 {
-    return [[RedisConnection alloc] initWithURL:url];
+    dispatch_async(induction_redis_adapter_queue(), ^{
+        RedisConnection *connection = [[RedisConnection alloc] initWithURL:url];
+        NSError *error = nil;
+        BOOL connected = [connection open:&error];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (connected) {
+                if (success) {
+                    success(connection);
+                }
+            } else {
+                if (failure) {
+                    failure(error);
+                }
+            }
+        });
+    });
 }
 
 @end
@@ -60,38 +91,58 @@
     return self;
 }
 
-- (BOOL)open {
+- (NSString *)description {
+    return [_url absoluteString];
+}
+
+- (BOOL)open:(NSError *__autoreleasing *)error {
     return YES;
 }
 
-- (BOOL)close {
+- (BOOL)close:(NSError *__autoreleasing *)error {
+    if (!_redis) {
+        return NO;
+    }
+    
     return YES;
 }
 
-- (BOOL)reset {
-    return YES;
+- (BOOL)reset:(NSError *__autoreleasing *)error {
+    return NO;
 }
 
-- (NSArray *)databases {
-    return [NSArray arrayWithObject:self];
+- (id<DBDatabase>)database {
+    return self;
+}
+
+- (NSArray *)availableDatabases {
+    return [NSArray array];
+}
+
+#pragma mark - DBDatabase
+
+- (NSString *)name {
+    return [_url lastPathComponent];
 }
 
 - (id <DBConnection>)connection {
     return self;
 }
 
-#pragma mark - DBDatabase
-
-- (NSString *)name {
-    return @"Redis";
+- (NSUInteger)numberOfDataSourceGroups {
+    return 1;
 }
 
-- (NSOrderedSet *)dataSourceGroupNames {
-    return [NSOrderedSet orderedSetWithObjects:NSLocalizedString(@"Keys", nil), nil];
+- (NSString *)dataSourceGroupAtIndex:(NSUInteger)index {
+    return NSLocalizedString(@"Keys", nil);
 }
 
-- (NSArray *)dataSourcesForGroupNamed:(NSString *)groupName {
-    return [NSArray arrayWithObject:[[RedisDataSource alloc] initWithName:NSLocalizedString(@"All Keys", nil) keys:_keys connection:self]];
+- (NSUInteger)numberOfDataSourcesInGroup:(NSString *)group {
+    return 1;
+}
+
+- (id <DBDataSource>)dataSourceInGroup:(NSString *)group atIndex:(NSUInteger)index {
+    return [[RedisDataSource alloc] initWithName:NSLocalizedString(@"All Keys", nil) keys:_keys connection:self];
 }
 
 @end
@@ -130,39 +181,93 @@
 
 #pragma mark - 
 
-- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes 
-                                           error:(NSError *__autoreleasing *)error
+- (void)fetchResultSetForRecordsAtIndexes:(NSIndexSet *)indexes 
+                                  success:(void (^)(id<DBResultSet>))success 
+                                  failure:(void (^)(NSError *))failure
 {
-    NSMutableArray *mutableRecords = [NSMutableArray arrayWithCapacity:[indexes count]];
-    [[_connection client] command:@"MULTI"];
-    for (NSString *key in [_keys objectsAtIndexes:indexes]) {
-        [[_connection client] commandArgv:[NSArray arrayWithObjects:@"TYPE", key, nil]];
-    }
-    
-    id types = [[_connection client] command:@"EXEC"];    
-    [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_keys count])] enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        NSString *key = [_keys objectAtIndex:index];
-        NSString *type = [types objectAtIndex:index];
-        
-        id record = nil;
-        if ([type isEqualToString:@"string"]) {
-            record = [[RedisString alloc] initWithKey:key connection:_connection];
-        } else if ([type isEqualToString:@"hash"]) {
-            record = [[RedisHash alloc] initWithKey:key connection:_connection];
-        } else if ([type isEqualToString:@"list"]) {
-            record = [[RedisList alloc] initWithKey:key connection:_connection];
-        } else if ([type isEqualToString:@"set"]) {
-            record = [[RedisSet alloc] initWithKey:key connection:_connection];
-        } else if ([type isEqualToString:@"zset"]) {
-            record = [[RedisSortedSet alloc] initWithKey:key connection:_connection];
+    dispatch_async(induction_redis_adapter_queue(), ^{
+        NSError *error = nil;
+        NSMutableArray *mutableRecords = [NSMutableArray arrayWithCapacity:[indexes count]];
+        [[_connection client] command:@"MULTI"];
+        for (NSString *key in [_keys objectsAtIndexes:indexes]) {
+            [[_connection client] commandArgv:[NSArray arrayWithObjects:@"TYPE", key, nil]];
         }
         
-        if (record) {
-            [mutableRecords addObject:record];
-        }
-    }];
+        id types = [[_connection client] command:@"EXEC"];    
+        [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_keys count])] enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+            NSString *key = [_keys objectAtIndex:index];
+            NSString *type = [types objectAtIndex:index];
+            
+            id record = nil;
+            if ([type isEqualToString:@"string"]) {
+                record = [[RedisString alloc] initWithKey:key connection:_connection];
+            } else if ([type isEqualToString:@"hash"]) {
+                record = [[RedisHash alloc] initWithKey:key connection:_connection];
+            } else if ([type isEqualToString:@"list"]) {
+                record = [[RedisList alloc] initWithKey:key connection:_connection];
+            } else if ([type isEqualToString:@"set"]) {
+                record = [[RedisSet alloc] initWithKey:key connection:_connection];
+            } else if ([type isEqualToString:@"zset"]) {
+                record = [[RedisSortedSet alloc] initWithKey:key connection:_connection];
+            }
+            
+            if (record) {
+                [mutableRecords addObject:record];
+            }
+        }];
         
-    return [[RedisResultSet alloc] initWithRecords:mutableRecords];
+        RedisResultSet *resultSet = [[RedisResultSet alloc] initWithRecords:mutableRecords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            } else {
+                if (success) {
+                    success(resultSet);
+                }
+            }
+        });
+    });
+}
+
+- (void)fetchResultSetForQuery:(NSString *)query 
+                       success:(void (^)(id<DBResultSet>, NSTimeInterval))success 
+                       failure:(void (^)(NSError *))failure 
+{
+    dispatch_async(induction_redis_adapter_queue(), ^(void) {
+        NSError *error = nil;
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        id result = [[_connection client] command:query];
+        CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        
+        NSMutableArray *mutableRecords = [NSMutableArray arrayWithCapacity:1];
+        
+        if ([result isKindOfClass:[NSArray class]]) {
+            [(NSArray*)result enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%i", idx] value:obj]];
+            }];
+        } else if (result) {
+            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:result]];
+        } else {
+            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:@"NULL"]];
+        }
+        
+        RedisResultSet *resultSet = [[RedisResultSet alloc] initWithRecords:mutableRecords];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            } else {
+                if (success) {
+                    success(resultSet, (endTime - startTime));
+                }
+            }
+        });
+    });
 }
 
 #pragma mark -
@@ -175,7 +280,7 @@
 
     if ([result isKindOfClass:[NSArray class]]) {
         [(NSArray*)result enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%i", idx] value:obj]];
+            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%lu", idx] value:obj]];
         }];
     } else if (result) {
         [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:result]];
