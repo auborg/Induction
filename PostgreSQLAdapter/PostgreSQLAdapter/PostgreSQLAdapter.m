@@ -164,18 +164,17 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
     
 	_pgconn = (PGconn *)PQconnectdb([PostgreSQLConnectionStringFromURL(_url) UTF8String]);
     
-	if (PQstatus(_pgconn) == CONNECTION_BAD)  {        
+	if (PQstatus(_pgconn) != CONNECTION_OK) {
         NSMutableDictionary *mutableUserInfo = [NSMutableDictionary dictionary];
-        [mutableUserInfo setValue:[NSString stringWithUTF8String:PQerrorMessage(_pgconn)] forKey:NSLocalizedDescriptionKey];
+        [mutableUserInfo setValue:NSLocalizedString(@"Connection Error", nil) forKey:NSLocalizedDescriptionKey];
+        [mutableUserInfo setValue:[NSString stringWithUTF8String:PQerrorMessage(_pgconn)] forKey:NSLocalizedRecoverySuggestionErrorKey];
         [mutableUserInfo setValue:_url forKey:NSURLErrorKey];
 
         *error = [[NSError alloc] initWithDomain:PostgreSQLErrorDomain code:CONNECTION_BAD userInfo:mutableUserInfo];
-        
-        PQfinish(_pgconn);
-        
+                
 		return NO;
     }
-    
+
     _database = [[PostgreSQLDatabase alloc] initWithConnection:self name:[NSString stringWithUTF8String:PQdb(_pgconn)] stringEncoding:NSUTF8StringEncoding];
 	
 	return YES;
