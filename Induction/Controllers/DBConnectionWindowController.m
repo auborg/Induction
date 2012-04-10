@@ -53,7 +53,6 @@
     self.configurationViewController.delegate = self;
     
     [self.window setContentView:self.configurationViewController.view];
-    
     [self.window setContentSize:self.window.frame.size];
 }
 
