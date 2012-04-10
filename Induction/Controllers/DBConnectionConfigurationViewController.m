@@ -100,12 +100,16 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 #pragma mark -
 
 @interface DBConnectionConfigurationViewController ()
+@property (readwrite, nonatomic, getter = isConnecting) BOOL connecting;
+
 - (void)bindURLParameterTextField:(NSTextField *)textField;
 @end
 
 @implementation DBConnectionConfigurationViewController
 @synthesize delegate = _delegate;
 @synthesize connectionURL = _connectionURL;
+@synthesize connecting = _connecting;
+@dynamic isConnecting;
 @synthesize URLField = _URLField;
 @synthesize schemePopupButton = _schemePopupButton;
 @synthesize hostnameField = _hostnameField;
@@ -113,6 +117,8 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @synthesize passwordField = _passwordField;
 @synthesize portField = _portField;
 @synthesize databaseField = _databaseField;
+@synthesize connectButton = _connectButton;
+@synthesize connectionProgressIndicator = _connectionProgressIndicator;
 
 - (void)awakeFromNib {
     for (NSTextField *field in [NSArray arrayWithObjects:self.URLField, self.schemePopupButton, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
@@ -157,32 +163,42 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 #pragma mark - IBAction
 
-- (void)connect:(id)sender {
-    id <DBConnection> connection = nil;
-    
+- (void)connect:(id)sender {    
     NSLog(@"URL: %@", self.connectionURL);
     
+    self.connecting = YES;
+
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
         [bundle loadAndReturnError:nil];
         
         if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
-                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
-            }
-        }
-        
-        if ([[bundle principalClass] conformsToProtocol:@protocol(DBAdapter)]) {
-            if ([[bundle principalClass] canConnectWithURL:self.connectionURL]) {
-                connection = [[bundle principalClass] connectionWithURL:self.connectionURL error:nil];
+            id <DBAdapter> adapter = (id <DBAdapter>)[bundle principalClass];
+            if ([adapter canConnectToURL:self.connectionURL]) {
+                [adapter connectToURL:self.connectionURL success:^(id <DBConnection> connection) {
+                    [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
+                    [self.delegate connectionConfigurationControllerDidConnectWithConnection:connection];
+                } failure:^(NSError *error){
+                    self.connecting = NO;
+                    
+                    [self presentError:error modalForWindow:self.view.window delegate:nil didPresentSelector:nil contextInfo:nil];
+                }];
+                
+                break;
             }
         }
     }
+}
+
+- (void)setConnecting:(BOOL)connecting {
+    [self willChangeValueForKey:@"isConnecting"];
+    _connecting = connecting;
+    [self didChangeValueForKey:@"isConnecting"];
     
-    if (connection) {
-        [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
-        [connection open];
-        [self.delegate connectionConfigurationControllerDidConnectWithConnection:connection];
+    if ([self isConnecting]) {
+        [self.connectionProgressIndicator startAnimation:self];
+    } else {
+        [self.connectionProgressIndicator stopAnimation:self];
     }
 }
 

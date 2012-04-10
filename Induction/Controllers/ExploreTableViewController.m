@@ -61,7 +61,11 @@ static NSUInteger const kExploreDefaultPageSize = 256;
         
     self.pageTextField.stringValue = [_paginator localizedDescriptionOfCurrentRange];
     
-    self.resultSetViewController.representedObject = [(id <DBExplorableDataSource>)self.representedObject resultSetForRecordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:[_paginator currentRange]] error:nil];
+    [(id <DBExplorableDataSource>)self.representedObject fetchResultSetForRecordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:[_paginator currentRange]] success:^(id <DBResultSet> resultSet) {
+        self.resultSetViewController.representedObject = resultSet;
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 

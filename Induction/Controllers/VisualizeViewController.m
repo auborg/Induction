@@ -30,6 +30,7 @@
 #pragma mark - IBAction
 
 - (void)visualize:(id)sender {
+    /*
     id <DBResultSet> resultSet = (id <DBResultSet>)[(id <DBQueryableDataSource>)self.representedObject resultSetForQuery:[self.textView string] error:nil];
     
     NSMutableArray *mutableKeys = [NSMutableArray array];
@@ -67,6 +68,7 @@
     NSLog(@"JSON: %@", JSON);
     
     [[self.webView windowScriptObject] callWebScriptMethod:@"Visualize" withArguments:[NSArray arrayWithObject:JSON]];
+     */
 }
 
 #pragma mark - WebKit

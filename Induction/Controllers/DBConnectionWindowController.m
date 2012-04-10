@@ -25,7 +25,7 @@
     _connection = connection;
     [self didChangeValueForKey:@"connection"];
     
-    self.databaseViewController.database = [[(id <DBConnection>)self.connection databases] objectAtIndex:0];
+    self.databaseViewController.database = [(id <DBConnection>)self.connection database];
     
     self.window.title = [[self.connection url] absoluteString];
     [self.window.toolbar setVisible:YES];

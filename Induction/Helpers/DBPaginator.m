@@ -28,7 +28,7 @@
     }
     
     _maximumRange = NSMakeRange(0, numberOfIndexes);
-    _pageSize = pageSize;
+    _pageSize = MIN(pageSize, numberOfIndexes);
     _currentPage = 0;
     
     return self;

@@ -40,7 +40,11 @@
 #pragma mark - IBAction
 
 - (IBAction)execute:(id)sender {
-    self.resultsTableViewController.representedObject = (id <DBResultSet>)[(id <DBQueryableDataSource>)self.representedObject resultSetForQuery:[self.textView string] error:nil];
+    [(id <DBQueryableDataSource>)self.representedObject fetchResultSetForQuery:[self.textView string] success:^(id<DBResultSet> resultSet, NSTimeInterval elapsedTime) {
+        self.resultsTableViewController.representedObject = resultSet;
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 @end

@@ -52,14 +52,18 @@
     [self didChangeValueForKey:@"database"];
     
     NSMutableArray *mutableNodes = [NSMutableArray array];
-    for (NSString *groupName in [_database dataSourceGroupNames]) {
-        NSTreeNode *groupRootNode = [NSTreeNode treeNodeWithRepresentedObject:groupName];
-        for (id <DBDataSource> dataSource in [_database dataSourcesForGroupNamed:groupName]) {
+    [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_database numberOfDataSourceGroups])] enumerateIndexesUsingBlock:^(NSUInteger groupIndex, BOOL *stop) {
+        NSString *group = [_database dataSourceGroupAtIndex:groupIndex];
+        NSTreeNode *groupRootNode = [NSTreeNode treeNodeWithRepresentedObject:group];
+        
+        [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_database numberOfDataSourcesInGroup:group])] enumerateIndexesUsingBlock:^(NSUInteger dataSourceIndex, BOOL *stop) {
+            id <DBDataSource> dataSource = [_database dataSourceInGroup:group atIndex:dataSourceIndex];
             NSTreeNode *dataSourceNode = [NSTreeNode treeNodeWithRepresentedObject:dataSource];
             [[groupRootNode mutableChildNodes] addObject:dataSourceNode];
-        }
+        }];
         [mutableNodes addObject:groupRootNode];
-    }
+    }];
+    
     self.sourceListNodes = [NSArray arrayWithArray:mutableNodes];
     
     [self explore:nil];

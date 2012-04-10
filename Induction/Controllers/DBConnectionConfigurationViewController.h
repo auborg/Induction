@@ -22,14 +22,17 @@
 @property (strong) id <DBConnectionConfigurationViewControllerProtocol> delegate;
 
 @property (strong) NSURL *connectionURL;
+@property (readonly) BOOL isConnecting;
 
-@property (assign) IBOutlet NSTextField *URLField;
-@property (assign) IBOutlet NSPopUpButton *schemePopupButton;
-@property (assign) IBOutlet NSTextField *hostnameField;
-@property (assign) IBOutlet NSTextField *usernameField;
-@property (assign) IBOutlet NSTextField *passwordField;
-@property (assign) IBOutlet NSTextField *portField;
-@property (assign) IBOutlet NSTextField *databaseField;
+@property (weak) IBOutlet NSTextField *URLField;
+@property (weak) IBOutlet NSPopUpButton *schemePopupButton;
+@property (weak) IBOutlet NSTextField *hostnameField;
+@property (weak) IBOutlet NSTextField *usernameField;
+@property (weak) IBOutlet NSTextField *passwordField;
+@property (weak) IBOutlet NSTextField *portField;
+@property (weak) IBOutlet NSTextField *databaseField;
+@property (weak) IBOutlet NSButton *connectButton;
+@property (weak) IBOutlet NSProgressIndicator *connectionProgressIndicator;
 
 - (IBAction)connect:(id)sender;
 
