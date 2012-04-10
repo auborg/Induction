@@ -1,4 +1,4 @@
-# Writing a Database Adapter
+# Induction Adapters
 
 Database adapters for Induction are designed to be easy to write. Adapters are packaged as bundles, with their primary class implementing the `DBAdapter` protocol. Here is a rundown of the roles and responsibilities of the adapter protocols (note, these interfaces are not final, and subject to evolve and change as the project matures):
 
@@ -118,3 +118,15 @@ Adapters to graph or document databases can optionally specify the child records
 @property (nonatomic, readonly) NSArray *children;
 @end
 ```
+
+## Contact
+
+Mattt Thompson
+
+- http://github.com/mattt
+- http://twitter.com/mattt
+- m@mattt.me
+
+## License
+
+Induction is available under the MIT license. See the LICENSE file for more info.
