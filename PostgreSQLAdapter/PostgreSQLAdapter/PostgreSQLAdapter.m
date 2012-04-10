@@ -28,7 +28,7 @@
 static dispatch_queue_t induction_postgres_adapter_queue() {
     static dispatch_queue_t _induction_postgres_adapter_queue;
     if (_induction_postgres_adapter_queue == NULL) {
-        _induction_postgres_adapter_queue = dispatch_queue_create("com.induction.postgres.adapter.queue", 0);
+        _induction_postgres_adapter_queue = dispatch_queue_create("com.induction.postgres.adapter.queue", DISPATCH_QUEUE_SERIAL);
     }
     
     return _induction_postgres_adapter_queue;

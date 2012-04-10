@@ -13,7 +13,7 @@
 static dispatch_queue_t induction_sqlite_adapter_queue() {
     static dispatch_queue_t _induction_sqlite_adapter_queue;
     if (_induction_sqlite_adapter_queue == NULL) {
-        _induction_sqlite_adapter_queue = dispatch_queue_create("com.induction.sqlite.adapter.queue", 0);
+        _induction_sqlite_adapter_queue = dispatch_queue_create("com.induction.sqlite.adapter.queue", DISPATCH_QUEUE_SERIAL);
     }
     
     return _induction_sqlite_adapter_queue;
@@ -438,7 +438,7 @@ NSString * const SQLiteErrorDomain = @"com.heroku.client.postgresql.error";
     _fieldsCount = sqlite3_column_count(result);
     
     NSMutableArray *mutableFields = [[NSMutableArray alloc] initWithCapacity:_fieldsCount];
-    NSIndexSet *fieldIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,_fieldsCount)];
+    NSIndexSet *fieldIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, _fieldsCount)];
     [fieldIndexSet enumerateIndexesWithOptions:NSEnumerationConcurrent usingBlock:^(NSUInteger fieldIndex, BOOL *stop) {
         SQLiteField *field = [SQLiteField fieldInSQLiteResult:result atIndex:fieldIndex];
         [mutableFields addObject:field];

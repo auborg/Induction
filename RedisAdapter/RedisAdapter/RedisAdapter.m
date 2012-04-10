@@ -13,7 +13,7 @@
 static dispatch_queue_t induction_redis_adapter_queue() {
     static dispatch_queue_t _induction_redis_adapter_queue;
     if (_induction_redis_adapter_queue == NULL) {
-        _induction_redis_adapter_queue = dispatch_queue_create("com.induction.redis.adapter.queue", 0);
+        _induction_redis_adapter_queue = dispatch_queue_create("com.induction.redis.adapter.queue", DISPATCH_QUEUE_SERIAL);
     }
     
     return _induction_redis_adapter_queue;
