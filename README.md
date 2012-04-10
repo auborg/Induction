@@ -53,7 +53,7 @@ To get a better idea of what's planned, here's a list of features expected to sh
 - Overhauled query editor
   - Polyglot syntax highlighting
   - Token autocompletion / validation
-  - Line numbers
+  - ~~Line numbers~~
 - Saved queries
 - Export results to [Heroku Postgres Data Clips](https://postgres.heroku.com/blog/past/2012/1/31/simple_data_sharing_with_data_clips/), Gist, etc.
 - Query builder (no SQL / commands)†
@@ -71,22 +71,22 @@ To get a better idea of what's planned, here's a list of features expected to sh
   - Improved UI
   - Favorites
 - Image assets for icons (e.g. source list, tab bar icons, image assets for database types)
-- Database selector for open connections
 - Preferences (if necessary)†
 - URL scheme support (e.g. `postgres://`)†
 - Improved database file support (e.g. SQLite)
 - Add / remove menubar items as necessary
+- ~~Database selector for open connections~~
 
 ### Infrastructure
 
 - Settle on class name-spacing
 - Iterate on database adapter protocols
-  - Figure out how to handle connection / database relationship (conflated for certain adapters, like Redis or Postgres, where connections have a database context)
-  - Add hooks for better error handling (e.g. `NSError **` parameters)
-  - Add method for specifying source list icon
   - Improve flow for loading plugins and determining whether they're supported on the current machine (or require software installation)
   - Add methods for write operations†
-  - Add more database value types†
+  - ~~Figure out how to handle connection / database relationship (conflated for certain adapters, like Redis or Postgres, where connections have a database context)~~
+  - ~~Add hooks for better error handling (e.g. `NSError **` parameters)~~
+  - ~~Add method for specifying source list icon~~
+  - ~~Add more database value types†~~
 - Vastly improve core database adapters
   - Stability / robustness
   - Performance (lazy evaluation, query cursors, asynchronous dispatch, etc.)
