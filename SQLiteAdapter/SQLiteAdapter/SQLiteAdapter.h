@@ -10,6 +10,8 @@
 
 #import "SQLAdapter.h"
 
+extern NSString * const SQLiteErrorDomain;
+
 extern NSString * const PostgreSQLErrorDomain;
 
 #pragma mark -

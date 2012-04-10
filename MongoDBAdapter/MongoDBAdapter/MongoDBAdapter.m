@@ -9,6 +9,15 @@
 #import "MongoDBAdapter.h"
 #import "MongoDBUtilities.h"
 
+static dispatch_queue_t induction_mongo_adapter_queue() {
+    static dispatch_queue_t _induction_mongo_adapter_queue;
+    if (_induction_mongo_adapter_queue == NULL) {
+        _induction_mongo_adapter_queue = dispatch_queue_create("com.induction.mongo.adapter.queue", 0);
+    }
+    
+    return _induction_mongo_adapter_queue;
+}
+
 @implementation MongoDBAdapter
 
 + (NSString *)localizedName {

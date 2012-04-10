@@ -401,6 +401,17 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
     }];    
 }
 
+#pragma mark -
+
+// TODO
+- (void)fetchResultSetForDimension:(NSExpression *)dimension
+                          measures:(NSArray *)measures
+                           success:(void (^)(id <DBResultSet> resultSet))success
+                           failure:(void (^)(NSError *error))failure
+{
+    return;
+}
+
 @end
 
 #pragma mark -

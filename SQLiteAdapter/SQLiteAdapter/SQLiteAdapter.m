@@ -10,7 +10,22 @@
 
 #import <sqlite3.h>
 
+static dispatch_queue_t induction_sqlite_adapter_queue() {
+    static dispatch_queue_t _induction_sqlite_adapter_queue;
+    if (_induction_sqlite_adapter_queue == NULL) {
+        _induction_sqlite_adapter_queue = dispatch_queue_create("com.induction.sqlite.adapter.queue", 0);
+    }
+    
+    return _induction_sqlite_adapter_queue;
+}
+
+NSString * const SQLiteErrorDomain = @"com.heroku.client.postgresql.error";
+
 @implementation SQLiteAdapter
+
++ (NSString *)localizedName {
+    return NSLocalizedString(@"SQLite", nil);
+}
 
 + (NSString *)primaryURLScheme {
     return @"sqlite";
@@ -20,10 +35,27 @@
     return [[NSSet setWithObjects:@"sqlite", @"sqlite3", @"file", nil] containsObject:[url scheme]];    
 }
 
-+ (id <DBConnection>)connectionWithURL:(NSURL *)url 
-                                 error:(NSError **)error
-{
-    return [[SQLiteConnection alloc] initWithURL:url];
++ (void)connectToURL:(NSURL *)url
+             success:(void (^)(id <DBConnection> connection))success
+             failure:(void (^)(NSError *error))failure
+{    
+    dispatch_async(induction_sqlite_adapter_queue(), ^(void) {
+        SQLiteConnection *connection = [[SQLiteConnection alloc] initWithURL:url];
+        NSError *error = nil;    
+        BOOL connected = [connection open:&error];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (connected) {
+                if (success) {
+                    success(connection);
+                }
+            } else {
+                if (failure) {
+                    failure(error);
+                }
+            }
+        });
+    });
 }
 
 @end
@@ -35,12 +67,14 @@
     sqlite3 *_sqlite3_connection;
 @private
     __strong NSURL *_url;
+    __strong SQLiteDatabase *_database;
 }
 
 @end
 
 @implementation SQLiteConnection
 @synthesize url = _url;
+@synthesize database = _database;
 
 - (void)dealloc {
     if (_sqlite3_connection) {
@@ -59,27 +93,40 @@
     return self;
 }
 
-- (BOOL)open {
+- (BOOL)open:(NSError *__autoreleasing *)error {
 	[self close:nil];
     
     _sqlite3_connection = NULL;
     
-    int code = sqlite3_open([[_url absoluteString] UTF8String], &_sqlite3_connection);
+    int status = sqlite3_open([[_url absoluteString] UTF8String], &_sqlite3_connection);
 
-    if (code != 0) {
-        NSLog(@"Error: %d", code);
+    if (status != 0) {
+        NSMutableDictionary *mutableUserInfo = [NSMutableDictionary dictionary];
+        [mutableUserInfo setValue:NSLocalizedString(@"Connection Error", nil) forKey:NSLocalizedDescriptionKey];
+        [mutableUserInfo setValue:[NSString stringWithUTF8String:sqlite3_errmsg(_sqlite3_connection)] forKey:NSLocalizedRecoverySuggestionErrorKey];
+        [mutableUserInfo setValue:_url forKey:NSURLErrorKey];
+        
+        *error = [[NSError alloc] initWithDomain:SQLiteErrorDomain code:sqlite3_errcode(_sqlite3_connection) userInfo:mutableUserInfo];
+        
         return NO;
     }
+    
+    _database = [[SQLiteDatabase alloc] initWithConnection:self name:[_url path] stringEncoding:NSUTF8StringEncoding];
     
     return YES;
 }
 
-- (BOOL)close {
+- (BOOL)close:(NSError *__autoreleasing *)error {
+    if (!_sqlite3_connection) {
+        return NO;
+    }
+    
     sqlite3_close(_sqlite3_connection);
+    
 	return YES;
 }
 
-- (BOOL)reset {
+- (BOOL)reset:(NSError *__autoreleasing *)error{
     return NO;
 }
 
@@ -96,11 +143,51 @@
     }
 }
 
-
-- (NSArray *)databases {
-    SQLiteDatabase *database = [[SQLiteDatabase alloc] initWithConnection:self name:[_url path] stringEncoding:NSUTF8StringEncoding];
+- (id <SQLResultSet>)resultSetByExecutingSQL:(NSString *)SQL 
+                                       error:(NSError *__autoreleasing *)error
+{
+    sqlite3_stmt *sqlite3_statement = NULL;
+    sqlite3_prepare_v2(_sqlite3_connection, [SQL UTF8String], -1, &sqlite3_statement, NULL);
     
-    return [NSArray arrayWithObject:database];
+    if (sqlite3_statement) {
+        return [[SQLiteResultSet alloc] initWithSQLiteStatement:sqlite3_statement];
+    }
+    
+    return nil;
+}
+
+- (void)executeSQL:(NSString *)SQL
+           success:(void (^)(id <SQLResultSet> resultSet, NSTimeInterval elapsedTime))success
+           failure:(void (^)(NSError *error))failure
+{
+    dispatch_async(induction_sqlite_adapter_queue(), ^(void) {
+        sqlite3_stmt *sqlite3_statement = NULL;
+        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        sqlite3_prepare_v2(_sqlite3_connection, [SQL UTF8String], -1, &sqlite3_statement, NULL);
+        CFAbsoluteTime endTime = CFAbsoluteTimeGetCurrent();
+        
+        SQLiteResultSet *resultSet = nil;
+        NSError *error = nil;
+        if (sqlite3_statement) {
+            resultSet = [[SQLiteResultSet alloc] initWithSQLiteStatement:sqlite3_statement];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            if (error) {
+                if (failure) {
+                    failure(error);
+                }
+            } else {
+                if (success) {
+                    success(resultSet, (endTime - startTime));
+                }
+            }
+        });
+    });
+}
+
+- (NSArray *)availableDatabases {    
+    return [NSArray array];
 }
 
 @end
@@ -150,12 +237,24 @@
     return _name;
 }
 
-- (NSOrderedSet *)dataSourceGroupNames {
-    return [NSOrderedSet orderedSetWithObject:NSLocalizedString(@"Tables", nil)];
+- (NSDictionary *)metadata {
+    return nil;
 }
 
-- (NSArray *)dataSourcesForGroupNamed:(NSString *)groupName {
-    return _tables;
+- (NSUInteger)numberOfDataSourceGroups {
+    return 1;
+}
+
+- (NSString *)dataSourceGroupAtIndex:(NSUInteger)index {
+    return NSLocalizedString(@"Tables", nil);
+}
+
+- (NSUInteger)numberOfDataSourcesInGroup:(NSString *)group {
+    return [_tables count];
+}
+
+- (id <DBDataSource>)dataSourceInGroup:(NSString *)group atIndex:(NSUInteger)index {
+    return [_tables objectAtIndex:index];
 }
 
 @end
@@ -194,17 +293,54 @@
     return _name;
 }
 
-//- (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes error:(NSError *__autoreleasing *)error {
-//    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:error];
-//}
-//
-//- (id<DBResultSet>)resultSetForQuery:(NSString *)query error:(NSError *__autoreleasing *)error {
-//    return [[_database connection] executeSQL:query error:error];
-//}
-//
-//- (NSUInteger)numberOfRecords {
-//    return [[[[[[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
-//}
+- (NSUInteger)numberOfRecords {
+    return [[[[[[_database connection] resultSetByExecutingSQL:[NSString stringWithFormat:@"SELECT COUNT(*) as count FROM %@", _name] error:nil] recordsAtIndexes:[NSIndexSet indexSetWithIndex:0]] lastObject] valueForKey:@"count"] integerValue]; 
+}
+
+- (void)fetchResultSetForRecordsAtIndexes:(NSIndexSet *)indexes 
+                                  success:(void (^)(id<DBResultSet>))success 
+                                  failure:(void (^)(NSError *))failure 
+{
+    NSString *SQL = [NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]];
+    [[_database connection] executeSQL:SQL success:^(id<SQLResultSet> resultSet, NSTimeInterval elapsedTime) {
+        if (success) {
+            success(resultSet);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+#pragma mark -
+
+- (void)fetchResultSetForQuery:(NSString *)query 
+                       success:(void (^)(id<DBResultSet>, NSTimeInterval))success 
+                       failure:(void (^)(NSError *))failure 
+{
+    
+    [[_database connection] executeSQL:query success:^(id<SQLResultSet> resultSet, NSTimeInterval elapsedTime) {
+        if (success) {
+            success(resultSet, elapsedTime);
+        }
+    } failure:^(NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+#pragma mark -
+
+// TODO
+- (void)fetchResultSetForDimension:(NSExpression *)dimension
+                          measures:(NSArray *)measures
+                           success:(void (^)(id <DBResultSet> resultSet))success
+                           failure:(void (^)(NSError *error))failure
+{
+    return;
+}
 
 @end
 
