@@ -15,9 +15,12 @@
 
 @interface DBConnectionWindowController : NSWindowController  <DBConnectionConfigurationViewControllerProtocol>
 
-@property (strong, nonatomic) id <DBConnection> connection;
+@property (strong) id <DBConnection> connection;
 
-@property (strong, nonatomic) DBConnectionConfigurationViewController *configurationViewController;
-@property (strong, nonatomic) IBOutlet DBDatabaseViewController *databaseViewController;
+@property (strong) DBConnectionConfigurationViewController *configurationViewController;
+@property (strong) IBOutlet DBDatabaseViewController *databaseViewController;
+@property (weak) IBOutlet NSPopUpButton *databasesPopUpButton;
+
+- (IBAction)databasePopupButtonSelectionDidChange:(id)sender;
 
 @end

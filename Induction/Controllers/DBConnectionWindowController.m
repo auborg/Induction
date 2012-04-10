@@ -15,9 +15,14 @@
 
 @synthesize configurationViewController = _configurationViewController;
 @synthesize databaseViewController = _databaseViewController;
+@synthesize databasesPopUpButton = _databasesPopUpButton;
 
 - (void)awakeFromNib {
     [self.window.toolbar setVisible:NO];
+    
+    [self.databasesPopUpButton bind:@"content" toObject:self withKeyPath:@"connection.availableDatabases" options:nil];
+    [self.databasesPopUpButton bind:@"selectedObject" toObject:self withKeyPath:@"connection.database" options:nil];
+//    self.databasesPopUpButton bind:@"hidden" toObject:self withKeyPath:@"connection.availableDatabases" options:nil];
 }
 
 - (void)setConnection:(id<DBConnection>)connection {
@@ -31,6 +36,12 @@
     [self.window.toolbar setVisible:YES];
     [self.window setContentView:self.databaseViewController.view];
     [self.databaseViewController explore:nil];
+}
+
+#pragma mark - IBAction
+
+- (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
+    NSLog(@"databasePopupButtonSelectionDidChange");
 }
 
 #pragma mark - NSWindowController
