@@ -9,8 +9,6 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-#import "DBAdapter.h"
-
 @interface DBResultSetViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate, NSPopoverDelegate>
 
 @property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
@@ -19,6 +17,8 @@
 - (IBAction)copyAsJSON:(id)sender;
 - (IBAction)copyAsXML:(id)sender;
 - (IBAction)copyAsTSV:(id)sender;
+
+- (IBAction)exportDocument:(id)sender;
 
 - (IBAction)incrementFontSize:(id)sender;
 - (IBAction)decrementFontSize:(id)sender;

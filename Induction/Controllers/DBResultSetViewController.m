@@ -7,8 +7,11 @@
 //
 
 #import "DBResultSetViewController.h"
+#import "EMFExportWindowController.h"
 
 #import "DateCell.h"
+
+#import "EMFResultSetSerializer.h"
 
 static CGFloat const kDBResultSetOutlineViewDefaultFontSize = 12.0f;
 static CGFloat const kDBResultSetOutlineViewMinimumFontSize = 8.0f;
@@ -64,6 +67,8 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 @interface DBResultSetViewController () {
 @private
     __strong NSArray *_records;
+    
+    __strong EMFExportWindowController *_exportWindowController;
 }
 
 @property (readonly) NSArray *selectedRecords;
@@ -221,18 +226,8 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsJSON:(id)sender {
-    NSMutableArray *mutableRecords = [NSMutableArray array];
-    for (id <DBRecord> record in self.selectedRecords) {
-        NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
-        for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
-            [mutableDictionary setObject:[record valueForKey:[tableColumn identifier]] forKey:[tableColumn identifier]];
-        }
-        [mutableRecords addObject:mutableDictionary];
-    }
-    
-    id object = [mutableRecords count] == 1 ? [mutableRecords lastObject] : mutableRecords;
-    NSString *JSON = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
-        
+    NSString *JSON = [EMFResultSetSerializer JSONFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
+
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
     [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
@@ -240,41 +235,30 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsXML:(id)sender {
-    NSXMLElement *collectionElement = [[NSXMLElement alloc] initWithName:@"records"];
-    for (id <DBRecord> record in self.selectedRecords) {
-        NSXMLElement *recordElement = [[NSXMLElement alloc] initWithName:@"record"];
-        for (NSTableColumn *tableColumn in self.outlineView.tableColumns) {
-            [recordElement addChild:[[NSXMLElement alloc] initWithName:[tableColumn identifier] stringValue:[record valueForKey:[tableColumn identifier]]]];
-        }
-        [collectionElement addChild:recordElement];
-    }
+    NSString *XML = [EMFResultSetSerializer XMLFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
     
-    NSXMLElement *element = [collectionElement childCount] == 1 ? [[collectionElement children] lastObject] : collectionElement;
-    [element detach];
-    
-    NSXMLDocument *XMLDocument = [NSXMLDocument documentWithRootElement:element];
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
     [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
-    [pasteboard setString:[XMLDocument description] forType:NSPasteboardTypeString];
+    [pasteboard setString:XML forType:NSPasteboardTypeString];
 }
 
 - (IBAction)copyAsTSV:(id)sender {
-    NSMutableArray *mutableRows = [NSMutableArray array];
-    for (id <DBRecord> item in self.selectedRecords) {
-        NSArray *keys = [self.outlineView.tableColumns valueForKeyPath:@"identifier"];
-        NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[keys count]];
-        for (NSString *key in keys) {
-            [mutableValues addObject:[item valueForKey:key]];
-        }
-        
-        [mutableRows addObject:[mutableValues componentsJoinedByString:@"\t"]];
-    }
-    
+    NSString *TSV = [EMFResultSetSerializer TSVFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] showHeaders:YES enclosingString:nil stringEncoding:NSUTF8StringEncoding];
+
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
-    [pasteboard declareTypes: [NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
-    [pasteboard setString:[mutableRows componentsJoinedByString:@"\n"] forType:NSPasteboardTypeString];
+    [pasteboard declareTypes: [NSArray arrayWithObjects:NSPasteboardTypeTabularText, NSPasteboardTypeString, nil] owner:nil];
+    [pasteboard setString:TSV forType:NSPasteboardTypeTabularText];
+    [pasteboard setString:TSV forType:NSPasteboardTypeString];
+}
+
+- (IBAction)exportDocument:(id)sender {
+    if (!_exportWindowController) {
+        _exportWindowController = [[EMFExportWindowController alloc] initWithWindowNibName:@"EMFExportWindow"];
+    }
+    
+    [NSApp beginSheet:_exportWindowController.window modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEndSheet:returnCode:contextInfo:) contextInfo:nil];
 }
 
 - (IBAction)incrementFontSize:(id)sender {
@@ -283,6 +267,14 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 
 - (IBAction)decrementFontSize:(id)sender {
     [self.outlineView setFontSize:fmaxf([self.outlineView fontSize] - 1.0f, kDBResultSetOutlineViewMinimumFontSize)];
+}
+
+#pragma mark - NSApp Delegate Methods
+
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [NSApp endSheet:sheet returnCode:returnCode];
+    [sheet orderOut:self];
 }
 
 #pragma mark - NSOutlineViewDataSource

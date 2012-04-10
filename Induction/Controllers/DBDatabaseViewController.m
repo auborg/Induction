@@ -43,7 +43,6 @@
     [self.tabView addTabViewItem:visualizeTabViewItem];
     
     [self.outlineView expandItem:nil expandChildren:YES];
-
 }
 
 - (void)setDatabase:(id <DBDatabase>)database {

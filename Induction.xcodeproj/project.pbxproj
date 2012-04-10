@@ -40,6 +40,11 @@
 		F87EE37C15082FC10023C67D /* MongoDBAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35215082F7C0023C67D /* MongoDBAdapter.bundle */; };
 		F888F57E14DB40990094B805 /* SQLSyntaxHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */; };
 		F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A2C41B14F5CFC10093682A /* DBPaginator.m */; };
+		F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB8F15347E070007712F /* EMFExportWindowController.m */; };
+		F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9115347E220007712F /* EMFExportWindow.xib */; };
+		F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */; };
+		F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */; };
+		F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB99153487720007712F /* EMFResultSetSerializer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +158,14 @@
 		F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLSyntaxHighlighter.m; sourceTree = "<group>"; };
 		F8A2C41A14F5CFC10093682A /* DBPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPaginator.h; path = Induction/Helpers/DBPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* DBPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPaginator.m; path = Induction/Helpers/DBPaginator.m; sourceTree = SOURCE_ROOT; };
+		F8B3FB8E15347E070007712F /* EMFExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportWindowController.h; sourceTree = "<group>"; };
+		F8B3FB8F15347E070007712F /* EMFExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportWindowController.m; sourceTree = "<group>"; };
+		F8B3FB9115347E220007712F /* EMFExportWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportWindow.xib; sourceTree = "<group>"; };
+		F8B3FB9315347FB00007712F /* EMFExportCSVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportCSVViewController.h; sourceTree = "<group>"; };
+		F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportCSVViewController.m; sourceTree = "<group>"; };
+		F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportCSVView.xib; sourceTree = "<group>"; };
+		F8B3FB98153487720007712F /* EMFResultSetSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EMFResultSetSerializer.h; path = Induction/Helpers/EMFResultSetSerializer.h; sourceTree = SOURCE_ROOT; };
+		F8B3FB99153487720007712F /* EMFResultSetSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFResultSetSerializer.m; path = Induction/Helpers/EMFResultSetSerializer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +189,9 @@
 				F8202F8D14D0C2DC00950BAF /* AppDelegate.m */,
 				F8202F9714D0C2DC00950BAF /* MainMenu.xib */,
 				F837FD80151A1DAE0003BED6 /* Adapter Protocols */,
+				F8A2C41D14F5CFC70093682A /* Helpers */,
 				F8202FBA14D0C2DC00950BAF /* Views */,
 				F8202F8E14D0C2DC00950BAF /* Controllers */,
-				F8A2C41D14F5CFC70093682A /* Helpers */,
 				F8202FD314D0C2E300950BAF /* Supporting Files */,
 			);
 			path = Induction;
@@ -198,6 +211,7 @@
 				F842904F14F30F1500B1CDFB /* Connection */,
 				F842905014F30F1F00B1CDFB /* Database */,
 				F842905114F30F2700B1CDFB /* Explore */,
+				F8B3FB8D15347DAC0007712F /* Export */,
 				F842905214F30F2F00B1CDFB /* Query */,
 				F842905314F30F3900B1CDFB /* Visualize */,
 			);
@@ -375,11 +389,26 @@
 		F8A2C41D14F5CFC70093682A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F8B3FB98153487720007712F /* EMFResultSetSerializer.h */,
+				F8B3FB99153487720007712F /* EMFResultSetSerializer.m */,
 				F8A2C41A14F5CFC10093682A /* DBPaginator.h */,
 				F8A2C41B14F5CFC10093682A /* DBPaginator.m */,
 			);
 			name = Helpers;
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F8B3FB8D15347DAC0007712F /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				F8B3FB8E15347E070007712F /* EMFExportWindowController.h */,
+				F8B3FB8F15347E070007712F /* EMFExportWindowController.m */,
+				F8B3FB9115347E220007712F /* EMFExportWindow.xib */,
+				F8B3FB9315347FB00007712F /* EMFExportCSVViewController.h */,
+				F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */,
+				F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */,
+			);
+			name = Export;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +535,8 @@
 				F873FC5014D7B9E9002C0ADC /* HTML in Resources */,
 				F854FB3F14ECAB44009AEDAB /* DBResultSetView.xib in Resources */,
 				F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */,
+				F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */,
+				F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +577,9 @@
 				F8662EEE14EC8E5B00F0520B /* DBResultSetViewController.m in Sources */,
 				F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */,
 				F837FD231517D30E0003BED6 /* DBResultSetPopoverViewController.m in Sources */,
+				F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */,
+				F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */,
+				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
