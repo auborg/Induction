@@ -38,7 +38,9 @@ static NSUInteger const kExploreDefaultPageSize = 256;
 
 - (void)awakeFromNib {
     self.contentBox.contentView = self.resultSetViewController.view;
-    [self.resultSetViewController setNextResponder:self];
+    
+    // TODO: I'm sure there's a correct way to do this
+    [[self.resultSetViewController.outlineView enclosingScrollView] setNextResponder:self];
 }
 
 - (NSRange)currentPageRange {
