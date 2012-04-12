@@ -18,12 +18,24 @@
     [connectionController showWindow:self];
 }
 
+#pragma mark - NSApplicationDelegate
+
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
 
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
-	return YES;
+	return NO;
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication 
+                    hasVisibleWindows:(BOOL)flag 
+{
+    if (!flag) {
+        [self newWindow:self];
+    }
+    
+    return YES;
 }
 
 - (BOOL)application:(NSApplication *)sender 
@@ -38,6 +50,7 @@
     return YES;
 }
 
+// TODO: Warn if number of files is large
 - (void)application:(NSApplication *)sender 
           openFiles:(NSArray *)filenames
 {
@@ -46,7 +59,7 @@
     }
 }
 
-#pragma mark -
+#pragma mark - IBAction
 
 - (IBAction)newWindow:(id)sender {
     DBConnectionWindowController *connectionController = [[DBConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];

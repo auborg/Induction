@@ -7,18 +7,27 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EMFExportViewController.h"
 
-@interface EMFExportCSVViewController : NSViewController
+@interface EMFExportedField : NSObject
+@property (assign, getter = isEnabled) BOOL enabled;
+@property (strong) NSString *name;
+@property (strong) NSString *displayName;
+@end
+
+#pragma mark -
+
+@interface EMFExportCSVViewController : EMFExportViewController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (weak) IBOutlet NSPopUpButton *tablesPopUpButton;
-@property (weak) IBOutlet NSTableView *valuesTableView;
 
+@property (weak) IBOutlet NSTableView *fieldsTableView;
+@property (strong) IBOutlet NSArrayController *fieldsArrayController;
 @property (weak) IBOutlet NSBox *optionsBoxView;
 @property (weak) IBOutlet NSButton *optionShowHeadersCheckBoxButton;
-@property (weak) IBOutlet NSTextField *optionDelimiterTextField;
-@property (weak) IBOutlet NSTextField *optionEscapeValueTextField;
-@property (weak) IBOutlet NSPopUpButton *optionCharacterEncodingPopUpButton;
-@property (weak) IBOutlet NSPopUpButton *optionLineEncodingPopUpButton;
+@property (weak) IBOutlet NSComboBox *optionDelimiterComboBox;
+@property (weak) IBOutlet NSComboBox *optionEnclosingStringComboBox;
+@property (weak) IBOutlet NSComboBox *optionNULLRepresentationComboBox;
 
 - (IBAction)cancel:(id)sender;
 

@@ -8,45 +8,32 @@
 
 #import "EMFResultSetSerializer.h"
 
-@interface EMFResultSetSerializer ()
-+ (NSString *)tabulatedStringFromResultSet:(id <DBResultSet>)resultSet
-                      fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
-                                withFields:(NSArray *)fields
-                                 delimiter:(NSString *)delimiter
-                               showHeaders:(BOOL)showHeaders
-                           enclosingString:(NSString *)enclosingString
-                            stringEncoding:(NSStringEncoding)stringEncoding;
-@end
-
 @implementation EMFResultSetSerializer
 
 + (NSString *)CSVFromResultSet:(id <DBResultSet>)resultSet
           fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
                     withFields:(NSArray *)fields
-                   showHeaders:(BOOL)showHeaders
-               enclosingString:(NSString *)enclosingString
                 stringEncoding:(NSStringEncoding)stringEncoding
 {
-    return [self tabulatedStringFromResultSet:resultSet fromRecordsAtIndexes:recordsIndexSet withFields:fields delimiter:@"," showHeaders:showHeaders enclosingString:enclosingString stringEncoding:stringEncoding];
+    return [self tabulatedStringFromResultSet:resultSet fromRecordsAtIndexes:recordsIndexSet withFields:fields showHeaders:YES delimiter:@"," enclosingString:nil NULLToken:@"NULL" stringEncoding:stringEncoding];
 }
 
 
 + (NSString *)TSVFromResultSet:(id <DBResultSet>)resultSet
           fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
                     withFields:(NSArray *)fields
-                   showHeaders:(BOOL)showHeaders
-               enclosingString:(NSString *)enclosingString
                 stringEncoding:(NSStringEncoding)stringEncoding
 {
-    return [self tabulatedStringFromResultSet:resultSet fromRecordsAtIndexes:recordsIndexSet withFields:fields delimiter:@"\t" showHeaders:showHeaders enclosingString:enclosingString stringEncoding:stringEncoding];
+    return [self tabulatedStringFromResultSet:resultSet fromRecordsAtIndexes:recordsIndexSet withFields:fields showHeaders:YES delimiter:@"\t" enclosingString:nil NULLToken:@"NULL" stringEncoding:stringEncoding];
 }
 
 + (NSString *)tabulatedStringFromResultSet:(id <DBResultSet>)resultSet
                       fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
                                 withFields:(NSArray *)fields
-                                 delimiter:(NSString *)delimiter
                                showHeaders:(BOOL)showHeaders
+                                 delimiter:(NSString *)delimiter
                            enclosingString:(NSString *)enclosingString
+                                 NULLToken:(NSString *)NULLToken
                             stringEncoding:(NSStringEncoding)stringEncoding
 {    
     NSString *escapeString = [NSString stringWithFormat:@"\\%@", enclosingString];
@@ -69,7 +56,7 @@
     [[resultSet recordsAtIndexes:recordsIndexSet] enumerateObjectsUsingBlock:^(id record, NSUInteger idx, BOOL *stop) {
         NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[fields count]];
         [fields enumerateObjectsUsingBlock:^(id field, NSUInteger idx, BOOL *stop) {
-            NSString *value = [[record valueForKey:field] description];
+            NSString *value = [[record valueForKey:field] description] ?: NULLToken;
             if (enclosingString) {
                 value = [value stringByReplacingOccurrencesOfString:enclosingString withString:escapeString];
                 value = [[enclosingString stringByAppendingString:value] stringByAppendingString:enclosingString];

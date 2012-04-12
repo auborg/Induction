@@ -7,7 +7,6 @@
 //
 
 #import "DBResultSetViewController.h"
-#import "EMFExportWindowController.h"
 
 #import "DateCell.h"
 
@@ -67,8 +66,6 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 @interface DBResultSetViewController () {
 @private
     __strong NSArray *_records;
-    
-    __strong EMFExportWindowController *_exportWindowController;
 }
 
 @property (readonly) NSArray *selectedRecords;
@@ -244,7 +241,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsTSV:(id)sender {
-    NSString *TSV = [EMFResultSetSerializer TSVFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] showHeaders:YES enclosingString:nil stringEncoding:NSUTF8StringEncoding];
+    NSString *TSV = [EMFResultSetSerializer TSVFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
 
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -253,28 +250,12 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
     [pasteboard setString:TSV forType:NSPasteboardTypeString];
 }
 
-- (IBAction)exportDocument:(id)sender {
-    if (!_exportWindowController) {
-        _exportWindowController = [[EMFExportWindowController alloc] initWithWindowNibName:@"EMFExportWindow"];
-    }
-    
-    [NSApp beginSheet:_exportWindowController.window modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEndSheet:returnCode:contextInfo:) contextInfo:nil];
-}
-
 - (IBAction)incrementFontSize:(id)sender {
     [self.outlineView setFontSize:fminf([self.outlineView fontSize] + 1.0f, kDBResultSetOutlineViewMaximumFontSize)];
 }
 
 - (IBAction)decrementFontSize:(id)sender {
     [self.outlineView setFontSize:fmaxf([self.outlineView fontSize] - 1.0f, kDBResultSetOutlineViewMinimumFontSize)];
-}
-
-#pragma mark - NSApp Delegate Methods
-
-- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
-{
-    [NSApp endSheet:sheet returnCode:returnCode];
-    [sheet orderOut:self];
 }
 
 #pragma mark - NSOutlineViewDataSource

@@ -7,17 +7,23 @@
 //
 
 #import "EMFExportWindowController.h"
+#import "EMFExportViewController.h"
 #import "EMFExportCSVViewController.h"
 
+#import "DBAdapter.h"
+
 @implementation EMFExportWindowController
-@synthesize exportCSVViewController;
-@synthesize CSVToolbarItem;
-@synthesize TSVToolbarItem;
-@synthesize JSONToolbarItem;
-@synthesize XMLToolbarItem;
+@synthesize dataSource = _dataSource;
+@synthesize exportCSVViewController = _exportCSVViewController;
+@synthesize CSVToolbarItem = _CSVToolbarItem;
+@synthesize TSVToolbarItem = _TSVToolbarItem;
+@synthesize JSONToolbarItem = _JSONToolbarItem;
+@synthesize XMLToolbarItem = _XMLToolbarItem;
 
 - (void)awakeFromNib {
-     [self selectCSV:self];
+    self.exportCSVViewController.delegate = self;
+    
+    [self selectCSV:self];
 }
 
 - (void)windowDidLoad {
@@ -45,4 +51,17 @@
     [self.XMLToolbarItem.toolbar setSelectedItemIdentifier:self.XMLToolbarItem.itemIdentifier];
     //    [self.window setContentView:self.exportCSVViewController.view];
 }
+
+#pragma mark - EMFExportViewControllerDelegate
+
+- (void)exportViewControllerDidCancel:(EMFExportViewController *)viewController {
+    [NSApp endSheet:self.window];
+}
+
+- (void)exportViewController:(EMFExportViewController *)viewController 
+          didSaveFileWithURL:(NSURL *)fileURL 
+{    
+    [NSApp endSheet:self.window];
+}
+
 @end

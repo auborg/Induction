@@ -14,16 +14,21 @@
 + (NSString *)CSVFromResultSet:(id <DBResultSet>)resultSet
           fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
                     withFields:(NSArray *)fields
-                   showHeaders:(BOOL)showHeaders
-               enclosingString:(NSString *)enclosingString
                 stringEncoding:(NSStringEncoding)stringEncoding;
 
 + (NSString *)TSVFromResultSet:(id <DBResultSet>)resultSet
           fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
                     withFields:(NSArray *)fields
-                   showHeaders:(BOOL)showHeaders
-               enclosingString:(NSString *)enclosingString
                 stringEncoding:(NSStringEncoding)stringEncoding;
+
++ (NSString *)tabulatedStringFromResultSet:(id <DBResultSet>)resultSet
+                      fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
+                                withFields:(NSArray *)fields
+                               showHeaders:(BOOL)showHeaders
+                                 delimiter:(NSString *)delimiter
+                           enclosingString:(NSString *)enclosingString
+                                 NULLToken:(NSString *)NULLToken
+                            stringEncoding:(NSStringEncoding)stringEncoding;
 
 + (NSString *)JSONFromResultSet:(id <DBResultSet>)resultSet
            fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet

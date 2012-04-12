@@ -23,4 +23,6 @@
 
 - (IBAction)changePage:(id)sender;
 
+- (IBAction)exportDocument:(id)sender;
+
 @end

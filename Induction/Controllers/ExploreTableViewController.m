@@ -7,14 +7,19 @@
 //
 
 #import "ExploreTableViewController.h"
+#import "EMFExportWindowController.h"
 #import "DBDatabaseViewController.h"
 #import "DBResultSetViewController.h"
+
 #import "DBPaginator.h"
+#import "DBAdapter.h"
 
 static NSUInteger const kExploreDefaultPageSize = 256;
 
 @interface ExploreTableViewController () {
 @private
+    __strong EMFExportWindowController *_exportWindowController;
+    
     NSUInteger _pageSize;
     NSUInteger _currentPage;
     __strong DBPaginator *_paginator;
@@ -33,6 +38,7 @@ static NSUInteger const kExploreDefaultPageSize = 256;
 
 - (void)awakeFromNib {
     self.contentBox.contentView = self.resultSetViewController.view;
+    [self.resultSetViewController setNextResponder:self];
 }
 
 - (NSRange)currentPageRange {
@@ -68,6 +74,22 @@ static NSUInteger const kExploreDefaultPageSize = 256;
     }];
 }
 
+- (IBAction)exportDocument:(id)sender {
+    if (!_exportWindowController) {
+        _exportWindowController = [[EMFExportWindowController alloc] initWithWindowNibName:@"EMFExportWindow"];
+    }
+    
+    _exportWindowController.dataSource = self.representedObject;
+    
+    [NSApp beginSheet:_exportWindowController.window modalForWindow:self.view.window modalDelegate:self didEndSelector:@selector(didEndSheet:returnCode:contextInfo:) contextInfo:nil];
+}
 
+#pragma mark - NSApp Delegate Methods
+
+- (void)didEndSheet:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
+{
+    [NSApp endSheet:sheet returnCode:returnCode];
+    [sheet orderOut:self];
+}
 
 @end

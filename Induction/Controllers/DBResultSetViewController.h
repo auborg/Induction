@@ -18,8 +18,6 @@
 - (IBAction)copyAsXML:(id)sender;
 - (IBAction)copyAsTSV:(id)sender;
 
-- (IBAction)exportDocument:(id)sender;
-
 - (IBAction)incrementFontSize:(id)sender;
 - (IBAction)decrementFontSize:(id)sender;
 

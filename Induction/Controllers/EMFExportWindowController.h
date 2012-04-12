@@ -9,8 +9,25 @@
 #import <Cocoa/Cocoa.h>
 
 @class EMFExportCSVViewController;
+@class EMFExportViewController;
+@protocol DBDataSource;
+@protocol DBExplorableDataSource;
 
-@interface EMFExportWindowController : NSWindowController
+@protocol EMFExportViewControllerDelegate <NSObject>
+@property (readonly, nonatomic, strong) id <DBDataSource, DBExplorableDataSource> dataSource;
+
+- (void)exportViewControllerDidCancel:(EMFExportViewController *)viewController;
+- (void)exportViewController:(EMFExportViewController *)viewController 
+          didSaveFileWithURL:(NSURL *)fileURL;
+- (void)exportViewController:(EMFExportViewController *)viewController 
+            didFailWithError:(NSError *)error;
+@end
+
+#pragma mark -
+
+@interface EMFExportWindowController : NSWindowController <EMFExportViewControllerDelegate>
+
+@property (readwrite, nonatomic, strong) id <DBDataSource, DBExplorableDataSource> dataSource;
 
 @property (strong) IBOutlet EMFExportCSVViewController *exportCSVViewController;
 

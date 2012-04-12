@@ -45,6 +45,8 @@
 		F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */; };
 		F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */; };
 		F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB99153487720007712F /* EMFResultSetSerializer.m */; };
+		F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC15153745330007712F /* EMFExportViewController.m */; };
+		F8B3FC18153745330007712F /* EMFExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FC16153745330007712F /* EMFExportView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,8 +166,11 @@
 		F8B3FB9315347FB00007712F /* EMFExportCSVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportCSVViewController.h; sourceTree = "<group>"; };
 		F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportCSVViewController.m; sourceTree = "<group>"; };
 		F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportCSVView.xib; sourceTree = "<group>"; };
-		F8B3FB98153487720007712F /* EMFResultSetSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EMFResultSetSerializer.h; path = Induction/Helpers/EMFResultSetSerializer.h; sourceTree = SOURCE_ROOT; };
+		F8B3FB98153487720007712F /* EMFResultSetSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFResultSetSerializer.h; path = Induction/Helpers/EMFResultSetSerializer.h; sourceTree = SOURCE_ROOT; };
 		F8B3FB99153487720007712F /* EMFResultSetSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFResultSetSerializer.m; path = Induction/Helpers/EMFResultSetSerializer.m; sourceTree = SOURCE_ROOT; };
+		F8B3FC14153745330007712F /* EMFExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportViewController.h; sourceTree = "<group>"; };
+		F8B3FC15153745330007712F /* EMFExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportViewController.m; sourceTree = "<group>"; };
+		F8B3FC16153745330007712F /* EMFExportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +409,9 @@
 				F8B3FB8E15347E070007712F /* EMFExportWindowController.h */,
 				F8B3FB8F15347E070007712F /* EMFExportWindowController.m */,
 				F8B3FB9115347E220007712F /* EMFExportWindow.xib */,
+				F8B3FC14153745330007712F /* EMFExportViewController.h */,
+				F8B3FC15153745330007712F /* EMFExportViewController.m */,
+				F8B3FC16153745330007712F /* EMFExportView.xib */,
 				F8B3FB9315347FB00007712F /* EMFExportCSVViewController.h */,
 				F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */,
 				F8B3FB9515347FB00007712F /* EMFExportCSVView.xib */,
@@ -537,6 +545,7 @@
 				F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */,
 				F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */,
 				F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */,
+				F8B3FC18153745330007712F /* EMFExportView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +589,7 @@
 				F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */,
 				F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */,
 				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,
+				F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
