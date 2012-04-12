@@ -47,6 +47,7 @@
 		F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB99153487720007712F /* EMFResultSetSerializer.m */; };
 		F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC15153745330007712F /* EMFExportViewController.m */; };
 		F8B3FC18153745330007712F /* EMFExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FC16153745330007712F /* EMFExportView.xib */; };
+		F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,8 @@
 		F8B3FC14153745330007712F /* EMFExportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportViewController.h; sourceTree = "<group>"; };
 		F8B3FC15153745330007712F /* EMFExportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportViewController.m; sourceTree = "<group>"; };
 		F8B3FC16153745330007712F /* EMFExportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportView.xib; sourceTree = "<group>"; };
+		F8B3FC1915377CC30007712F /* NSIndexSet+BatchedEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexSet+BatchedEnumeration.h"; path = "Categories/NSIndexSet+BatchedEnumeration.h"; sourceTree = "<group>"; };
+		F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexSet+BatchedEnumeration.m"; path = "Categories/NSIndexSet+BatchedEnumeration.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,7 @@
 				F8202F8D14D0C2DC00950BAF /* AppDelegate.m */,
 				F8202F9714D0C2DC00950BAF /* MainMenu.xib */,
 				F837FD80151A1DAE0003BED6 /* Adapter Protocols */,
+				F8B3FC1C153780040007712F /* Categories */,
 				F8A2C41D14F5CFC70093682A /* Helpers */,
 				F8202FBA14D0C2DC00950BAF /* Views */,
 				F8202F8E14D0C2DC00950BAF /* Controllers */,
@@ -419,6 +423,15 @@
 			name = Export;
 			sourceTree = "<group>";
 		};
+		F8B3FC1C153780040007712F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F8B3FC1915377CC30007712F /* NSIndexSet+BatchedEnumeration.h */,
+				F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,6 +603,7 @@
 				F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */,
 				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,
 				F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */,
+				F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
