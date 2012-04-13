@@ -14,7 +14,7 @@
 #import "DBPaginator.h"
 #import "DBAdapter.h"
 
-static NSUInteger const kExploreDefaultPageSize = 256;
+static NSUInteger const kExploreDefaultPageSize = 1000;
 
 @interface ExploreTableViewController () {
 @private
