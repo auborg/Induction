@@ -25,8 +25,6 @@ The full source code for Induction [is available on GitHub](https://github.com/I
 
 Data is like electricity: It appears in endless variety, employing adapters and transformers to become more useful. But no matter what, data is power. From data, we derive knowledge and understanding through a process of induction.
 
----
-
 ## Roadmap
 
 Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta. There is no official ETA, other than "it will ship when it's ready". But if you're looking a (totally off-the-record) timeframe, I'd say we're on track to ship something stable by the end of the Summer.
