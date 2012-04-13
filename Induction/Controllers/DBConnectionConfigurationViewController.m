@@ -138,7 +138,13 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
     
-    self.connectionURL = [[NSUserDefaults standardUserDefaults] URLForKey:kInductionPreviousConnectionURLKey];
+    // TODO Check against registered adapters to detect appropriate URL on pasteboard
+    NSURL *pasteboardURL = [NSURL URLWithString:[[NSPasteboard generalPasteboard] stringForType:NSPasteboardTypeString]];
+    if (pasteboardURL && ![[pasteboardURL scheme] hasPrefix:@"http"]) {
+        self.connectionURL = pasteboardURL;
+    } else {
+        self.connectionURL = [[NSUserDefaults standardUserDefaults] URLForKey:kInductionPreviousConnectionURLKey];
+    }
     
     [self.URLField becomeFirstResponder];
 }
