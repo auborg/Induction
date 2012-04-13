@@ -151,7 +151,7 @@
 												<double key="NSSize">15</double>
 												<int key="NSfFlags">16</int>
 											</object>
-											<string key="NSPlaceholderString">postgres://postgres@127.0.0.1/</string>
+											<string key="NSPlaceholderString">postgres://127.0.0.1/</string>
 											<string key="NSCellIdentifier">_NS:903</string>
 											<reference key="NSControlView" ref="730358649"/>
 											<object class="NSColor" key="NSBackgroundColor" id="326008531">
@@ -252,7 +252,7 @@
 											<int key="NSCellFlags2">272630784</int>
 											<string key="NSContents"/>
 											<reference key="NSSupport" ref="737479571"/>
-											<string key="NSPlaceholderString">root</string>
+											<string key="NSPlaceholderString"/>
 											<string key="NSCellIdentifier">_NS:903</string>
 											<reference key="NSControlView" ref="230546008"/>
 											<bool key="NSDrawsBackground">YES</bool>
