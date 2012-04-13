@@ -32,7 +32,7 @@
     
     self.databaseViewController.database = [(id <DBConnection>)self.connection database];
     
-    self.window.title = [[self.connection url] absoluteString];
+    [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
     [self.window.toolbar setVisible:YES];
     [self.window setContentView:self.databaseViewController.view];
     [self.databaseViewController explore:nil];
