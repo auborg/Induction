@@ -23,52 +23,52 @@
     [self.webView setResourceLoadDelegate:self];
     [self.webView setFrameLoadDelegate:self];
     
-    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"visualization" ofType:@"html" inDirectory:@"HTML"]];
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"visualize" ofType:@"html" inDirectory:@"HTML"]];
     [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 #pragma mark - IBAction
 
 - (void)visualize:(id)sender {
-    /*
-    id <DBResultSet> resultSet = (id <DBResultSet>)[(id <DBQueryableDataSource>)self.representedObject resultSetForQuery:[self.textView string] error:nil];
-    
-    NSMutableArray *mutableKeys = [NSMutableArray array];
-    [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [resultSet numberOfFields])] enumerateIndexesUsingBlock:^(NSUInteger fieldIndex, BOOL *stop) {
-        [mutableKeys addObject:[resultSet identifierForTableColumnAtIndex:fieldIndex]];
-    }];
-    
-    NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[resultSet numberOfRecords]];
-    NSArray *records = [resultSet recordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [resultSet numberOfRecords])]];
-    [records enumerateObjectsUsingBlock:^(id <DBRecord> record, NSUInteger recordIndex, BOOL *stop) {
-        NSMutableDictionary *keyedValues = [NSMutableDictionary dictionary];
-        for (NSString *key in mutableKeys) {
-            id value = [record valueForKey:key];
-            if (value) {
-                [keyedValues setObject:value forKey:key];
-            } else {
-                NSLog(@"!! %lu %@", recordIndex, key);
-            }
-        }
-        [mutableValues addObject:keyedValues];
-    }];
-    
-    NSMutableDictionary *mutableData = [NSMutableDictionary dictionary];
-    [mutableData setObject:mutableValues forKey:@"values"];
-    
-    NSString *dimensionKey = @"x";
-    [mutableKeys removeObject:@"x"];
-    [mutableData setObject:dimensionKey forKey:@"dimension"];
-    
-    [mutableData setObject:mutableKeys forKey:@"measures"];
-
-    [mutableData setObject:[[[self.chartPopUpButton selectedCell] title] lowercaseString] forKey:@"chart"];
+    [(id <DBQueryableDataSource>)self.representedObject fetchResultSetForQuery:[self.textView string] success:^(id<DBResultSet> resultSet, NSTimeInterval elapsedTime) {
+        NSMutableArray *mutableKeys = [NSMutableArray array];
+        [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [resultSet numberOfFields])] enumerateIndexesUsingBlock:^(NSUInteger fieldIndex, BOOL *stop) {
+            [mutableKeys addObject:[resultSet identifierForTableColumnAtIndex:fieldIndex]];
+        }];
         
-    NSString *JSON = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:mutableData options:0 error:nil] encoding:NSUTF8StringEncoding];
-    NSLog(@"JSON: %@", JSON);
-    
-    [[self.webView windowScriptObject] callWebScriptMethod:@"Visualize" withArguments:[NSArray arrayWithObject:JSON]];
-     */
+        NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[resultSet numberOfRecords]];
+        NSArray *records = [resultSet recordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [resultSet numberOfRecords])]];
+        [records enumerateObjectsUsingBlock:^(id <DBRecord> record, NSUInteger recordIndex, BOOL *stop) {
+            NSMutableDictionary *keyedValues = [NSMutableDictionary dictionary];
+            for (NSString *key in mutableKeys) {
+                id value = [record valueForKey:key];
+                if (value) {
+                    [keyedValues setObject:value forKey:key];
+                } else {
+                    NSLog(@"!! %lu %@", recordIndex, key);
+                }
+            }
+            [mutableValues addObject:keyedValues];
+        }];
+        
+        NSMutableDictionary *mutableData = [NSMutableDictionary dictionary];
+        [mutableData setObject:mutableValues forKey:@"values"];
+        
+        NSString *dimensionKey = @"x";
+        [mutableKeys removeObject:@"x"];
+        [mutableData setObject:dimensionKey forKey:@"dimension"];
+        
+        [mutableData setObject:mutableKeys forKey:@"measures"];
+        
+        [mutableData setObject:[[[self.chartPopUpButton selectedCell] title] lowercaseString] forKey:@"chart"];
+        
+        NSString *JSON = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:mutableData options:0 error:nil] encoding:NSUTF8StringEncoding];
+        NSLog(@"JSON: %@", JSON);
+        
+        [[self.webView windowScriptObject] callWebScriptMethod:@"Visualize" withArguments:[NSArray arrayWithObject:JSON]];
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 #pragma mark - WebKit
