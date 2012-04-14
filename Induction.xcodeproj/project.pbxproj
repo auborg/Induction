@@ -6,8 +6,23 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F81386731539731F003A83F9 /* Lies Damned Lies */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F81386741539731F003A83F9 /* Build configuration list for PBXAggregateTarget "Lies Damned Lies" */;
+			buildPhases = (
+				F81386771539732E003A83F9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Lies Damned Lies";
+			productName = "Lies Damned Lies";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
+		F813867C1539759F003A83F9 /* liesdamnedlies.js in Sources */ = {isa = PBXBuildFile; fileRef = F813867B1539759F003A83F9 /* liesdamnedlies.js */; };
 		F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
 		F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
@@ -109,6 +124,7 @@
 /* Begin PBXFileReference section */
 		1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F813867B1539759F003A83F9 /* liesdamnedlies.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = liesdamnedlies.js; path = LiesDamnedLies/pkg/liesdamnedlies.js; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F8202F9414D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -190,6 +206,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8138672153972D4003A83F9 /* Lies Damned Lies */ = {
+			isa = PBXGroup;
+			children = (
+				F813867B1539759F003A83F9 /* liesdamnedlies.js */,
+			);
+			name = "Lies Damned Lies";
+			sourceTree = "<group>";
+		};
 		F8202F8B14D0C2DC00950BAF /* Induction */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +341,7 @@
 				F8595FB614C34BB100FD15BE /* Frameworks */,
 				F8595FB414C34BB100FD15BE /* Products */,
 				F873FC4F14D7B9E9002C0ADC /* HTML */,
+				F8138672153972D4003A83F9 /* Lies Damned Lies */,
 				F87EE35D15082F8E0023C67D /* PostgreSQLAdapter.xcodeproj */,
 				F87EE35415082F810023C67D /* MySQLAdapter.xcodeproj */,
 				F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */,
@@ -497,6 +522,7 @@
 			projectRoot = "";
 			targets = (
 				F8595FB214C34BB100FD15BE /* Induction */,
+				F81386731539731F003A83F9 /* Lies Damned Lies */,
 			);
 		};
 /* End PBXProject section */
@@ -579,6 +605,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
+		F81386771539732E003A83F9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\ncd ${PROJECT_DIR}/LiesDamnedLies\nsudo gem install bundler\nbundle\nbundle exec rake\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -604,6 +643,7 @@
 				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,
 				F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */,
 				F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */,
+				F813867C1539759F003A83F9 /* liesdamnedlies.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +677,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F81386751539731F003A83F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F81386761539731F003A83F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F8595FCF14C34BB100FD15BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -729,6 +783,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F81386741539731F003A83F9 /* Build configuration list for PBXAggregateTarget "Lies Damned Lies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F81386751539731F003A83F9 /* Debug */,
+				F81386761539731F003A83F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
