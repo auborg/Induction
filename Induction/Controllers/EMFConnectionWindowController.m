@@ -6,11 +6,11 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "DBConnectionWindowController.h"
+#import "EMFConnectionWindowController.h"
 
 #import "DBAdapter.h"
 
-@implementation DBConnectionWindowController
+@implementation EMFConnectionWindowController
 @synthesize connection = _connection;
 
 @synthesize configurationViewController = _configurationViewController;
@@ -49,7 +49,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    self.configurationViewController = [[DBConnectionConfigurationViewController alloc] initWithNibName:@"DBConnectionConfigurationView" bundle:nil];
+    self.configurationViewController = [[EMFConnectionConfigurationViewController alloc] initWithNibName:@"EMFConnectionConfigurationView" bundle:nil];
     self.configurationViewController.delegate = self;
     
     [self.window setContentView:self.configurationViewController.view];

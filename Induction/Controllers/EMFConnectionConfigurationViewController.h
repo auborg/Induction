@@ -9,17 +9,17 @@
 #import <Cocoa/Cocoa.h>
 #import "DBAdapter.h"
 
-@class DBConnectionConfigurationViewController;
-@class DBDatabaseParameterFormatter;
+@class EMFConnectionConfigurationViewController;
+@class EMFDatabaseParameterFormatter;
 
-@protocol DBConnectionConfigurationViewControllerProtocol <NSObject>
+@protocol EMFConnectionConfigurationViewControllerProtocol <NSObject>
 @required
 - (void)connectionConfigurationControllerDidConnectWithConnection:(id <DBConnection>)connection;
 @end
 
-@interface DBConnectionConfigurationViewController : NSViewController <NSTextFieldDelegate>
+@interface EMFConnectionConfigurationViewController : NSViewController <NSTextFieldDelegate>
 
-@property (strong) id <DBConnectionConfigurationViewControllerProtocol> delegate;
+@property (strong) id <EMFConnectionConfigurationViewControllerProtocol> delegate;
 
 @property (strong) NSURL *connectionURL;
 @property (readonly) BOOL isConnecting;

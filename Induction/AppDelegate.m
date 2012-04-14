@@ -8,13 +8,13 @@
 
 #import "AppDelegate.h"
 
-#import "DBConnectionWindowController.h"
+#import "EMFConnectionWindowController.h"
 
 @implementation AppDelegate
 @synthesize window = _window;
 
 - (void)awakeFromNib {
-    DBConnectionWindowController *connectionController = [[DBConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"EMFConnectionWindow"];
     [connectionController showWindow:self];
 }
 
@@ -42,7 +42,7 @@
            openFile:(NSString *)filename
 {
     // TODO test for connection before showing window
-    DBConnectionWindowController *connectionController = [[DBConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
     [connectionController showWindow:self];
     connectionController.configurationViewController.connectionURL = [NSURL fileURLWithPath:filename];
     [connectionController.configurationViewController connect:self];
@@ -62,7 +62,7 @@
 #pragma mark - IBAction
 
 - (IBAction)newWindow:(id)sender {
-    DBConnectionWindowController *connectionController = [[DBConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
     [connectionController showWindow:self];
 }
 

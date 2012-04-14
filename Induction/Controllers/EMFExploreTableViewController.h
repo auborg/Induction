@@ -10,11 +10,11 @@
 
 #import "SQLAdapter.h"
 
-@class DBResultSetViewController;
+@class EMFResultSetViewController;
 
-@interface ExploreTableViewController : NSViewController <NSTableViewDelegate>
+@interface EMFExploreTableViewController : NSViewController <NSTableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet DBResultSetViewController *resultSetViewController;
+@property (strong, nonatomic) IBOutlet EMFResultSetViewController *resultSetViewController;
 @property (strong, nonatomic) IBOutlet NSBox *contentBox;
 
 @property (strong, nonatomic) IBOutlet NSButton *leftArrowPageButton;

@@ -6,30 +6,30 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "ExploreTableViewController.h"
+#import "EMFExploreTableViewController.h"
 #import "EMFExportWindowController.h"
-#import "DBDatabaseViewController.h"
-#import "DBResultSetViewController.h"
+#import "EMFDatabaseViewController.h"
+#import "EMFResultSetViewController.h"
 
-#import "DBPaginator.h"
+#import "EMFPaginator.h"
 #import "DBAdapter.h"
 
 static NSUInteger const kExploreDefaultPageSize = 1000;
 
-@interface ExploreTableViewController () {
+@interface EMFExploreTableViewController () {
 @private
     __strong EMFExportWindowController *_exportWindowController;
     
     NSUInteger _pageSize;
     NSUInteger _currentPage;
-    __strong DBPaginator *_paginator;
+    __strong EMFPaginator *_paginator;
 }
 
 @property (readonly) NSRange currentPageRange;
 
 @end
 
-@implementation ExploreTableViewController
+@implementation EMFExploreTableViewController
 @synthesize resultSetViewController = _resultSetViewController;
 @synthesize contentBox = _contentBox;
 @synthesize leftArrowPageButton = _leftArrowPageButton;
@@ -50,7 +50,7 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
     
-    _paginator = [[DBPaginator alloc] initWithNumberOfIndexes:[(id <DBDataSource>)self.representedObject numberOfRecords] pageSize:kExploreDefaultPageSize];
+    _paginator = [[EMFPaginator alloc] initWithNumberOfIndexes:[(id <DBDataSource>)self.representedObject numberOfRecords] pageSize:kExploreDefaultPageSize];
     
     [self changePage:nil];
 }

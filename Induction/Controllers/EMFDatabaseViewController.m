@@ -6,20 +6,20 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "DBDatabaseViewController.h"
+#import "EMFDatabaseViewController.h"
 
-#import "ExploreTableViewController.h"
-#import "QueryViewController.h"
-#import "VisualizeViewController.h"
+#import "EMFExploreTableViewController.h"
+#import "EMFQueryViewController.h"
+#import "EMFVisualizeViewController.h"
 
 #import "DBAdapter.h"
 #import "SQLAdapter.h"
 
-@interface DBDatabaseViewController ()
+@interface EMFDatabaseViewController ()
 @property (strong, nonatomic, readwrite) NSArray *sourceListNodes;
 @end
 
-@implementation DBDatabaseViewController
+@implementation EMFDatabaseViewController
 @synthesize database = _database;
 @synthesize outlineView = _outlineView;
 @synthesize tabView = _tabView;

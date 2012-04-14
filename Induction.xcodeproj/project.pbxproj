@@ -29,24 +29,24 @@
 		F8202FC214D0C2DC00950BAF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9714D0C2DC00950BAF /* MainMenu.xib */; };
 		F8202FC514D0C2DC00950BAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F9D14D0C2DC00950BAF /* main.m */; };
 		F8202FD214D0C2DC00950BAF /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202FBC14D0C2DC00950BAF /* DateCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F820300B14D20FF600950BAF /* DBConnectionConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300914D20FF600950BAF /* DBConnectionConfigurationViewController.m */; };
-		F820300C14D20FF600950BAF /* DBConnectionConfigurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300A14D20FF600950BAF /* DBConnectionConfigurationView.xib */; };
-		F820301014D217C800950BAF /* ExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300E14D217C700950BAF /* ExploreTableViewController.m */; };
-		F820301114D217C800950BAF /* ExploreTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300F14D217C800950BAF /* ExploreTableView.xib */; };
-		F820301514D21BEA00950BAF /* DBDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301314D21BEA00950BAF /* DBDatabaseViewController.m */; };
-		F820301614D21BEA00950BAF /* DBDatabaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301414D21BEA00950BAF /* DBDatabaseView.xib */; };
-		F820301914D2218200950BAF /* DBConnectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301814D2218100950BAF /* DBConnectionWindowController.m */; };
-		F820301B14D2235100950BAF /* DBConnectionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301A14D2235100950BAF /* DBConnectionWindow.xib */; };
-		F837FD231517D30E0003BED6 /* DBResultSetPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */; };
-		F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */; };
-		F852DCEE14D35D7E00C029C8 /* QueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCEC14D35D7E00C029C8 /* QueryViewController.m */; };
-		F852DCEF14D35D7E00C029C8 /* QueryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCED14D35D7E00C029C8 /* QueryView.xib */; };
-		F852DCF314D35E4E00C029C8 /* VisualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCF114D35E4E00C029C8 /* VisualizeViewController.m */; };
-		F852DCF414D35E4E00C029C8 /* VisualizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCF214D35E4E00C029C8 /* VisualizeView.xib */; };
+		F820300B14D20FF600950BAF /* EMFConnectionConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */; };
+		F820300C14D20FF600950BAF /* EMFConnectionConfigurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */; };
+		F820301014D217C800950BAF /* EMFExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300E14D217C700950BAF /* EMFExploreTableViewController.m */; };
+		F820301114D217C800950BAF /* EMFExploreTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300F14D217C800950BAF /* EMFExploreTableView.xib */; };
+		F820301514D21BEA00950BAF /* EMFDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */; };
+		F820301614D21BEA00950BAF /* EMFDatabaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301414D21BEA00950BAF /* EMFDatabaseView.xib */; };
+		F820301914D2218200950BAF /* EMFConnectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301814D2218100950BAF /* EMFConnectionWindowController.m */; };
+		F820301B14D2235100950BAF /* EMFConnectionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301A14D2235100950BAF /* EMFConnectionWindow.xib */; };
+		F837FD231517D30E0003BED6 /* EMFResultSetPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */; };
+		F837FD241517D30E0003BED6 /* EMFResultSetPopoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */; };
+		F852DCEE14D35D7E00C029C8 /* EMFQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCEC14D35D7E00C029C8 /* EMFQueryViewController.m */; };
+		F852DCEF14D35D7E00C029C8 /* EMFQueryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */; };
+		F852DCF314D35E4E00C029C8 /* EMFVisualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */; };
+		F852DCF414D35E4E00C029C8 /* EMFVisualizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */; };
 		F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F852DCF514D3609A00C029C8 /* WebKit.framework */; };
-		F854FB3F14ECAB44009AEDAB /* DBResultSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854FB3E14ECAB44009AEDAB /* DBResultSetView.xib */; };
+		F854FB3F14ECAB44009AEDAB /* EMFResultSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */; };
 		F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
-		F8662EEE14EC8E5B00F0520B /* DBResultSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */; };
+		F8662EEE14EC8E5B00F0520B /* EMFResultSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */; };
 		F873FC5014D7B9E9002C0ADC /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = F873FC4F14D7B9E9002C0ADC /* HTML */; };
 		F87EE37815082FC10023C67D /* PostgreSQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36515082F8E0023C67D /* PostgreSQLAdapter.bundle */; };
 		F87EE37915082FC10023C67D /* MySQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35C15082F810023C67D /* MySQLAdapter.bundle */; };
@@ -54,7 +54,7 @@
 		F87EE37B15082FC10023C67D /* RedisAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36E15082F920023C67D /* RedisAdapter.bundle */; };
 		F87EE37C15082FC10023C67D /* MongoDBAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35215082F7C0023C67D /* MongoDBAdapter.bundle */; };
 		F888F57E14DB40990094B805 /* SQLSyntaxHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */; };
-		F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A2C41B14F5CFC10093682A /* DBPaginator.m */; };
+		F8A2C41C14F5CFC10093682A /* EMFPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A2C41B14F5CFC10093682A /* EMFPaginator.m */; };
 		F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB8F15347E070007712F /* EMFExportWindowController.m */; };
 		F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9115347E220007712F /* EMFExportWindow.xib */; };
 		F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */; };
@@ -143,38 +143,38 @@
 		F8202F9D14D0C2DC00950BAF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F8202FBB14D0C2DC00950BAF /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
 		F8202FBC14D0C2DC00950BAF /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
-		F820300814D20FF600950BAF /* DBConnectionConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnectionConfigurationViewController.h; sourceTree = "<group>"; };
-		F820300914D20FF600950BAF /* DBConnectionConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBConnectionConfigurationViewController.m; sourceTree = "<group>"; };
-		F820300A14D20FF600950BAF /* DBConnectionConfigurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBConnectionConfigurationView.xib; sourceTree = "<group>"; };
-		F820300D14D217C700950BAF /* ExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreTableViewController.h; sourceTree = "<group>"; };
-		F820300E14D217C700950BAF /* ExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreTableViewController.m; sourceTree = "<group>"; };
-		F820300F14D217C800950BAF /* ExploreTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreTableView.xib; sourceTree = "<group>"; };
-		F820301214D21BE900950BAF /* DBDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDatabaseViewController.h; sourceTree = "<group>"; };
-		F820301314D21BEA00950BAF /* DBDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBDatabaseViewController.m; sourceTree = "<group>"; };
-		F820301414D21BEA00950BAF /* DBDatabaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBDatabaseView.xib; sourceTree = "<group>"; };
-		F820301714D2218100950BAF /* DBConnectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBConnectionWindowController.h; sourceTree = "<group>"; };
-		F820301814D2218100950BAF /* DBConnectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBConnectionWindowController.m; sourceTree = "<group>"; };
-		F820301A14D2235100950BAF /* DBConnectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DBConnectionWindow.xib; path = ../DBConnectionWindow.xib; sourceTree = "<group>"; };
-		F837FD201517D30E0003BED6 /* DBResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBResultSetPopoverViewController.h; sourceTree = "<group>"; };
-		F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBResultSetPopoverViewController.m; sourceTree = "<group>"; };
-		F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBResultSetPopoverView.xib; sourceTree = "<group>"; };
+		F820300814D20FF600950BAF /* EMFConnectionConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFConnectionConfigurationViewController.h; sourceTree = "<group>"; };
+		F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFConnectionConfigurationViewController.m; sourceTree = "<group>"; };
+		F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFConnectionConfigurationView.xib; sourceTree = "<group>"; };
+		F820300D14D217C700950BAF /* EMFExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFExploreTableViewController.h; sourceTree = "<group>"; };
+		F820300E14D217C700950BAF /* EMFExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExploreTableViewController.m; sourceTree = "<group>"; };
+		F820300F14D217C800950BAF /* EMFExploreTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExploreTableView.xib; sourceTree = "<group>"; };
+		F820301214D21BE900950BAF /* EMFDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFDatabaseViewController.h; sourceTree = "<group>"; };
+		F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFDatabaseViewController.m; sourceTree = "<group>"; };
+		F820301414D21BEA00950BAF /* EMFDatabaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFDatabaseView.xib; sourceTree = "<group>"; };
+		F820301714D2218100950BAF /* EMFConnectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFConnectionWindowController.h; sourceTree = "<group>"; };
+		F820301814D2218100950BAF /* EMFConnectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFConnectionWindowController.m; sourceTree = "<group>"; };
+		F820301A14D2235100950BAF /* EMFConnectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EMFConnectionWindow.xib; path = ../EMFConnectionWindow.xib; sourceTree = "<group>"; };
+		F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFResultSetPopoverViewController.h; sourceTree = "<group>"; };
+		F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFResultSetPopoverViewController.m; sourceTree = "<group>"; };
+		F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFResultSetPopoverView.xib; sourceTree = "<group>"; };
 		F837FD81151A1DBA0003BED6 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = Adapters/DBAdapter.h; sourceTree = SOURCE_ROOT; };
 		F837FD82151A1DBA0003BED6 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = Adapters/SQLAdapter.h; sourceTree = SOURCE_ROOT; };
-		F852DCEB14D35D7E00C029C8 /* QueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryViewController.h; sourceTree = "<group>"; };
-		F852DCEC14D35D7E00C029C8 /* QueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueryViewController.m; sourceTree = "<group>"; };
-		F852DCED14D35D7E00C029C8 /* QueryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QueryView.xib; sourceTree = "<group>"; };
-		F852DCF014D35E4E00C029C8 /* VisualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualizeViewController.h; sourceTree = "<group>"; };
-		F852DCF114D35E4E00C029C8 /* VisualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualizeViewController.m; sourceTree = "<group>"; };
-		F852DCF214D35E4E00C029C8 /* VisualizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisualizeView.xib; sourceTree = "<group>"; };
+		F852DCEB14D35D7E00C029C8 /* EMFQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFQueryViewController.h; sourceTree = "<group>"; };
+		F852DCEC14D35D7E00C029C8 /* EMFQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFQueryViewController.m; sourceTree = "<group>"; };
+		F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFQueryView.xib; sourceTree = "<group>"; };
+		F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFVisualizeViewController.h; sourceTree = "<group>"; };
+		F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFVisualizeViewController.m; sourceTree = "<group>"; };
+		F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFVisualizeView.xib; sourceTree = "<group>"; };
 		F852DCF514D3609A00C029C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		F854FB3E14ECAB44009AEDAB /* DBResultSetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DBResultSetView.xib; sourceTree = "<group>"; };
+		F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFResultSetView.xib; sourceTree = "<group>"; };
 		F8595FB314C34BB100FD15BE /* Induction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Induction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8595FB714C34BB100FD15BE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F8595FBA14C34BB100FD15BE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F8595FBB14C34BB100FD15BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F8595FBC14C34BB100FD15BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F8662EEC14EC8E5B00F0520B /* DBResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBResultSetViewController.h; sourceTree = "<group>"; };
-		F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBResultSetViewController.m; sourceTree = "<group>"; };
+		F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFResultSetViewController.h; sourceTree = "<group>"; };
+		F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFResultSetViewController.m; sourceTree = "<group>"; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
 		F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MongoDBAdapter.xcodeproj; path = Adapters/MongoDBAdapter/MongoDBAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35415082F810023C67D /* MySQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MySQLAdapter.xcodeproj; path = Adapters/MySQLAdapter/MySQLAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 		F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLiteAdapter.xcodeproj; path = Adapters/SQLiteAdapter/SQLiteAdapter.xcodeproj; sourceTree = "<group>"; };
 		F888F57C14DB40990094B805 /* SQLSyntaxHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLSyntaxHighlighter.h; sourceTree = "<group>"; };
 		F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLSyntaxHighlighter.m; sourceTree = "<group>"; };
-		F8A2C41A14F5CFC10093682A /* DBPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBPaginator.h; path = Induction/Helpers/DBPaginator.h; sourceTree = SOURCE_ROOT; };
-		F8A2C41B14F5CFC10093682A /* DBPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBPaginator.m; path = Induction/Helpers/DBPaginator.m; sourceTree = SOURCE_ROOT; };
+		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
+		F8A2C41B14F5CFC10093682A /* EMFPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFPaginator.m; path = Induction/Helpers/EMFPaginator.m; sourceTree = SOURCE_ROOT; };
 		F8B3FB8E15347E070007712F /* EMFExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportWindowController.h; sourceTree = "<group>"; };
 		F8B3FB8F15347E070007712F /* EMFExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportWindowController.m; sourceTree = "<group>"; };
 		F8B3FB9115347E220007712F /* EMFExportWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportWindow.xib; sourceTree = "<group>"; };
@@ -235,12 +235,12 @@
 			children = (
 				F888F57C14DB40990094B805 /* SQLSyntaxHighlighter.h */,
 				F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */,
-				F8662EEC14EC8E5B00F0520B /* DBResultSetViewController.h */,
-				F8662EED14EC8E5B00F0520B /* DBResultSetViewController.m */,
-				F854FB3E14ECAB44009AEDAB /* DBResultSetView.xib */,
-				F837FD201517D30E0003BED6 /* DBResultSetPopoverViewController.h */,
-				F837FD211517D30E0003BED6 /* DBResultSetPopoverViewController.m */,
-				F837FD221517D30E0003BED6 /* DBResultSetPopoverView.xib */,
+				F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */,
+				F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */,
+				F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */,
+				F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */,
+				F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */,
+				F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */,
 				F842904F14F30F1500B1CDFB /* Connection */,
 				F842905014F30F1F00B1CDFB /* Database */,
 				F842905114F30F2700B1CDFB /* Explore */,
@@ -284,12 +284,12 @@
 		F842904F14F30F1500B1CDFB /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				F820301714D2218100950BAF /* DBConnectionWindowController.h */,
-				F820301814D2218100950BAF /* DBConnectionWindowController.m */,
-				F820301A14D2235100950BAF /* DBConnectionWindow.xib */,
-				F820300814D20FF600950BAF /* DBConnectionConfigurationViewController.h */,
-				F820300914D20FF600950BAF /* DBConnectionConfigurationViewController.m */,
-				F820300A14D20FF600950BAF /* DBConnectionConfigurationView.xib */,
+				F820301714D2218100950BAF /* EMFConnectionWindowController.h */,
+				F820301814D2218100950BAF /* EMFConnectionWindowController.m */,
+				F820301A14D2235100950BAF /* EMFConnectionWindow.xib */,
+				F820300814D20FF600950BAF /* EMFConnectionConfigurationViewController.h */,
+				F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */,
+				F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -297,9 +297,9 @@
 		F842905014F30F1F00B1CDFB /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F820301214D21BE900950BAF /* DBDatabaseViewController.h */,
-				F820301314D21BEA00950BAF /* DBDatabaseViewController.m */,
-				F820301414D21BEA00950BAF /* DBDatabaseView.xib */,
+				F820301214D21BE900950BAF /* EMFDatabaseViewController.h */,
+				F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */,
+				F820301414D21BEA00950BAF /* EMFDatabaseView.xib */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -307,9 +307,9 @@
 		F842905114F30F2700B1CDFB /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				F820300D14D217C700950BAF /* ExploreTableViewController.h */,
-				F820300E14D217C700950BAF /* ExploreTableViewController.m */,
-				F820300F14D217C800950BAF /* ExploreTableView.xib */,
+				F820300D14D217C700950BAF /* EMFExploreTableViewController.h */,
+				F820300E14D217C700950BAF /* EMFExploreTableViewController.m */,
+				F820300F14D217C800950BAF /* EMFExploreTableView.xib */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -317,9 +317,9 @@
 		F842905214F30F2F00B1CDFB /* Query */ = {
 			isa = PBXGroup;
 			children = (
-				F852DCEB14D35D7E00C029C8 /* QueryViewController.h */,
-				F852DCEC14D35D7E00C029C8 /* QueryViewController.m */,
-				F852DCED14D35D7E00C029C8 /* QueryView.xib */,
+				F852DCEB14D35D7E00C029C8 /* EMFQueryViewController.h */,
+				F852DCEC14D35D7E00C029C8 /* EMFQueryViewController.m */,
+				F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */,
 			);
 			name = Query;
 			sourceTree = "<group>";
@@ -327,9 +327,9 @@
 		F842905314F30F3900B1CDFB /* Visualize */ = {
 			isa = PBXGroup;
 			children = (
-				F852DCF014D35E4E00C029C8 /* VisualizeViewController.h */,
-				F852DCF114D35E4E00C029C8 /* VisualizeViewController.m */,
-				F852DCF214D35E4E00C029C8 /* VisualizeView.xib */,
+				F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */,
+				F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */,
+				F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */,
 			);
 			name = Visualize;
 			sourceTree = "<group>";
@@ -424,8 +424,8 @@
 			children = (
 				F8B3FB98153487720007712F /* EMFResultSetSerializer.h */,
 				F8B3FB99153487720007712F /* EMFResultSetSerializer.m */,
-				F8A2C41A14F5CFC10093682A /* DBPaginator.h */,
-				F8A2C41B14F5CFC10093682A /* DBPaginator.m */,
+				F8A2C41A14F5CFC10093682A /* EMFPaginator.h */,
+				F8A2C41B14F5CFC10093682A /* EMFPaginator.m */,
 			);
 			name = Helpers;
 			path = Controllers;
@@ -572,15 +572,15 @@
 				F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */,
 				F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */,
 				F8202FC214D0C2DC00950BAF /* MainMenu.xib in Resources */,
-				F820300C14D20FF600950BAF /* DBConnectionConfigurationView.xib in Resources */,
-				F820301114D217C800950BAF /* ExploreTableView.xib in Resources */,
-				F820301614D21BEA00950BAF /* DBDatabaseView.xib in Resources */,
-				F820301B14D2235100950BAF /* DBConnectionWindow.xib in Resources */,
-				F852DCEF14D35D7E00C029C8 /* QueryView.xib in Resources */,
-				F852DCF414D35E4E00C029C8 /* VisualizeView.xib in Resources */,
+				F820300C14D20FF600950BAF /* EMFConnectionConfigurationView.xib in Resources */,
+				F820301114D217C800950BAF /* EMFExploreTableView.xib in Resources */,
+				F820301614D21BEA00950BAF /* EMFDatabaseView.xib in Resources */,
+				F820301B14D2235100950BAF /* EMFConnectionWindow.xib in Resources */,
+				F852DCEF14D35D7E00C029C8 /* EMFQueryView.xib in Resources */,
+				F852DCF414D35E4E00C029C8 /* EMFVisualizeView.xib in Resources */,
 				F873FC5014D7B9E9002C0ADC /* HTML in Resources */,
-				F854FB3F14ECAB44009AEDAB /* DBResultSetView.xib in Resources */,
-				F837FD241517D30E0003BED6 /* DBResultSetPopoverView.xib in Resources */,
+				F854FB3F14ECAB44009AEDAB /* EMFResultSetView.xib in Resources */,
+				F837FD241517D30E0003BED6 /* EMFResultSetPopoverView.xib in Resources */,
 				F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */,
 				F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */,
 				F8B3FC18153745330007712F /* EMFExportView.xib in Resources */,
@@ -627,16 +627,16 @@
 				F8202FC514D0C2DC00950BAF /* main.m in Sources */,
 				F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */,
 				F8202FD214D0C2DC00950BAF /* DateCell.m in Sources */,
-				F820300B14D20FF600950BAF /* DBConnectionConfigurationViewController.m in Sources */,
-				F820301014D217C800950BAF /* ExploreTableViewController.m in Sources */,
-				F820301514D21BEA00950BAF /* DBDatabaseViewController.m in Sources */,
-				F820301914D2218200950BAF /* DBConnectionWindowController.m in Sources */,
-				F852DCEE14D35D7E00C029C8 /* QueryViewController.m in Sources */,
-				F852DCF314D35E4E00C029C8 /* VisualizeViewController.m in Sources */,
+				F820300B14D20FF600950BAF /* EMFConnectionConfigurationViewController.m in Sources */,
+				F820301014D217C800950BAF /* EMFExploreTableViewController.m in Sources */,
+				F820301514D21BEA00950BAF /* EMFDatabaseViewController.m in Sources */,
+				F820301914D2218200950BAF /* EMFConnectionWindowController.m in Sources */,
+				F852DCEE14D35D7E00C029C8 /* EMFQueryViewController.m in Sources */,
+				F852DCF314D35E4E00C029C8 /* EMFVisualizeViewController.m in Sources */,
 				F888F57E14DB40990094B805 /* SQLSyntaxHighlighter.m in Sources */,
-				F8662EEE14EC8E5B00F0520B /* DBResultSetViewController.m in Sources */,
-				F8A2C41C14F5CFC10093682A /* DBPaginator.m in Sources */,
-				F837FD231517D30E0003BED6 /* DBResultSetPopoverViewController.m in Sources */,
+				F8662EEE14EC8E5B00F0520B /* EMFResultSetViewController.m in Sources */,
+				F8A2C41C14F5CFC10093682A /* EMFPaginator.m in Sources */,
+				F837FD231517D30E0003BED6 /* EMFResultSetPopoverViewController.m in Sources */,
 				F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */,
 				F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */,
 				F8B3FB9A153487720007712F /* EMFResultSetSerializer.m in Sources */,

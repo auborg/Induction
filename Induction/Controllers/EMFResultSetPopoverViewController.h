@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DBResultSetPopoverViewController : NSViewController
+@interface EMFResultSetPopoverViewController : NSViewController
 
 @property (strong, nonatomic) IBOutlet NSTextView *textView;
 

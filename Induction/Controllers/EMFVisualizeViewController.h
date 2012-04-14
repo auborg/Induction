@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
-@class DBResultSetViewController;
+@class EMFResultSetViewController;
 
-@interface VisualizeViewController : NSViewController
+@interface EMFVisualizeViewController : NSViewController
 
 @property (strong, nonatomic) IBOutlet NSTextView *textView;
 @property (strong, nonatomic) IBOutlet NSPopUpButton *chartPopUpButton;

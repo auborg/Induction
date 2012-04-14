@@ -6,12 +6,12 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "VisualizeViewController.h"
+#import "EMFVisualizeViewController.h"
 
 #import "DBAdapter.h"
-#import "DBResultSetViewController.h"
+#import "EMFResultSetViewController.h"
 
-@implementation VisualizeViewController
+@implementation EMFVisualizeViewController
 @synthesize textView = _textView;
 @synthesize chartPopUpButton = _chartPopUpButton;
 @synthesize webView = _webView;

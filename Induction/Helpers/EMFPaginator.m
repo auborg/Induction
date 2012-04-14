@@ -6,9 +6,9 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "DBPaginator.h"
+#import "EMFPaginator.h"
 
-@interface DBPaginator () {
+@interface EMFPaginator () {
 @private
     NSRange _maximumRange;
     NSUInteger _pageSize;
@@ -16,7 +16,7 @@
 }
 @end
 
-@implementation DBPaginator
+@implementation EMFPaginator
 @synthesize currentPage = _currentPage;
 
 - (id)initWithNumberOfIndexes:(NSUInteger)numberOfIndexes

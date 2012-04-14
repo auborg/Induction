@@ -31,7 +31,7 @@
 		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
 			<object class="NSCustomObject" id="1001">
-				<string key="NSClassName">QueryViewController</string>
+				<string key="NSClassName">EMFQueryViewController</string>
 			</object>
 			<object class="NSCustomObject" id="1003">
 				<string key="NSClassName">FirstResponder</string>
@@ -108,7 +108,7 @@
 												<string key="NSFrameSize">{702, 14}</string>
 												<reference key="NSSuperview" ref="79570708"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="587753568"/>
+												<reference key="NSNextKeyView" ref="93259487"/>
 												<string key="NSReuseIdentifierKey">_NS:1480</string>
 												<object class="NSTextContainer" key="NSTextContainer" id="306863256">
 													<object class="NSLayoutManager" key="NSLayoutManager">
@@ -242,7 +242,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<string key="NSFrameSize">{704, 156}</string>
 								<reference key="NSSuperview" ref="347522371"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="79570708"/>
+								<reference key="NSNextKeyView" ref="587753568"/>
 								<string key="NSReuseIdentifierKey">_NS:940</string>
 								<int key="NSsFlags">133138</int>
 								<reference key="NSVScroller" ref="93259487"/>
@@ -267,6 +267,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<string key="NSFrameSize">{704, 296}</string>
 								<reference key="NSSuperview" ref="987014341"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:21</string>
 							</object>
 						</array>
@@ -314,7 +315,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<string key="NSClassName">SQLSyntaxHighlighter</string>
 			</object>
 			<object class="NSViewController" id="918971287">
-				<string key="NSNibName">DBResultSetView</string>
+				<string key="NSNibName">EMFResultSetView</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -480,7 +481,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="76.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="84.CustomClassName">DBResultSetViewController</string>
+				<string key="84.CustomClassName">EMFResultSetViewController</string>
 				<string key="84.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -493,7 +494,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">DBDatabaseViewController</string>
+					<string key="className">EMFDatabaseViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="explore:">id</string>
@@ -515,9 +516,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="exploreViewController">ExploreTableViewController</string>
+						<string key="exploreViewController">EMFExploreTableViewController</string>
 						<string key="outlineView">NSOutlineView</string>
-						<string key="queryViewController">QueryViewController</string>
+						<string key="queryViewController">EMFQueryViewController</string>
 						<string key="tabView">NSTabView</string>
 						<string key="toolbar">NSToolbar</string>
 						<string key="visualizeViewController">VisualizeViewController</string>
@@ -525,7 +526,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="exploreViewController">
 							<string key="name">exploreViewController</string>
-							<string key="candidateClassName">ExploreTableViewController</string>
+							<string key="candidateClassName">EMFExploreTableViewController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="outlineView">
 							<string key="name">outlineView</string>
@@ -533,7 +534,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						</object>
 						<object class="IBToOneOutletInfo" key="queryViewController">
 							<string key="name">queryViewController</string>
-							<string key="candidateClassName">QueryViewController</string>
+							<string key="candidateClassName">EMFQueryViewController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tabView">
 							<string key="name">tabView</string>
@@ -550,11 +551,110 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DBDatabaseViewController.h</string>
+						<string key="minorKey">./Classes/EMFDatabaseViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">DBResultSetViewController</string>
+					<string key="className">EMFExploreTableViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="changePage:">id</string>
+						<string key="exportDocument:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="changePage:">
+							<string key="name">changePage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="exportDocument:">
+							<string key="name">exportDocument:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="contentBox">NSBox</string>
+						<string key="leftArrowPageButton">NSButton</string>
+						<string key="pageTextField">NSTextField</string>
+						<string key="resultSetViewController">EMFResultSetViewController</string>
+						<string key="rightArrowPageButton">NSButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="contentBox">
+							<string key="name">contentBox</string>
+							<string key="candidateClassName">NSBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="leftArrowPageButton">
+							<string key="name">leftArrowPageButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pageTextField">
+							<string key="name">pageTextField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="resultSetViewController">
+							<string key="name">resultSetViewController</string>
+							<string key="candidateClassName">EMFResultSetViewController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="rightArrowPageButton">
+							<string key="name">rightArrowPageButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/EMFExploreTableViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">EMFQueryViewController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">execute:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">execute:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">execute:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="contentBox">NSBox</string>
+						<string key="databaseViewController">EMFDatabaseViewController</string>
+						<string key="lineNumberView">NoodleLineNumberView</string>
+						<string key="resultsTableViewController">EMFResultSetViewController</string>
+						<string key="textView">NSTextView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="contentBox">
+							<string key="name">contentBox</string>
+							<string key="candidateClassName">NSBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="databaseViewController">
+							<string key="name">databaseViewController</string>
+							<string key="candidateClassName">EMFDatabaseViewController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lineNumberView">
+							<string key="name">lineNumberView</string>
+							<string key="candidateClassName">NoodleLineNumberView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="resultsTableViewController">
+							<string key="name">resultsTableViewController</string>
+							<string key="candidateClassName">EMFResultSetViewController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="textView">
+							<string key="name">textView</string>
+							<string key="candidateClassName">NSTextView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/EMFQueryViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">EMFResultSetViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="copyAsJSON:">id</string>
@@ -601,55 +701,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DBResultSetViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ExploreTableViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">changePage:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">changePage:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">changePage:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="contentBox">NSBox</string>
-						<string key="leftArrowPageButton">NSButton</string>
-						<string key="pageTextField">NSTextField</string>
-						<string key="resultSetViewController">DBResultSetViewController</string>
-						<string key="rightArrowPageButton">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="contentBox">
-							<string key="name">contentBox</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="leftArrowPageButton">
-							<string key="name">leftArrowPageButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageTextField">
-							<string key="name">pageTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="resultSetViewController">
-							<string key="name">resultSetViewController</string>
-							<string key="candidateClassName">DBResultSetViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rightArrowPageButton">
-							<string key="name">rightArrowPageButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ExploreTableViewController.h</string>
+						<string key="minorKey">./Classes/EMFResultSetViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -676,54 +728,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NoodleLineNumberView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">QueryViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">execute:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">execute:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">execute:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="contentBox">NSBox</string>
-						<string key="databaseViewController">DBDatabaseViewController</string>
-						<string key="lineNumberView">NoodleLineNumberView</string>
-						<string key="resultsTableViewController">DBResultSetViewController</string>
-						<string key="textView">NSTextView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="contentBox">
-							<string key="name">contentBox</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="databaseViewController">
-							<string key="name">databaseViewController</string>
-							<string key="candidateClassName">DBDatabaseViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lineNumberView">
-							<string key="name">lineNumberView</string>
-							<string key="candidateClassName">NoodleLineNumberView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="resultsTableViewController">
-							<string key="name">resultsTableViewController</string>
-							<string key="candidateClassName">DBResultSetViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView">
-							<string key="name">textView</string>
-							<string key="candidateClassName">NSTextView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/QueryViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -8,14 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class DBDatabaseViewController;
-@class DBResultSetViewController;
+@class EMFDatabaseViewController;
+@class EMFResultSetViewController;
 @class NoodleLineNumberView;
 
-@interface QueryViewController : NSViewController
+@interface EMFQueryViewController : NSViewController
 
-@property (strong) IBOutlet DBDatabaseViewController *databaseViewController;
-@property (strong) IBOutlet DBResultSetViewController *resultsTableViewController;
+@property (strong) IBOutlet EMFDatabaseViewController *databaseViewController;
+@property (strong) IBOutlet EMFResultSetViewController *resultsTableViewController;
 @property (strong) IBOutlet NSBox *contentBox;
 @property (strong) IBOutlet NSTextView *textView;
 @property (strong) IBOutlet NoodleLineNumberView *lineNumberView;

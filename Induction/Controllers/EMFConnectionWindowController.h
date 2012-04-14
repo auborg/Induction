@@ -8,17 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "DBConnectionConfigurationViewController.h"
-#import "DBDatabaseViewController.h"
+#import "EMFConnectionConfigurationViewController.h"
+#import "EMFDatabaseViewController.h"
 
 #import "DBAdapter.h"
 
-@interface DBConnectionWindowController : NSWindowController  <DBConnectionConfigurationViewControllerProtocol>
+@interface EMFConnectionWindowController : NSWindowController  <EMFConnectionConfigurationViewControllerProtocol>
 
 @property (strong, nonatomic) id <DBConnection> connection;
 
-@property (strong, nonatomic) DBConnectionConfigurationViewController *configurationViewController;
-@property (strong, nonatomic) IBOutlet DBDatabaseViewController *databaseViewController;
+@property (strong, nonatomic) EMFConnectionConfigurationViewController *configurationViewController;
+@property (strong, nonatomic) IBOutlet EMFDatabaseViewController *databaseViewController;
 @property (weak) IBOutlet NSPopUpButton *databasesPopUpButton;
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender;

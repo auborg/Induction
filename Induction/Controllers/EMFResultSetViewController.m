@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "DBResultSetViewController.h"
+#import "EMFResultSetViewController.h"
 
 #import "DateCell.h"
 
@@ -63,7 +63,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 
 #pragma mark -
 
-@interface DBResultSetViewController () {
+@interface EMFResultSetViewController () {
 @private
     __strong NSArray *_records;
 }
@@ -76,7 +76,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 
 @end
 
-@implementation DBResultSetViewController
+@implementation EMFResultSetViewController
 @synthesize outlineView = _outlineView;
 @synthesize popover = _popover;
 

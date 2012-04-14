@@ -6,15 +6,15 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "QueryViewController.h"
+#import "EMFQueryViewController.h"
 
-#import "DBDatabaseViewController.h"
-#import "DBResultSetViewController.h"
+#import "EMFDatabaseViewController.h"
+#import "EMFResultSetViewController.h"
 #import "DBAdapter.h"
 
 #import "NoodleLineNumberView.h"
 
-@implementation QueryViewController {
+@implementation EMFQueryViewController {
     __strong NoodleLineNumberView *_lineNumberView;
 }
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DBPaginator : NSObject
+@interface EMFPaginator : NSObject
 @property (readonly) NSUInteger numberOfIndexes;
 @property (readonly) NSUInteger currentPage;
 @property (readonly) NSRange currentRange;

@@ -9,7 +9,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-@interface DBResultSetViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate, NSPopoverDelegate>
+@interface EMFResultSetViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate, NSPopoverDelegate>
 
 @property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
 @property (weak, nonatomic) IBOutlet NSPopover *popover;

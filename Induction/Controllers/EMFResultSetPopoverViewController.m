@@ -6,9 +6,9 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "DBResultSetPopoverViewController.h"
+#import "EMFResultSetPopoverViewController.h"
 
-@implementation DBResultSetPopoverViewController
+@implementation EMFResultSetPopoverViewController
 @synthesize textView = _textView;
 
 - (void)awakeFromNib {

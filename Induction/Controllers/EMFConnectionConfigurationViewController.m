@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 Heroku. All rights reserved.
 //
 
-#import "DBConnectionConfigurationViewController.h"
+#import "EMFConnectionConfigurationViewController.h"
 
 static NSString * const kInductionPreviousConnectionURLKey = @"com.induction.connection.previous.url";
 
@@ -37,10 +37,10 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 #pragma mark -
 
-@interface DBDatabaseParameterFormatter : NSFormatter
+@interface EMFDatabaseParameterFormatter : NSFormatter
 @end
 
-@implementation DBDatabaseParameterFormatter
+@implementation EMFDatabaseParameterFormatter
 
 - (NSString *)stringForObjectValue:(id)obj {
     if (![obj isKindOfClass:[NSString class]]) {
@@ -99,13 +99,13 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 
 #pragma mark -
 
-@interface DBConnectionConfigurationViewController ()
+@interface EMFConnectionConfigurationViewController ()
 @property (readwrite, nonatomic, getter = isConnecting) BOOL connecting;
 
 - (void)bindURLParameterTextField:(NSTextField *)textField;
 @end
 
-@implementation DBConnectionConfigurationViewController
+@implementation EMFConnectionConfigurationViewController
 @synthesize delegate = _delegate;
 @synthesize connectionURL = _connectionURL;
 @synthesize connecting = _connecting;
@@ -134,9 +134,9 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         }
     }
     
-    self.hostnameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
-    self.usernameField.formatter = [[DBDatabaseParameterFormatter alloc] init];
-    self.databaseField.formatter = [[DBDatabaseParameterFormatter alloc] init];
+    self.hostnameField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
+    self.usernameField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
+    self.databaseField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
     
     // TODO Check against registered adapters to detect appropriate URL on pasteboard
     NSURL *pasteboardURL = [NSURL URLWithString:[[NSPasteboard generalPasteboard] stringForType:NSPasteboardTypeString]];
