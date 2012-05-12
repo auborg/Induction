@@ -24,6 +24,7 @@
 @synthesize outlineView = _outlineView;
 @synthesize tabView = _tabView;
 @synthesize toolbar = _toolbar;
+@synthesize databasesToolbarItem = _databasesToolbarItem;
 @synthesize exploreViewController = _exploreViewController;
 @synthesize queryViewController = _queryViewController;
 @synthesize visualizeViewController = _visualizeViewController;
@@ -42,13 +43,16 @@
     visualizeTabViewItem.view = self.visualizeViewController.view;
     [self.tabView addTabViewItem:visualizeTabViewItem];
     
-    [self.outlineView expandItem:nil expandChildren:YES];
+    @try {
+        [self.outlineView expandItem:nil expandChildren:YES];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+    }
 }
 
 - (void)setDatabase:(id <DBDatabase>)database {
-    [self willChangeValueForKey:@"database"];
     _database = database;    
-    [self didChangeValueForKey:@"database"];
     
     NSMutableArray *mutableNodes = [NSMutableArray array];
     [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_database numberOfDataSourceGroups])] enumerateIndexesUsingBlock:^(NSUInteger groupIndex, BOOL *stop) {
@@ -64,6 +68,7 @@
     }];
     
     self.sourceListNodes = [NSArray arrayWithArray:mutableNodes];
+    [self.outlineView expandItem:nil expandChildren:YES];
     
     [self explore:nil];
 }
@@ -109,6 +114,17 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item {
     return ![self outlineView:outlineView isGroupItem:item];
+}
+
+#pragma mark - NSSplitViewDelegate
+
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
+    NSLog(@"splitViewDidResizeSubviews");
+    NSSplitView *splitView = (NSSplitView *)self.view;
+    NSRect frame = [[splitView.subviews objectAtIndex:0] frame];
+    NSSize minSize = [self.databasesToolbarItem minSize];
+    NSLog(@"%@\%@", NSStringFromRect(frame), NSStringFromSize(minSize));
+    [self.databasesToolbarItem setMinSize:NSMakeSize(frame.size.width - 10.0f, minSize.height)];
 }
 
 @end

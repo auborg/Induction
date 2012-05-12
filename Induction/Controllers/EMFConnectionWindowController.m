@@ -41,7 +41,13 @@
 #pragma mark - IBAction
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
-    NSLog(@"databasePopupButtonSelectionDidChange");
+    NSLog(@"databasePopupButtonSelectionDidChange:%@", sender);
+    id <DBDatabase> database = [[sender selectedItem] representedObject];
+    NSLog(@"db: %@", database);
+    [self.connection connectToDatabase:database error:nil];
+    
+    self.databaseViewController.database = [(id <DBConnection>)self.connection database];
+//    [self.databaseViewController explore:nil];
 }
 
 #pragma mark - NSWindowController

@@ -135,7 +135,11 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
     NSIndexSet *columnIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.representedObject numberOfFields])];
     [columnIndexSet enumerateIndexesUsingBlock:^(NSUInteger columnIndex, BOOL *stop) {
         NSTableColumn *tableColumn = [[NSTableColumn alloc] initWithIdentifier:[(id <DBResultSet>)self.representedObject identifierForTableColumnAtIndex:columnIndex]];
-        [[tableColumn headerCell] setTitle:[tableColumn identifier]];
+        NSString *identifier = [tableColumn identifier];
+        if (!identifier) {
+            identifier = @"";
+        }
+        [[tableColumn headerCell] setTitle:identifier];
         [tableColumn setEditable:NO];
         [[tableColumn dataCell] setFont:[[[self.outlineView outlineTableColumn] dataCell] font]];
 

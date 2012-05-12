@@ -21,7 +21,7 @@ enum _DBDatabaseViewTabs {
     VisualizeTab,
 } DBDatabaseViewTabs;
 
-@interface EMFDatabaseViewController : NSViewController <NSOutlineViewDelegate>
+@interface EMFDatabaseViewController : NSViewController <NSOutlineViewDelegate, NSSplitViewDelegate>
 
 @property (strong, nonatomic) id <DBDatabase> database;
 @property (strong, nonatomic, readonly) NSArray *sourceListNodes;
@@ -29,6 +29,8 @@ enum _DBDatabaseViewTabs {
 @property (weak, nonatomic) IBOutlet NSToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
 @property (weak, nonatomic) IBOutlet NSTabView *tabView;
+
+@property (weak, nonatomic) IBOutlet NSToolbarItem *databasesToolbarItem;
 
 @property (strong, nonatomic) IBOutlet EMFExploreTableViewController *exploreViewController;
 @property (strong, nonatomic) IBOutlet EMFQueryViewController *queryViewController;

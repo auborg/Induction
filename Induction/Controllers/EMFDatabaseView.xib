@@ -392,6 +392,14 @@
 					<int key="connectionID">101</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="219347821"/>
+						<reference key="destination" ref="1001"/>
+					</object>
+					<int key="connectionID">103</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">content: arrangedObjects.representedObject</string>
 						<reference key="source" ref="821105199"/>
@@ -872,7 +880,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">102</int>
+			<int key="maxID">103</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -899,6 +907,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="databasesToolbarItem">NSToolbarItem</string>
 						<string key="exploreViewController">EMFExploreTableViewController</string>
 						<string key="outlineView">NSOutlineView</string>
 						<string key="queryViewController">EMFQueryViewController</string>
@@ -907,6 +916,10 @@
 						<string key="visualizeViewController">EMFVisualizeViewController</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="databasesToolbarItem">
+							<string key="name">databasesToolbarItem</string>
+							<string key="candidateClassName">NSToolbarItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="exploreViewController">
 							<string key="name">exploreViewController</string>
 							<string key="candidateClassName">EMFExploreTableViewController</string>
