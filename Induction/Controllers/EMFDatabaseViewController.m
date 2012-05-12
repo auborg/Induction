@@ -42,13 +42,16 @@
     visualizeTabViewItem.view = self.visualizeViewController.view;
     [self.tabView addTabViewItem:visualizeTabViewItem];
     
-    [self.outlineView expandItem:nil expandChildren:YES];
+    @try {
+        [self.outlineView expandItem:nil expandChildren:YES];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+    }
 }
 
 - (void)setDatabase:(id <DBDatabase>)database {
-    [self willChangeValueForKey:@"database"];
     _database = database;    
-    [self didChangeValueForKey:@"database"];
     
     NSMutableArray *mutableNodes = [NSMutableArray array];
     [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_database numberOfDataSourceGroups])] enumerateIndexesUsingBlock:^(NSUInteger groupIndex, BOOL *stop) {
@@ -64,6 +67,7 @@
     }];
     
     self.sourceListNodes = [NSArray arrayWithArray:mutableNodes];
+    [self.outlineView expandItem:nil expandChildren:YES];
     
     [self explore:nil];
 }
