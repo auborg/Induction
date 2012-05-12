@@ -143,27 +143,27 @@
 		F8202F9D14D0C2DC00950BAF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F8202FBB14D0C2DC00950BAF /* DateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCell.h; sourceTree = "<group>"; };
 		F8202FBC14D0C2DC00950BAF /* DateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCell.m; sourceTree = "<group>"; };
-		F820300814D20FF600950BAF /* EMFConnectionConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFConnectionConfigurationViewController.h; sourceTree = "<group>"; };
+		F820300814D20FF600950BAF /* EMFConnectionConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFConnectionConfigurationViewController.h; sourceTree = "<group>"; };
 		F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFConnectionConfigurationViewController.m; sourceTree = "<group>"; };
 		F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFConnectionConfigurationView.xib; sourceTree = "<group>"; };
-		F820300D14D217C700950BAF /* EMFExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFExploreTableViewController.h; sourceTree = "<group>"; };
+		F820300D14D217C700950BAF /* EMFExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExploreTableViewController.h; sourceTree = "<group>"; };
 		F820300E14D217C700950BAF /* EMFExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExploreTableViewController.m; sourceTree = "<group>"; };
 		F820300F14D217C800950BAF /* EMFExploreTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExploreTableView.xib; sourceTree = "<group>"; };
-		F820301214D21BE900950BAF /* EMFDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFDatabaseViewController.h; sourceTree = "<group>"; };
+		F820301214D21BE900950BAF /* EMFDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFDatabaseViewController.h; sourceTree = "<group>"; };
 		F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFDatabaseViewController.m; sourceTree = "<group>"; };
 		F820301414D21BEA00950BAF /* EMFDatabaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFDatabaseView.xib; sourceTree = "<group>"; };
-		F820301714D2218100950BAF /* EMFConnectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFConnectionWindowController.h; sourceTree = "<group>"; };
+		F820301714D2218100950BAF /* EMFConnectionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFConnectionWindowController.h; sourceTree = "<group>"; };
 		F820301814D2218100950BAF /* EMFConnectionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFConnectionWindowController.m; sourceTree = "<group>"; };
 		F820301A14D2235100950BAF /* EMFConnectionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EMFConnectionWindow.xib; path = ../EMFConnectionWindow.xib; sourceTree = "<group>"; };
-		F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFResultSetPopoverViewController.h; sourceTree = "<group>"; };
+		F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFResultSetPopoverViewController.h; sourceTree = "<group>"; };
 		F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFResultSetPopoverViewController.m; sourceTree = "<group>"; };
 		F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFResultSetPopoverView.xib; sourceTree = "<group>"; };
 		F837FD81151A1DBA0003BED6 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = Adapters/DBAdapter.h; sourceTree = SOURCE_ROOT; };
 		F837FD82151A1DBA0003BED6 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = Adapters/SQLAdapter.h; sourceTree = SOURCE_ROOT; };
-		F852DCEB14D35D7E00C029C8 /* EMFQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFQueryViewController.h; sourceTree = "<group>"; };
+		F852DCEB14D35D7E00C029C8 /* EMFQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFQueryViewController.h; sourceTree = "<group>"; };
 		F852DCEC14D35D7E00C029C8 /* EMFQueryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFQueryViewController.m; sourceTree = "<group>"; };
 		F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFQueryView.xib; sourceTree = "<group>"; };
-		F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFVisualizeViewController.h; sourceTree = "<group>"; };
+		F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFVisualizeViewController.h; sourceTree = "<group>"; };
 		F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFVisualizeViewController.m; sourceTree = "<group>"; };
 		F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFVisualizeView.xib; sourceTree = "<group>"; };
 		F852DCF514D3609A00C029C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -173,7 +173,7 @@
 		F8595FBA14C34BB100FD15BE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		F8595FBB14C34BB100FD15BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F8595FBC14C34BB100FD15BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EMFResultSetViewController.h; sourceTree = "<group>"; };
+		F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFResultSetViewController.h; sourceTree = "<group>"; };
 		F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFResultSetViewController.m; sourceTree = "<group>"; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
 		F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MongoDBAdapter.xcodeproj; path = Adapters/MongoDBAdapter/MongoDBAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLiteAdapter.xcodeproj; path = Adapters/SQLiteAdapter/SQLiteAdapter.xcodeproj; sourceTree = "<group>"; };
 		F888F57C14DB40990094B805 /* SQLSyntaxHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLSyntaxHighlighter.h; sourceTree = "<group>"; };
 		F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLSyntaxHighlighter.m; sourceTree = "<group>"; };
-		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
+		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* EMFPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFPaginator.m; path = Induction/Helpers/EMFPaginator.m; sourceTree = SOURCE_ROOT; };
 		F8B3FB8E15347E070007712F /* EMFExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportWindowController.h; sourceTree = "<group>"; };
 		F8B3FB8F15347E070007712F /* EMFExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportWindowController.m; sourceTree = "<group>"; };
@@ -788,6 +788,7 @@
 				F81386761539731F003A83F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */ = {
 			isa = XCConfigurationList;
