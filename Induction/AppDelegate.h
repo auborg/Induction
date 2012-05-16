@@ -12,7 +12,6 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
-
 - (IBAction)newWindow:(id)sender;
 
 @end

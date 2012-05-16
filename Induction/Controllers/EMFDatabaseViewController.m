@@ -119,11 +119,9 @@
 #pragma mark - NSSplitViewDelegate
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification {
-    NSLog(@"splitViewDidResizeSubviews");
     NSSplitView *splitView = (NSSplitView *)self.view;
     NSRect frame = [[splitView.subviews objectAtIndex:0] frame];
     NSSize minSize = [self.databasesToolbarItem minSize];
-    NSLog(@"%@\%@", NSStringFromRect(frame), NSStringFromSize(minSize));
     [self.databasesToolbarItem setMinSize:NSMakeSize(frame.size.width - 10.0f, minSize.height)];
 }
 

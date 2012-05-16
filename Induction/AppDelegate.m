@@ -10,6 +10,10 @@
 
 #import "EMFConnectionWindowController.h"
 
+#ifndef SPARKLE
+#import <Sparkle/Sparkle.h>
+#endif
+
 @implementation AppDelegate
 @synthesize window = _window;
 
@@ -21,6 +25,12 @@
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+#ifdef SPARKLE
+    [SUUpdater sharedUpdater];
+    [[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
+    [[SUUpdater sharedUpdater] setFeedURL:[NSURL URLWithString:@"https://s3.amazonaws.com/induction-appcasts/appcast.xml"]];
+    [[SUUpdater sharedUpdater] checkForUpdates:self];
+#endif
 
 }
 
@@ -42,7 +52,7 @@
            openFile:(NSString *)filename
 {
     // TODO test for connection before showing window
-    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"EMFConnectionWindow"];
     [connectionController showWindow:self];
     connectionController.configurationViewController.connectionURL = [NSURL fileURLWithPath:filename];
     [connectionController.configurationViewController connect:self];
@@ -62,7 +72,7 @@
 #pragma mark - IBAction
 
 - (IBAction)newWindow:(id)sender {
-    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"DBConnectionWindow"];
+    EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"EMFConnectionWindow"];
     [connectionController showWindow:self];
 }
 

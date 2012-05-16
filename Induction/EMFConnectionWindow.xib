@@ -86,7 +86,6 @@
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{2, 14}, {100, 25}}</string>
 									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<string key="NSReuseIdentifierKey">_NS:868</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSPopUpButtonCell" key="NSCell" id="991080079">
@@ -272,11 +271,10 @@
 					<object class="NSArray" key="NSToolbarIBDefaultItems">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference ref="547101595"/>
-						<reference ref="938362858"/>
+						<reference ref="955823810"/>
 						<reference ref="169747719"/>
 						<reference ref="514142173"/>
 						<reference ref="391220796"/>
-						<reference ref="955823810"/>
 					</object>
 					<object class="NSArray" key="NSToolbarIBSelectableItems" id="0">
 						<bool key="EncodedWithXMLCoder">YES</bool>
