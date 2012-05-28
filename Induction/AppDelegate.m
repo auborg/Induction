@@ -10,12 +10,14 @@
 
 #import "EMFConnectionWindowController.h"
 
-#ifndef SPARKLE
+#ifdef SPARKLE
 #import <Sparkle/Sparkle.h>
+#import "PFMoveApplication.h"
 #endif
 
 @implementation AppDelegate
 @synthesize window = _window;
+@synthesize checkForUpdatesMenuItem = _checkForUpdatesMenuItem;
 
 - (void)awakeFromNib {
     EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"EMFConnectionWindow"];
@@ -25,11 +27,11 @@
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-#ifndef SPARKLE
-    [SUUpdater sharedUpdater];
-    [[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
+#ifdef SPARKLE
+	PFMoveToApplicationsFolderIfNecessary();
+    [self.checkForUpdatesMenuItem setEnabled:YES];
+    [self.checkForUpdatesMenuItem setHidden:NO];
 #endif
-
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
@@ -68,6 +70,14 @@
 }
 
 #pragma mark - IBAction
+
+- (IBAction)checkForUpdates:(id)sender {
+#ifdef SPARKLE
+    [[SUUpdater sharedUpdater] setSendsSystemProfile:YES];
+    [[SUUpdater sharedUpdater] checkForUpdates:sender];
+#endifg
+}
+
 
 - (IBAction)newWindow:(id)sender {
     EMFConnectionWindowController *connectionController = [[EMFConnectionWindowController alloc] initWithWindowNibName:@"EMFConnectionWindow"];

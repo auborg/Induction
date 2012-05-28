@@ -47,6 +47,10 @@
 		F854FB3F14ECAB44009AEDAB /* EMFResultSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */; };
 		F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
 		F8662EEE14EC8E5B00F0520B /* EMFResultSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */; };
+		F86CEC5A1573189F00F6AD9E /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = F86CEC571573189F00F6AD9E /* NSString+SymlinksAndAliases.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F86CEC5B1573189F00F6AD9E /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = F86CEC591573189F00F6AD9E /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F86CEC5D157318C900F6AD9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5C157318C900F6AD9E /* Security.framework */; };
+		F86CEC5F157318CE00F6AD9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */; };
 		F873FC5014D7B9E9002C0ADC /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = F873FC4F14D7B9E9002C0ADC /* HTML */; };
 		F87EE37815082FC10023C67D /* PostgreSQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36515082F8E0023C67D /* PostgreSQLAdapter.bundle */; };
 		F87EE37915082FC10023C67D /* MySQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35C15082F810023C67D /* MySQLAdapter.bundle */; };
@@ -244,6 +248,12 @@
 		F8595FBC14C34BB100FD15BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFResultSetViewController.h; sourceTree = "<group>"; };
 		F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFResultSetViewController.m; sourceTree = "<group>"; };
+		F86CEC561573189F00F6AD9E /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
+		F86CEC571573189F00F6AD9E /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
+		F86CEC581573189F00F6AD9E /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		F86CEC591573189F00F6AD9E /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		F86CEC5C157318C900F6AD9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
 		F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MongoDBAdapter.xcodeproj; path = Adapters/MongoDBAdapter/MongoDBAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35415082F810023C67D /* MySQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MySQLAdapter.xcodeproj; path = Adapters/MySQLAdapter/MySQLAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -288,6 +298,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86CEC5F157318CE00F6AD9E /* SystemConfiguration.framework in Frameworks */,
+				F86CEC5D157318C900F6AD9E /* Security.framework in Frameworks */,
 				F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */,
 				F8ABFC6515601461005F0AA7 /* WebKit.framework in Frameworks */,
 				F8ABFC6615601461005F0AA7 /* libPods.a in Frameworks */,
@@ -310,6 +322,7 @@
 				F8202FBA14D0C2DC00950BAF /* Views */,
 				F8202F8E14D0C2DC00950BAF /* Controllers */,
 				F8202FD314D0C2E300950BAF /* Supporting Files */,
+				F86CEC541573189F00F6AD9E /* Vendor */,
 			);
 			path = Induction;
 			sourceTree = "<group>";
@@ -448,6 +461,8 @@
 		F8595FB614C34BB100FD15BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */,
+				F86CEC5C157318C900F6AD9E /* Security.framework */,
 				F8ABFC8415601474005F0AA7 /* Sparkle.framework */,
 				F852DCF514D3609A00C029C8 /* WebKit.framework */,
 				F8595FB714C34BB100FD15BE /* Cocoa.framework */,
@@ -465,6 +480,25 @@
 				F8595FBC14C34BB100FD15BE /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F86CEC541573189F00F6AD9E /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F86CEC551573189F00F6AD9E /* LetsMove */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F86CEC551573189F00F6AD9E /* LetsMove */ = {
+			isa = PBXGroup;
+			children = (
+				F86CEC561573189F00F6AD9E /* NSString+SymlinksAndAliases.h */,
+				F86CEC571573189F00F6AD9E /* NSString+SymlinksAndAliases.m */,
+				F86CEC581573189F00F6AD9E /* PFMoveApplication.h */,
+				F86CEC591573189F00F6AD9E /* PFMoveApplication.m */,
+			);
+			path = LetsMove;
 			sourceTree = "<group>";
 		};
 		F87EE34B15082F7C0023C67D /* Products */ = {
@@ -566,9 +600,9 @@
 			productReference = F8595FB314C34BB100FD15BE /* Induction.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F8ABFC4F15601461005F0AA7 /* Induction + Sparkle */ = {
+		F8ABFC4F15601461005F0AA7 /* Induction+Sparkle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F8ABFC7E15601461005F0AA7 /* Build configuration list for PBXNativeTarget "Induction + Sparkle" */;
+			buildConfigurationList = F8ABFC7E15601461005F0AA7 /* Build configuration list for PBXNativeTarget "Induction+Sparkle" */;
 			buildPhases = (
 				F8ABFC5015601461005F0AA7 /* Sources */,
 				F8ABFC6315601461005F0AA7 /* Frameworks */,
@@ -581,7 +615,7 @@
 			);
 			dependencies = (
 			);
-			name = "Induction + Sparkle";
+			name = "Induction+Sparkle";
 			productName = Induction;
 			productReference = F8ABFC8115601461005F0AA7 /* Induction.app */;
 			productType = "com.apple.product-type.application";
@@ -629,7 +663,7 @@
 			projectRoot = "";
 			targets = (
 				F8595FB214C34BB100FD15BE /* Induction */,
-				F8ABFC4F15601461005F0AA7 /* Induction + Sparkle */,
+				F8ABFC4F15601461005F0AA7 /* Induction+Sparkle */,
 				F81386731539731F003A83F9 /* Lies Damned Lies */,
 			);
 		};
@@ -797,7 +831,6 @@
 			files = (
 				F8ABFC5115601461005F0AA7 /* main.m in Sources */,
 				F8ABFC5215601461005F0AA7 /* AppDelegate.m in Sources */,
-				F8ABFC5315601461005F0AA7 /* DateCell.m in Sources */,
 				F8ABFC5415601461005F0AA7 /* EMFConnectionConfigurationViewController.m in Sources */,
 				F8ABFC5515601461005F0AA7 /* EMFExploreTableViewController.m in Sources */,
 				F8ABFC5615601461005F0AA7 /* EMFDatabaseViewController.m in Sources */,
@@ -813,6 +846,9 @@
 				F8ABFC6015601461005F0AA7 /* EMFResultSetSerializer.m in Sources */,
 				F8ABFC6115601461005F0AA7 /* EMFExportViewController.m in Sources */,
 				F8ABFC6215601461005F0AA7 /* NSIndexSet+BatchedEnumeration.m in Sources */,
+				F8ABFC5315601461005F0AA7 /* DateCell.m in Sources */,
+				F86CEC5A1573189F00F6AD9E /* NSString+SymlinksAndAliases.m in Sources */,
+				F86CEC5B1573189F00F6AD9E /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,8 +997,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
+					DEBUG,
+					SPARKLE,
 				);
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
@@ -988,7 +1024,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = SPARKLE;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
@@ -1032,7 +1068,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F8ABFC7E15601461005F0AA7 /* Build configuration list for PBXNativeTarget "Induction + Sparkle" */ = {
+		F8ABFC7E15601461005F0AA7 /* Build configuration list for PBXNativeTarget "Induction+Sparkle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F8ABFC7F15601461005F0AA7 /* Debug */,

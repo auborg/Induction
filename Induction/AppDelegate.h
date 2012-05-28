@@ -11,7 +11,10 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSMenuItem *checkForUpdatesMenuItem;
 
 - (IBAction)newWindow:(id)sender;
+- (IBAction)checkForUpdates:(id)sender;
+
 
 @end
