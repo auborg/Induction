@@ -109,10 +109,6 @@ Induction requires Xcode 4.2 or above, and targets Mac OS 10.7.
 
 Some adapters, such as for MySQL and MongoDB, require libraries not included in OS X by default. These can be installed separately using [Homebrew](http://mxcl.github.com/homebrew/) or another package manager, or by compiling from source.
 
-## Downloads
-
-Pre-compiled binaries of Induction are available in the [downloads](https://github.com/Induction/Induction/downloads) section of the repository. A more sustainable distribution strategy is actively being worked towards.
-
 ## Credit
 
 Induction was created by [Mattt Thompson](http://twitter.com/mattt/), with the help of his friends and colleagues at [Heroku](http://www.heroku.com/), particularly those on the [Heroku Postgres](https://postgres.heroku.com/) team.
