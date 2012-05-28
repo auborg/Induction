@@ -75,7 +75,7 @@
 #ifdef SPARKLE
     [[SUUpdater sharedUpdater] setSendsSystemProfile:YES];
     [[SUUpdater sharedUpdater] checkForUpdates:sender];
-#endifg
+#endif
 }
 
 
