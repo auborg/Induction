@@ -25,11 +25,9 @@
 #pragma mark - NSApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-#ifdef SPARKLE
+#ifndef SPARKLE
     [SUUpdater sharedUpdater];
     [[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:YES];
-    [[SUUpdater sharedUpdater] setFeedURL:[NSURL URLWithString:@"https://s3.amazonaws.com/induction-appcasts/appcast.xml"]];
-    [[SUUpdater sharedUpdater] checkForUpdates:self];
 #endif
 
 }
