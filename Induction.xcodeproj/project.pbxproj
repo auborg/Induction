@@ -23,6 +23,8 @@
 
 /* Begin PBXBuildFile section */
 		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
+		F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
+		F8129AF0158EB9D7009BFE23 /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
 		F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
 		F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
@@ -52,6 +54,8 @@
 		F86CEC5D157318C900F6AD9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5C157318C900F6AD9E /* Security.framework */; };
 		F86CEC5F157318CE00F6AD9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */; };
 		F873FC5014D7B9E9002C0ADC /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = F873FC4F14D7B9E9002C0ADC /* HTML */; };
+		F87D134D159269C400FD1087 /* Induction.icns in Resources */ = {isa = PBXBuildFile; fileRef = F87D134C159269C400FD1087 /* Induction.icns */; };
+		F87D134E159269CE00FD1087 /* Induction.icns in Resources */ = {isa = PBXBuildFile; fileRef = F87D134C159269C400FD1087 /* Induction.icns */; };
 		F87EE37815082FC10023C67D /* PostgreSQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36515082F8E0023C67D /* PostgreSQLAdapter.bundle */; };
 		F87EE37915082FC10023C67D /* MySQLAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35C15082F810023C67D /* MySQLAdapter.bundle */; };
 		F87EE37A15082FC10023C67D /* SQLiteAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE37715082F980023C67D /* SQLiteAdapter.bundle */; };
@@ -100,8 +104,6 @@
 		F8ABFC7A15601461005F0AA7 /* SQLiteAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE37715082F980023C67D /* SQLiteAdapter.bundle */; };
 		F8ABFC7B15601461005F0AA7 /* RedisAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36E15082F920023C67D /* RedisAdapter.bundle */; };
 		F8ABFC7C15601461005F0AA7 /* MongoDBAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35215082F7C0023C67D /* MongoDBAdapter.bundle */; };
-		F8ABFC8515601474005F0AA7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABFC8415601474005F0AA7 /* Sparkle.framework */; };
-		F8ABFC8715601486005F0AA7 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F8ABFC8415601474005F0AA7 /* Sparkle.framework */; };
 		F8ABFC8D15601AEC005F0AA7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */; };
 		F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB8F15347E070007712F /* EMFExportWindowController.m */; };
 		F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9115347E220007712F /* EMFExportWindow.xib */; };
@@ -167,6 +169,17 @@
 			name = "Copy Database Adapters";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8129AEF158EB9BE009BFE23 /* Copy Sparkle Framework */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F8129AF0158EB9D7009BFE23 /* Sparkle.framework in Copy Sparkle Framework */,
+			);
+			name = "Copy Sparkle Framework";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F813867D153976E1003A83F9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,21 +204,12 @@
 			name = "Copy Database Adapters";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8ABFC861560147A005F0AA7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F8ABFC8715601486005F0AA7 /* Sparkle.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8129AED158EB991009BFE23 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F8202F9414D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 		F86CEC5C157318C900F6AD9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
+		F87D134C159269C400FD1087 /* Induction.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Induction.icns; sourceTree = "<group>"; };
 		F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MongoDBAdapter.xcodeproj; path = Adapters/MongoDBAdapter/MongoDBAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35415082F810023C67D /* MySQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MySQLAdapter.xcodeproj; path = Adapters/MySQLAdapter/MySQLAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35D15082F8E0023C67D /* PostgreSQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PostgreSQLAdapter.xcodeproj; path = Adapters/PostgreSQLAdapter/PostgreSQLAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -265,8 +270,6 @@
 		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* EMFPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFPaginator.m; path = Induction/Helpers/EMFPaginator.m; sourceTree = SOURCE_ROOT; };
 		F8ABFC8115601461005F0AA7 /* Induction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Induction.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8ABFC8315601461005F0AA7 /* Induction copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Induction copy-Info.plist"; path = "/Users/mattt/Code/Induction/Induction copy-Info.plist"; sourceTree = "<absolute>"; };
-		F8ABFC8415601474005F0AA7 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Library/Frameworks/Sparkle.framework; sourceTree = DEVELOPER_DIR; };
 		F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		F8B3FB8E15347E070007712F /* EMFExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportWindowController.h; sourceTree = "<group>"; };
 		F8B3FB8F15347E070007712F /* EMFExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportWindowController.m; sourceTree = "<group>"; };
@@ -303,7 +306,7 @@
 				F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */,
 				F8ABFC6515601461005F0AA7 /* WebKit.framework in Frameworks */,
 				F8ABFC6615601461005F0AA7 /* libPods.a in Frameworks */,
-				F8ABFC8515601474005F0AA7 /* Sparkle.framework in Frameworks */,
+				F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +438,7 @@
 		F8595FA814C34BB100FD15BE = {
 			isa = PBXGroup;
 			children = (
+				F87D134C159269C400FD1087 /* Induction.icns */,
 				F8202F8B14D0C2DC00950BAF /* Induction */,
 				F8595FB614C34BB100FD15BE /* Frameworks */,
 				F8595FB414C34BB100FD15BE /* Products */,
@@ -445,7 +449,6 @@
 				F87EE36615082F920023C67D /* RedisAdapter.xcodeproj */,
 				F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */,
 				1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */,
-				F8ABFC8315601461005F0AA7 /* Induction copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -461,9 +464,9 @@
 		F8595FB614C34BB100FD15BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8129AED158EB991009BFE23 /* Sparkle.framework */,
 				F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */,
 				F86CEC5C157318C900F6AD9E /* Security.framework */,
-				F8ABFC8415601474005F0AA7 /* Sparkle.framework */,
 				F852DCF514D3609A00C029C8 /* WebKit.framework */,
 				F8595FB714C34BB100FD15BE /* Cocoa.framework */,
 				F8595FB914C34BB100FD15BE /* Other Frameworks */,
@@ -609,7 +612,7 @@
 				F8ABFC6715601461005F0AA7 /* Resources */,
 				F8ABFC7715601461005F0AA7 /* Copy Database Adapters */,
 				F8ABFC7D15601461005F0AA7 /* Copy Pods Resources */,
-				F8ABFC861560147A005F0AA7 /* CopyFiles */,
+				F8129AEF158EB9BE009BFE23 /* Copy Sparkle Framework */,
 			);
 			buildRules = (
 			);
@@ -727,6 +730,7 @@
 				F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */,
 				F8B3FB9715347FB00007712F /* EMFExportCSVView.xib in Resources */,
 				F8B3FC18153745330007712F /* EMFExportView.xib in Resources */,
+				F87D134D159269C400FD1087 /* Induction.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +754,7 @@
 				F8ABFC7515601461005F0AA7 /* EMFExportCSVView.xib in Resources */,
 				F8ABFC7615601461005F0AA7 /* EMFExportView.xib in Resources */,
 				F8ABFC8D15601AEC005F0AA7 /* dsa_pub.pem in Resources */,
+				F87D134E159269CE00FD1087 /* Induction.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +998,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
@@ -1021,6 +1027,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Induction/Prefix.pch;
