@@ -26,7 +26,6 @@
 		F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
 		F8129AF0158EB9D7009BFE23 /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
 		F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
-		F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
 		F8202FC214D0C2DC00950BAF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9714D0C2DC00950BAF /* MainMenu.xib */; };
 		F8202FC514D0C2DC00950BAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F9D14D0C2DC00950BAF /* main.m */; };
@@ -84,7 +83,6 @@
 		F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
 		F8ABFC6515601461005F0AA7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F852DCF514D3609A00C029C8 /* WebKit.framework */; };
 		F8ABFC6615601461005F0AA7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
-		F8ABFC6815601461005F0AA7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9314D0C2DC00950BAF /* Credits.rtf */; };
 		F8ABFC6915601461005F0AA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
 		F8ABFC6A15601461005F0AA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9714D0C2DC00950BAF /* MainMenu.xib */; };
 		F8ABFC6B15601461005F0AA7 /* EMFConnectionConfigurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */; };
@@ -212,7 +210,6 @@
 		F8129AED158EB991009BFE23 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F8202F9414D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F8202F9614D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8202F9814D0C2DC00950BAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F8202F9B14D0C2DC00950BAF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,7 +256,7 @@
 		F86CEC5C157318C900F6AD9E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F873FC4F14D7B9E9002C0ADC /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HTML; path = Induction/Resources/HTML; sourceTree = "<group>"; };
-		F87D134C159269C400FD1087 /* Induction.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Induction.icns; sourceTree = "<group>"; };
+		F87D134C159269C400FD1087 /* Induction.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Induction.icns; sourceTree = SOURCE_ROOT; };
 		F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MongoDBAdapter.xcodeproj; path = Adapters/MongoDBAdapter/MongoDBAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35415082F810023C67D /* MySQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MySQLAdapter.xcodeproj; path = Adapters/MySQLAdapter/MySQLAdapter.xcodeproj; sourceTree = "<group>"; };
 		F87EE35D15082F8E0023C67D /* PostgreSQLAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PostgreSQLAdapter.xcodeproj; path = Adapters/PostgreSQLAdapter/PostgreSQLAdapter.xcodeproj; sourceTree = "<group>"; };
@@ -363,12 +360,12 @@
 		F8202FD314D0C2E300950BAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F87D134C159269C400FD1087 /* Induction.icns */,
 				F8202F9B14D0C2DC00950BAF /* Info.plist */,
 				F8202F9C14D0C2DC00950BAF /* Prefix.pch */,
 				F8202F9D14D0C2DC00950BAF /* main.m */,
 				F8202F9514D0C2DC00950BAF /* InfoPlist.strings */,
 				F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */,
-				F8202F9314D0C2DC00950BAF /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -438,7 +435,6 @@
 		F8595FA814C34BB100FD15BE = {
 			isa = PBXGroup;
 			children = (
-				F87D134C159269C400FD1087 /* Induction.icns */,
 				F8202F8B14D0C2DC00950BAF /* Induction */,
 				F8595FB614C34BB100FD15BE /* Frameworks */,
 				F8595FB414C34BB100FD15BE /* Products */,
@@ -715,7 +711,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8202FC014D0C2DC00950BAF /* Credits.rtf in Resources */,
 				F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */,
 				F8202FC214D0C2DC00950BAF /* MainMenu.xib in Resources */,
 				F820300C14D20FF600950BAF /* EMFConnectionConfigurationView.xib in Resources */,
@@ -738,7 +733,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8ABFC6815601461005F0AA7 /* Credits.rtf in Resources */,
 				F8ABFC6915601461005F0AA7 /* InfoPlist.strings in Resources */,
 				F8ABFC6A15601461005F0AA7 /* MainMenu.xib in Resources */,
 				F8ABFC6B15601461005F0AA7 /* EMFConnectionConfigurationView.xib in Resources */,
@@ -860,14 +854,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F8202F9314D0C2DC00950BAF /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F8202F9414D0C2DC00950BAF /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 		F8202F9514D0C2DC00950BAF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
