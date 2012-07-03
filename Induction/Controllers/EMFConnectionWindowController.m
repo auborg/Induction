@@ -30,7 +30,9 @@
     _connection = connection;
     [self didChangeValueForKey:@"connection"];
     
-    self.databaseViewController.database = [(id <DBConnection>)self.connection database];
+    if ([(id <DBConnection>)self.connection database]) {
+        self.databaseViewController.database = [(id <DBConnection>)self.connection database];
+    }
     
     [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
     [self.window.toolbar setVisible:YES];
@@ -41,11 +43,9 @@
 #pragma mark - IBAction
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
-    NSLog(@"databasePopupButtonSelectionDidChange:%@", sender);
     id <DBDatabase> database = [[sender selectedItem] representedObject];
-    NSLog(@"db: %@", database);
     [self.connection connectToDatabase:database error:nil];
-    
+        
     self.databaseViewController.database = [(id <DBConnection>)self.connection database];
 //    [self.databaseViewController explore:nil];
 }
