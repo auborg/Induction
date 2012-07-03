@@ -68,7 +68,8 @@
 }
 
 - (IBAction)save:(id)sender {
-    NSSavePanel *savePanel = [NSSavePanel savePanel];    
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    [savePanel setNameFieldStringValue:[[self.delegate.dataSource name] stringByAppendingPathExtension:@"csv"]];
     [savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSURL *fileURL = [savePanel URL];
