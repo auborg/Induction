@@ -102,7 +102,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @interface EMFConnectionConfigurationViewController ()
 @property (readwrite, nonatomic, getter = isConnecting) BOOL connecting;
 
-- (void)bindURLParameterTextField:(NSTextField *)textField;
+- (void)bindURLParameterControl:(NSControl *)control;
 @end
 
 @implementation EMFConnectionConfigurationViewController
@@ -121,9 +121,12 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 @synthesize connectionProgressIndicator = _connectionProgressIndicator;
 
 - (void)awakeFromNib {
-    for (NSTextField *field in [NSArray arrayWithObjects:self.URLField, self.schemePopupButton, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
-        [self bindURLParameterTextField:field];
+    for (NSControl *control in [NSArray arrayWithObjects:self.URLField, self.hostnameField, self.usernameField, self.passwordField, self.portField, self.databaseField, nil]) {
+        [self bindURLParameterControl:control];
     }
+    
+    self.schemePopupButton.target = self;
+    self.schemePopupButton.action = @selector(schemePopupButtonDidChange:);
     
     for (NSString *path in [[NSBundle mainBundle] pathsForResourcesOfType:@"bundle" inDirectory:@"../PlugIns/Adapters"]) {
         NSBundle *bundle = [NSBundle bundleWithPath:path];
@@ -133,11 +136,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
             [self.schemePopupButton addItemWithTitle:[[bundle principalClass] primaryURLScheme]];
         }
     }
-    
-    self.hostnameField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
-    self.usernameField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
-    self.databaseField.formatter = [[EMFDatabaseParameterFormatter alloc] init];
-    
+
     // TODO Check against registered adapters to detect appropriate URL on pasteboard
     NSURL *pasteboardURL = [NSURL URLWithString:[[NSPasteboard generalPasteboard] stringForType:NSPasteboardTypeString]];
     if (pasteboardURL && [[pasteboardURL scheme] length] > 0 && ![[pasteboardURL scheme] hasPrefix:@"http"]) {
@@ -146,24 +145,25 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         self.connectionURL = [[NSUserDefaults standardUserDefaults] URLForKey:kInductionPreviousConnectionURLKey];
     }
     
+    // TODO Make less hacky
+    [self.schemePopupButton selectItemWithTitle:[self.connectionURL scheme]];
+    
     [self.URLField becomeFirstResponder];
 }
 
-- (void)bindURLParameterTextField:(NSTextField *)textField {
-    if ([textField isEqual:self.URLField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL" options:[NSDictionary dictionaryWithObject:NSStringFromClass([DBRemovePasswordURLValueTransformer class]) forKey:NSValueTransformerNameBindingOption]];
-    } else if ([textField isEqual:self.schemePopupButton]) {
-        [textField bind:@"selectedObject" toObject:self withKeyPath:@"connectionURL.scheme" options:nil];
-    } else if ([textField isEqual:self.hostnameField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.host" options:nil];
-    } else if ([textField isEqual:self.usernameField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.user" options:nil];
-    } else if ([textField isEqual:self.passwordField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.password" options:nil];
-    } else if ([textField isEqual:self.portField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.port" options:nil];
-    } else if ([textField isEqual:self.databaseField]) {
-        [textField bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.path" options:nil];
+- (void)bindURLParameterControl:(NSControl *)control {
+    if ([control isEqual:self.URLField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL" options:[NSDictionary dictionaryWithObject:NSStringFromClass([DBRemovePasswordURLValueTransformer class]) forKey:NSValueTransformerNameBindingOption]];
+    } else if ([control isEqual:self.hostnameField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.host" options:nil];
+    } else if ([control isEqual:self.usernameField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.user" options:nil];
+    } else if ([control isEqual:self.passwordField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.password" options:nil];
+    } else if ([control isEqual:self.portField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.port" options:nil];
+    } else if ([control isEqual:self.databaseField]) {
+        [control bind:@"objectValue" toObject:self withKeyPath:@"connectionURL.path" options:nil];
     }
 }
 
@@ -183,7 +183,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
             if ([adapter canConnectToURL:self.connectionURL]) {
                 [adapter connectToURL:self.connectionURL success:^(id <DBConnection> connection) {
                     [[NSUserDefaults standardUserDefaults] setURL:self.connectionURL forKey:kInductionPreviousConnectionURLKey];
-                    [self.delegate connectionConfigurationControllerDidConnectWithConnection:connection];
+                    [self.delegate connectionConfigurationController:self didConnectWithConnection:connection];
                 } failure:^(NSError *error){
                     self.connecting = NO;
                     
@@ -197,9 +197,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 }
 
 - (void)setConnecting:(BOOL)connecting {
-    [self willChangeValueForKey:@"isConnecting"];
     _connecting = connecting;
-    [self didChangeValueForKey:@"isConnecting"];
     
     if ([self isConnecting]) {
         [self.connectionProgressIndicator startAnimation:self];
@@ -208,17 +206,23 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     }
 }
 
-#pragma mark - NSTextFieldDelegate
+#pragma mark -
+
+- (void)schemePopupButtonDidChange:(id)sender {
+    self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
+}
+
+#pragma mark - NSControl Delegate Methods
 
 - (void)controlTextDidBeginEditing:(NSNotification *)notification {
-    NSTextField *textField = [notification object];
-    [textField unbind:@"objectValue"];
+    NSControl *control = [notification object];
+    [control unbind:@"objectValue"];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
-    NSTextField *textField = [notification object];
+    NSControl *control = [notification object];
     
-    if ([textField isEqual:self.URLField]) {
+    if ([control isEqual:self.URLField]) {
         NSURL *url = [NSURL URLWithString:[self.URLField stringValue]];
         
         NSString *scheme = [url scheme];
@@ -238,11 +242,14 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification {
-    NSTextField *textField = [notification object];
+    NSControl *control = [notification object];
     
-    if ([textField isEqual:self.URLField]) {
+    if ([control isEqual:self.URLField]) {
         NSURL *url = [NSURL URLWithString:[self.URLField stringValue]];
-        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([[self.schemePopupButton selectedCell] title], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
+        
+        [self.schemePopupButton selectItemWithTitle:[url scheme]];
+        
+        self.connectionURL = [NSURL URLWithString:DBURLStringFromComponents([self.schemePopupButton titleOfSelectedItem], [self.hostnameField stringValue], [self.usernameField stringValue], [self.passwordField stringValue], [NSNumber numberWithInteger:[self.portField integerValue]], [self.databaseField stringValue])];
         
         if ([[url scheme] isEqualToString:@"postgres"]) {
             [[self.portField cell] setPlaceholderString:@"5432"];
@@ -253,7 +260,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
         }
     }
     
-    [self bindURLParameterTextField:textField];
+    [self bindURLParameterControl:control];
 }
 
 

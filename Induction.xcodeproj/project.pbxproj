@@ -629,7 +629,7 @@
 		F8595FAA14C34BB100FD15BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */;
 			compatibilityVersion = "Xcode 3.2";

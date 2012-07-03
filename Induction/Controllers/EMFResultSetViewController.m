@@ -72,7 +72,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 @property (readonly) id <DBRecord> clickedRecord;
 @property (readonly) id clickedValue;
 
-- (void)doubleClick:(id)sender;
+- (IBAction)doubleClick:(id)sender;
 
 @end
 

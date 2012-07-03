@@ -14,7 +14,8 @@
 
 @protocol EMFConnectionConfigurationViewControllerProtocol <NSObject>
 @required
-- (void)connectionConfigurationControllerDidConnectWithConnection:(id <DBConnection>)connection;
+- (void)connectionConfigurationController:(EMFConnectionConfigurationViewController *)controller 
+                 didConnectWithConnection:(id <DBConnection>)connection;
 @end
 
 @interface EMFConnectionConfigurationViewController : NSViewController <NSTextFieldDelegate>

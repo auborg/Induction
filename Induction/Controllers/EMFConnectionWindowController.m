@@ -64,7 +64,9 @@
 
 #pragma mark - DBConnectionConfigurationViewControllerProtocol
 
-- (void)connectionConfigurationControllerDidConnectWithConnection:(id)connection {
+- (void)connectionConfigurationController:(EMFConnectionConfigurationViewController *)controller 
+                 didConnectWithConnection:(id <DBConnection>)connection
+{
     self.connection = connection;
 }
 
