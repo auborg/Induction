@@ -102,7 +102,6 @@
 		F8ABFC7A15601461005F0AA7 /* SQLiteAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE37715082F980023C67D /* SQLiteAdapter.bundle */; };
 		F8ABFC7B15601461005F0AA7 /* RedisAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE36E15082F920023C67D /* RedisAdapter.bundle */; };
 		F8ABFC7C15601461005F0AA7 /* MongoDBAdapter.bundle in Copy Database Adapters */ = {isa = PBXBuildFile; fileRef = F87EE35215082F7C0023C67D /* MongoDBAdapter.bundle */; };
-		F8ABFC8D15601AEC005F0AA7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */; };
 		F8B3FB9015347E070007712F /* EMFExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB8F15347E070007712F /* EMFExportWindowController.m */; };
 		F8B3FB9215347E220007712F /* EMFExportWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FB9115347E220007712F /* EMFExportWindow.xib */; };
 		F8B3FB9615347FB00007712F /* EMFExportCSVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FB9415347FB00007712F /* EMFExportCSVViewController.m */; };
@@ -267,7 +266,6 @@
 		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* EMFPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFPaginator.m; path = Induction/Helpers/EMFPaginator.m; sourceTree = SOURCE_ROOT; };
 		F8ABFC8115601461005F0AA7 /* Induction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Induction.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		F8B3FB8E15347E070007712F /* EMFExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExportWindowController.h; sourceTree = "<group>"; };
 		F8B3FB8F15347E070007712F /* EMFExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExportWindowController.m; sourceTree = "<group>"; };
 		F8B3FB9115347E220007712F /* EMFExportWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportWindow.xib; sourceTree = "<group>"; };
@@ -365,7 +363,6 @@
 				F8202F9C14D0C2DC00950BAF /* Prefix.pch */,
 				F8202F9D14D0C2DC00950BAF /* main.m */,
 				F8202F9514D0C2DC00950BAF /* InfoPlist.strings */,
-				F8ABFC8C15601AEC005F0AA7 /* dsa_pub.pem */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -747,7 +744,6 @@
 				F8ABFC7415601461005F0AA7 /* EMFExportWindow.xib in Resources */,
 				F8ABFC7515601461005F0AA7 /* EMFExportCSVView.xib in Resources */,
 				F8ABFC7615601461005F0AA7 /* EMFExportView.xib in Resources */,
-				F8ABFC8D15601AEC005F0AA7 /* dsa_pub.pem in Resources */,
 				F87D134E159269CE00FD1087 /* Induction.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -52,6 +52,6 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://induction.mesmerizeapp.com/</string>
+	<string>https://induction.mesmerizeapp.com/</string>
 </dict>
 </plist>
