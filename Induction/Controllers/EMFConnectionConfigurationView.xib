@@ -549,7 +549,7 @@
 			<object class="NSUserDefaultsController" id="158882453">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
-			<object class="IBCustomFormatter" id="917429881"/>
+			<object class="IBCustomFormatter" id="979979074"/>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -666,6 +666,14 @@
 					<int key="connectionID">513</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">formatter</string>
+						<reference key="source" ref="583451270"/>
+						<reference key="destination" ref="979979074"/>
+					</object>
+					<int key="connectionID">522</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">enabled: connectionURL</string>
 						<reference key="source" ref="302366338"/>
@@ -761,7 +769,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">formatter</string>
 						<reference key="source" ref="230546008"/>
-						<reference key="destination" ref="917429881"/>
+						<reference key="destination" ref="979979074"/>
 					</object>
 					<int key="connectionID">519</int>
 				</object>
@@ -785,7 +793,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">formatter</string>
 						<reference key="source" ref="916270502"/>
-						<reference key="destination" ref="917429881"/>
+						<reference key="destination" ref="979979074"/>
 					</object>
 					<int key="connectionID">518</int>
 				</object>
@@ -2262,7 +2270,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">516</int>
-						<reference key="object" ref="917429881"/>
+						<reference key="object" ref="979979074"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -2463,7 +2471,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">521</int>
+			<int key="maxID">522</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
