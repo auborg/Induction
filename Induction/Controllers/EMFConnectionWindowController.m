@@ -58,7 +58,7 @@
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
     id <DBDatabase> database = [[sender selectedItem] representedObject];
-    [self.connection connectToDatabase:database error:nil];
+    [self.connection connectionBySelectingDatabase:database];
         
     self.databaseViewController.database = [(id <DBConnection>)self.connection database];
 //    [self.databaseViewController explore:nil];

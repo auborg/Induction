@@ -263,6 +263,7 @@
 		F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLiteAdapter.xcodeproj; path = Adapters/SQLiteAdapter/SQLiteAdapter.xcodeproj; sourceTree = "<group>"; };
 		F888F57C14DB40990094B805 /* SQLSyntaxHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLSyntaxHighlighter.h; sourceTree = "<group>"; };
 		F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLSyntaxHighlighter.m; sourceTree = "<group>"; };
+		F88BA90115A3F089005DFDCE /* Induction.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Induction.entitlements; sourceTree = "<group>"; };
 		F8A2C41A14F5CFC10093682A /* EMFPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFPaginator.h; path = Induction/Helpers/EMFPaginator.h; sourceTree = SOURCE_ROOT; };
 		F8A2C41B14F5CFC10093682A /* EMFPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFPaginator.m; path = Induction/Helpers/EMFPaginator.m; sourceTree = SOURCE_ROOT; };
 		F8ABFC8115601461005F0AA7 /* Induction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Induction.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,6 +312,7 @@
 		F8202F8B14D0C2DC00950BAF /* Induction */ = {
 			isa = PBXGroup;
 			children = (
+				F88BA90115A3F089005DFDCE /* Induction.entitlements */,
 				F8202F8C14D0C2DC00950BAF /* AppDelegate.h */,
 				F8202F8D14D0C2DC00950BAF /* AppDelegate.m */,
 				F8202F9714D0C2DC00950BAF /* MainMenu.xib */,
@@ -934,6 +936,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -944,7 +948,10 @@
 					"$(PODS_ROOT)/Headers/**",
 				);
 				INFOPLIST_FILE = Induction/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
+				);
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
@@ -955,6 +962,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -965,7 +974,10 @@
 					"$(PODS_ROOT)/Headers/**",
 				);
 				INFOPLIST_FILE = Induction/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
+				);
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
@@ -994,7 +1006,10 @@
 					"$(PODS_ROOT)/Headers/**",
 				);
 				INFOPLIST_FILE = Induction/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
+				);
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
@@ -1020,7 +1035,10 @@
 					"$(PODS_ROOT)/Headers/**",
 				);
 				INFOPLIST_FILE = Induction/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
+				);
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
