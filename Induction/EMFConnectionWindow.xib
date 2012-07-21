@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11D50b</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.32</string>
-		<string key="IBDocument.HIToolboxVersion">568.00</string>
+		<int key="IBDocument.SystemTarget">1080</int>
+		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
+		<string key="IBDocument.AppKitVersion">1187</string>
+		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1938</string>
+			<string key="NS.object.0">2549</string>
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>NSView</string>
+			<string>NSCustomObject</string>
 			<string>NSMenu</string>
-			<string>NSWindowTemplate</string>
-			<string>NSToolbarItem</string>
-			<string>NSToolbarSpaceItem</string>
-			<string>NSToolbar</string>
-			<string>NSViewController</string>
 			<string>NSPopUpButton</string>
 			<string>NSPopUpButtonCell</string>
+			<string>NSToolbar</string>
 			<string>NSToolbarFlexibleSpaceItem</string>
-			<string>NSCustomObject</string>
+			<string>NSToolbarItem</string>
+			<string>NSToolbarSpaceItem</string>
+			<string>NSView</string>
+			<string>NSViewController</string>
+			<string>NSWindowTemplate</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -72,7 +72,7 @@
 							<string>NSToolbarFlexibleSpaceItem</string>
 							<string>NSToolbarSpaceItem</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="NSToolbarItem" id="547101595">
 								<object class="NSMutableString" key="NSToolbarItemIdentifier">
@@ -82,14 +82,13 @@
 								<string key="NSToolbarItemPaletteLabel">Database Selector</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSPopUpButton" key="NSToolbarItemView" id="586497695">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{2, 14}, {100, 25}}</string>
-									<reference key="NSSuperview"/>
 									<string key="NSReuseIdentifierKey">_NS:868</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSPopUpButtonCell" key="NSCell" id="991080079">
-										<int key="NSCellFlags">-2080244160</int>
+										<int key="NSCellFlags">-2080374720</int>
 										<int key="NSCellFlags2">2048</int>
 										<object class="NSFont" key="NSSupport" id="163193631">
 											<string key="NSName">LucidaGrande</string>
@@ -98,7 +97,7 @@
 										</object>
 										<string key="NSCellIdentifier">_NS:868</string>
 										<reference key="NSControlView" ref="586497695"/>
-										<int key="NSButtonFlags">-2038284033</int>
+										<int key="NSButtonFlags">-2038284288</int>
 										<int key="NSButtonFlags2">163</int>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>
@@ -119,6 +118,7 @@
 										<bool key="NSAltersState">YES</bool>
 										<int key="NSArrowPosition">2</int>
 									</object>
+									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
 								<nil key="NSToolbarItemImage"/>
 								<nil key="NSToolbarItemTarget"/>
@@ -553,7 +553,7 @@
 					<string>8.IBPluginDependency</string>
 					<string>9.IBPluginDependency</string>
 				</object>
-				<object class="NSMutableArray" key="dict.values">
+				<object class="NSArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -622,7 +622,7 @@
 							<string>databaseViewController</string>
 							<string>databasesPopUpButton</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EMFDatabaseViewController</string>
 							<string>NSPopUpButton</string>
@@ -635,7 +635,7 @@
 							<string>databaseViewController</string>
 							<string>databasesPopUpButton</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">databaseViewController</string>
@@ -663,7 +663,7 @@
 							<string>query:</string>
 							<string>visualize:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
@@ -678,7 +678,7 @@
 							<string>query:</string>
 							<string>visualize:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">explore:</string>
@@ -706,7 +706,7 @@
 							<string>toolbar</string>
 							<string>visualizeViewController</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSToolbarItem</string>
 							<string>EMFExploreTableViewController</string>
@@ -729,7 +729,7 @@
 							<string>toolbar</string>
 							<string>visualizeViewController</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">databasesToolbarItem</string>
@@ -776,7 +776,7 @@
 							<string>changePage:</string>
 							<string>exportDocument:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
 							<string>id</string>
@@ -789,7 +789,7 @@
 							<string>changePage:</string>
 							<string>exportDocument:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">changePage:</string>
@@ -811,7 +811,7 @@
 							<string>resultSetViewController</string>
 							<string>rightArrowPageButton</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSBox</string>
 							<string>NSButton</string>
@@ -830,7 +830,7 @@
 							<string>resultSetViewController</string>
 							<string>rightArrowPageButton</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">contentBox</string>
@@ -883,7 +883,7 @@
 							<string>resultsTableViewController</string>
 							<string>textView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSBox</string>
 							<string>EMFDatabaseViewController</string>
@@ -902,7 +902,7 @@
 							<string>resultsTableViewController</string>
 							<string>textView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">contentBox</string>
@@ -942,10 +942,12 @@
 							<string>copyAsTSV:</string>
 							<string>copyAsXML:</string>
 							<string>decrementFontSize:</string>
+							<string>doubleClick:</string>
 							<string>incrementFontSize:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -961,9 +963,10 @@
 							<string>copyAsTSV:</string>
 							<string>copyAsXML:</string>
 							<string>decrementFontSize:</string>
+							<string>doubleClick:</string>
 							<string>incrementFontSize:</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">copyAsJSON:</string>
@@ -982,6 +985,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">doubleClick:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">incrementFontSize:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -994,7 +1001,7 @@
 							<string>outlineView</string>
 							<string>popover</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSOutlineView</string>
 							<string>NSPopover</string>
@@ -1007,7 +1014,7 @@
 							<string>outlineView</string>
 							<string>popover</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">outlineView</string>
@@ -1046,7 +1053,7 @@
 							<string>textView</string>
 							<string>webView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPopUpButton</string>
 							<string>NSTextView</string>
@@ -1061,7 +1068,7 @@
 							<string>textView</string>
 							<string>webView</string>
 						</object>
-						<object class="NSMutableArray" key="dict.values">
+						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">chartPopUpButton</string>
@@ -1146,7 +1153,7 @@
 				<string>NSMenuMixedState</string>
 				<string>NSPathTemplate</string>
 			</object>
-			<object class="NSMutableArray" key="dict.values">
+			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{15, 13}</string>
 				<string>{11, 10}</string>

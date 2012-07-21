@@ -38,7 +38,7 @@ static NSString * DBURLStringFromComponents(NSString *scheme, NSString *host, NS
     }
     
     if (port && [port integerValue] > 0) {
-        [mutableURLString appendFormat:@":%d", [port integerValue]];
+        [mutableURLString appendFormat:@":%ld", [port integerValue]];
     }
     
     if (database && [database length] > 0 && [host length] > 0) {
