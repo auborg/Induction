@@ -109,6 +109,18 @@ Induction requires Xcode 4.2 or above, and targets Mac OS 10.7.
 
 Some adapters, such as for MySQL and MongoDB, require libraries not included in OS X by default. These can be installed separately using [Homebrew](http://mxcl.github.com/homebrew/) or another package manager, or by compiling from source.
 
+## Getting Started
+
+Induction uses [CocoaPods](https://github.com/CocoaPods/CocoaPods) to manage dependencies, so be sure to have that installed before attempting to build the project.
+
+``` bash
+$ git clone git://github.com/Induction/Induction.git
+$ cd Induction
+$ git submodule init
+$ git submodule update
+$ pod install
+```
+
 ## Credit
 
 Induction was created by [Mattt Thompson](http://twitter.com/mattt/), with the help of his friends and colleagues at [Heroku](http://www.heroku.com/), particularly those on the [Heroku Postgres](https://postgres.heroku.com/) team.
