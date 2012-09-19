@@ -624,7 +624,7 @@
 		F8595FAA14C34BB100FD15BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -874,6 +874,7 @@
 		F81386751539731F003A83F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -881,6 +882,7 @@
 		F81386761539731F003A83F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -938,6 +940,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -964,6 +967,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -988,6 +992,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1020,6 +1025,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
