@@ -34,21 +34,30 @@
 
 - (void)awakeFromNib {
     self.textView.font = [NSFont userFixedPitchFontOfSize:18.0f];
+    self.elapsedTimeLabel.stringValue = @"";
         
     _lineNumberView = [[NoodleLineNumberView alloc] initWithScrollView:[self.textView enclosingScrollView]];
     _lineNumberView.backgroundColor = [NSColor whiteColor];
     [[self.textView enclosingScrollView] setVerticalRulerView:_lineNumberView];
     [[self.textView enclosingScrollView] setHasHorizontalRuler:NO];
     [[self.textView enclosingScrollView] setHasVerticalRuler:YES];
-    [[self.textView enclosingScrollView] setRulersVisible:YES];	
+    [[self.textView enclosingScrollView] setRulersVisible:YES];
 }
 
 #pragma mark - IBAction
 
 - (IBAction)execute:(id)sender {
+    static NSNumberFormatter * _elapsedTimeNumberFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _elapsedTimeNumberFormatter = [[NSNumberFormatter alloc] init];
+        _elapsedTimeNumberFormatter.locale = [NSLocale autoupdatingCurrentLocale];
+        [_elapsedTimeNumberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    });
+    
     [(id <DBQueryableDataSource>)self.representedObject fetchResultSetForQuery:[self.textView string] success:^(id<DBResultSet> resultSet, NSTimeInterval elapsedTime) {
         self.resultsViewController.representedObject = resultSet;
-        self.elapsedTimeLabel.stringValue = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithDouble:elapsedTime] numberStyle:NSNumberFormatterDecimalStyle];
+        self.elapsedTimeLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Elapsed Time: %@ seconds", nil), [_elapsedTimeNumberFormatter stringFromNumber:[NSNumber numberWithDouble:elapsedTime]]];
     } failure:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];
