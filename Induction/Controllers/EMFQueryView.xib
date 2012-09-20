@@ -50,7 +50,6 @@
 						<string key="NSFrame">{{660, 1}, {39, 38}}</string>
 						<reference key="NSSuperview" ref="347522371"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:687</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="1042715613">
@@ -79,6 +78,7 @@
 						<string key="NSFrame">{{27, 15}, {286, 17}}</string>
 						<reference key="NSSuperview" ref="347522371"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="628175123"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="167246797">
@@ -302,7 +302,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<string key="NSFrameSize">{0, 214}</string>
 												<reference key="NSSuperview" ref="244629845"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="628175123"/>
+												<reference key="NSNextKeyView" ref="781383266"/>
 												<string key="NSReuseIdentifierKey">_NS:13</string>
 												<object class="NSTextContainer" key="NSTextContainer" id="817300404">
 													<object class="NSLayoutManager" key="NSLayoutManager">
