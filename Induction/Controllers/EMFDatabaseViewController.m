@@ -55,6 +55,11 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
     // TODO: I'm sure there's a correct way to do this
     [[self.resultSetViewController.outlineView enclosingScrollView] setNextResponder:self];
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSOutlineViewSelectionDidChangeNotification object:self.resultSetViewController.outlineView queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *notification) {
+        NSOutlineView *outlineView = notification.object;
+        self.visualizeViewController.representedObject = outlineView.selectedRowIndexes;
+    }];
+    
     @try {
         [self.dataSourceOutlineView expandItem:nil expandChildren:YES];
     }

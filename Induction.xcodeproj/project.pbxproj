@@ -328,9 +328,9 @@
 				F842904F14F30F1500B1CDFB /* Connection */,
 				F842905014F30F1F00B1CDFB /* Database */,
 				F842905114F30F2700B1CDFB /* Result Set */,
-				F8B3FB8D15347DAC0007712F /* Export */,
 				F842905214F30F2F00B1CDFB /* Query */,
 				F842905314F30F3900B1CDFB /* Visualize */,
+				F8B3FB8D15347DAC0007712F /* Export */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

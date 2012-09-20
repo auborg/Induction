@@ -27,10 +27,6 @@
 
 @interface EMFVisualizeViewController : NSViewController
 
-@property (strong, nonatomic) IBOutlet NSTextView *textView;
-@property (strong, nonatomic) IBOutlet NSPopUpButton *chartPopUpButton;
 @property (strong, nonatomic) IBOutlet WebView *webView;
-
-- (IBAction)visualize:(id)sender;
 
 @end
