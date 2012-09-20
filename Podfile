@@ -1,10 +1,11 @@
 platform :osx
 
-dependency 'AFNetworking', '0.9.1'
-dependency 'FormatterKit', '0.7.0'
-dependency 'ISO8601DateFormatter', '0.6'
+pod 'AFNetworking', '1.0'
+pod 'FormatterKit', '1.0.1'
+pod 'ISO8601DateFormatter', '0.6'
+pod 'CorePlot', '1.0'
 
-dependency do |spec|
+pod do |spec|
   spec.name         = 'NoodleKit'
   spec.version      = '0.0.1'
   spec.source       = { :git => 'https://github.com/mattt/NoodleKit.git',
@@ -12,4 +13,13 @@ dependency do |spec|
                       }
   spec.source_files = '*.{h,m}'
   spec.clean_paths  = %w{English.lproj Examples NoodleKit.xcodeproj Info.plist README.md version.plist}
+end
+
+pod do |spec|
+  spec.name         = "DMInspectorPalette"
+  spec.version      = '0.0.1'
+  spec.source       = {
+                        :git => 'https://github.com/malcommac/DMInspectorPalette.git'
+                      }
+  spec.source_files = 'DMInspectorPalette/core'
 end
