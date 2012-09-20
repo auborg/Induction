@@ -29,7 +29,7 @@
 #import "NoodleLineNumberView.h"
 
 @implementation EMFQueryViewController {
-    __strong NoodleLineNumberView *_lineNumberView;
+    NoodleLineNumberView *_lineNumberView;
 }
 
 - (void)awakeFromNib {
@@ -46,9 +46,9 @@
 #pragma mark - IBAction
 
 - (IBAction)execute:(id)sender {
-    NSLog(@"EXECUTE: %@", self.resultsViewController);
     [(id <DBQueryableDataSource>)self.representedObject fetchResultSetForQuery:[self.textView string] success:^(id<DBResultSet> resultSet, NSTimeInterval elapsedTime) {
         self.resultsViewController.representedObject = resultSet;
+        self.elapsedTimeLabel.stringValue = [NSNumberFormatter localizedStringFromNumber:[NSNumber numberWithDouble:elapsedTime] numberStyle:NSNumberFormatterDecimalStyle];
     } failure:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];

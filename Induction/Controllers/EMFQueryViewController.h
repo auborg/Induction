@@ -32,6 +32,7 @@
 @property (strong) IBOutlet EMFResultSetViewController *resultsViewController;
 @property (strong) IBOutlet NSTextView *textView;
 @property (strong) IBOutlet NoodleLineNumberView *lineNumberView;
+@property (weak) IBOutlet NSTextField *elapsedTimeLabel;
 
 - (IBAction)execute:(id)sender;
 
