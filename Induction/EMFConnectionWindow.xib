@@ -86,6 +86,8 @@
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{2, 14}, {100, 25}}</string>
 									<reference key="NSSuperview"/>
+									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:868</string>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSPopUpButtonCell" key="NSCell" id="991080079">
@@ -132,26 +134,28 @@
 								<bool key="NSToolbarIsUserRemovable">YES</bool>
 								<int key="NSToolbarItemVisibilityPriority">0</int>
 							</object>
-							<object class="NSToolbarItem" id="729814042">
+							<object class="NSToolbarItem" id="1063226698">
 								<object class="NSMutableString" key="NSToolbarItemIdentifier">
 									<characters key="NS.bytes">6F7146F9-CF60-4605-AD96-02EEAAC606B3</characters>
 								</object>
-								<string key="NSToolbarItemLabel">Custom View</string>
-								<string key="NSToolbarItemPaletteLabel">Custom View</string>
+								<string key="NSToolbarItemLabel"/>
+								<string key="NSToolbarItemPaletteLabel"/>
 								<nil key="NSToolbarItemToolTip"/>
-								<object class="NSSegmentedControl" key="NSToolbarItemView" id="310643849">
+								<object class="NSSegmentedControl" key="NSToolbarItemView" id="452619354">
 									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{0, 14}, {188, 23}}</string>
+									<string key="NSFrame">{{0, 14}, {188, 25}}</string>
 									<reference key="NSSuperview"/>
+									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<bool key="NSEnabled">YES</bool>
-									<object class="NSSegmentedCell" key="NSCell" id="873383377">
+									<object class="NSSegmentedCell" key="NSCell" id="34978664">
 										<int key="NSCellFlags">67108864</int>
 										<int key="NSCellFlags2">0</int>
 										<reference key="NSSupport" ref="163193631"/>
 										<string key="NSCellIdentifier">_NS:9</string>
-										<reference key="NSControlView" ref="310643849"/>
+										<reference key="NSControlView" ref="452619354"/>
 										<object class="NSMutableArray" key="NSSegmentImages">
 											<bool key="EncodedWithXMLCoder">YES</bool>
 											<object class="NSSegmentItem">
@@ -168,15 +172,15 @@
 										</object>
 										<int key="NSSelectedSegment">1</int>
 										<int key="NSTrackingMode">1</int>
-										<int key="NSSegmentStyle">5</int>
+										<int key="NSSegmentStyle">2</int>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
 								<nil key="NSToolbarItemImage"/>
 								<nil key="NSToolbarItemTarget"/>
 								<nil key="NSToolbarItemAction"/>
-								<string key="NSToolbarItemMinSize">{71, 20}</string>
-								<string key="NSToolbarItemMaxSize">{188, 25}</string>
+								<string key="NSToolbarItemMinSize">{71, 30}</string>
+								<string key="NSToolbarItemMaxSize">{188, 30}</string>
 								<bool key="NSToolbarItemEnabled">YES</bool>
 								<bool key="NSToolbarItemAutovalidates">YES</bool>
 								<int key="NSToolbarItemTag">0</int>
@@ -250,13 +254,13 @@
 						<reference ref="938362858"/>
 						<reference ref="955823810"/>
 						<reference ref="547101595"/>
-						<reference ref="729814042"/>
+						<reference ref="1063226698"/>
 					</object>
 					<object class="NSMutableArray" key="NSToolbarIBDefaultItems">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<reference ref="547101595"/>
 						<reference ref="955823810"/>
-						<reference ref="729814042"/>
+						<reference ref="1063226698"/>
 					</object>
 					<object class="NSArray" key="NSToolbarIBSelectableItems" id="0">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -407,7 +411,7 @@
 							<reference ref="938362858"/>
 							<reference ref="955823810"/>
 							<reference ref="547101595"/>
-							<reference ref="729814042"/>
+							<reference ref="1063226698"/>
 						</object>
 						<reference key="parent" ref="1005"/>
 					</object>
@@ -463,26 +467,26 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">51</int>
-						<reference key="object" ref="729814042"/>
+						<reference key="object" ref="1063226698"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="310643849"/>
+							<reference ref="452619354"/>
 						</object>
 						<reference key="parent" ref="775443154"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">49</int>
-						<reference key="object" ref="310643849"/>
+						<reference key="object" ref="452619354"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="873383377"/>
+							<reference ref="34978664"/>
 						</object>
-						<reference key="parent" ref="729814042"/>
+						<reference key="parent" ref="1063226698"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">50</int>
-						<reference key="object" ref="873383377"/>
-						<reference key="parent" ref="310643849"/>
+						<reference key="object" ref="34978664"/>
+						<reference key="parent" ref="452619354"/>
 					</object>
 				</object>
 			</object>
@@ -753,15 +757,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>contentBox</string>
 							<string>databaseViewController</string>
 							<string>lineNumberView</string>
-							<string>resultsTableViewController</string>
+							<string>resultsViewController</string>
 							<string>textView</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSBox</string>
 							<string>EMFDatabaseViewController</string>
 							<string>NoodleLineNumberView</string>
 							<string>EMFResultSetViewController</string>
@@ -772,18 +774,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>contentBox</string>
 							<string>databaseViewController</string>
 							<string>lineNumberView</string>
-							<string>resultsTableViewController</string>
+							<string>resultsViewController</string>
 							<string>textView</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">contentBox</string>
-								<string key="candidateClassName">NSBox</string>
-							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">databaseViewController</string>
 								<string key="candidateClassName">EMFDatabaseViewController</string>
@@ -793,7 +790,7 @@
 								<string key="candidateClassName">NoodleLineNumberView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">resultsTableViewController</string>
+								<string key="name">resultsViewController</string>
 								<string key="candidateClassName">EMFResultSetViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">

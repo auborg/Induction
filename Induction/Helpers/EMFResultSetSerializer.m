@@ -67,12 +67,13 @@
     [records enumerateObjectsUsingBlock:^(id record, NSUInteger idx, BOOL *stop) {
         NSMutableArray *mutableValues = [NSMutableArray arrayWithCapacity:[fields count]];
         [fields enumerateObjectsUsingBlock:^(id field, NSUInteger idx, BOOL *stop) {
-            NSString *value = [[record valueForKey:field] description] ?: NULLToken;
+            id value = [record valueForKey:field];
+            NSString *stringValue = (value != nil && ![value isEqual:[NSNull null]]) ? [value description] : NULLToken;
             if (enclosingString) {
-                value = [value stringByReplacingOccurrencesOfString:enclosingString withString:escapeString];
-                value = [[enclosingString stringByAppendingString:value] stringByAppendingString:enclosingString];
+                stringValue = [stringValue stringByReplacingOccurrencesOfString:enclosingString withString:escapeString];
+                stringValue = [[enclosingString stringByAppendingString:stringValue] stringByAppendingString:enclosingString];
             }
-            [mutableValues addObject:value];
+            [mutableValues addObject:stringValue];
         }];
         
         [mutableLines addObject:[mutableValues componentsJoinedByString:delimiter]];
