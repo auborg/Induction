@@ -57,11 +57,15 @@
 #pragma mark - IBAction
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
-    id <DBDatabase> database = [[sender selectedItem] representedObject];
-    [self.connection connectionBySelectingDatabase:database];
-        
-    self.databaseViewController.database = [(id <DBConnection>)self.connection database];
-//    [self.databaseViewController explore:nil];
+    @try {
+        id <DBDatabase> database = [[sender selectedItem] representedObject];
+        _connection = [self.connection connectionBySelectingDatabase:database];
+        if ([(id <DBConnection>)self.connection database]) {
+            self.databaseViewController.database = [(id <DBConnection>)self.connection database];
+        }
+    } @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+    }
 }
 
 #pragma mark - NSWindowController
