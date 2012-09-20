@@ -32,17 +32,9 @@
     __strong NoodleLineNumberView *_lineNumberView;
 }
 
-@synthesize databaseViewController = _databaseViewController;
-@synthesize resultsTableViewController = _resultsTableViewController;
-@synthesize contentBox = _contentBox;
-@synthesize textView = _textView;
-@synthesize lineNumberView = _lineNumberView;
-
 - (void)awakeFromNib {
     self.textView.font = [NSFont userFixedPitchFontOfSize:18.0f];
-    
-    self.contentBox.contentView = self.resultsTableViewController.view;
-    
+        
     _lineNumberView = [[NoodleLineNumberView alloc] initWithScrollView:[self.textView enclosingScrollView]];
     _lineNumberView.backgroundColor = [NSColor whiteColor];
     [[self.textView enclosingScrollView] setVerticalRulerView:_lineNumberView];
@@ -54,8 +46,9 @@
 #pragma mark - IBAction
 
 - (IBAction)execute:(id)sender {
+    NSLog(@"EXECUTE: %@", self.resultsViewController);
     [(id <DBQueryableDataSource>)self.representedObject fetchResultSetForQuery:[self.textView string] success:^(id<DBResultSet> resultSet, NSTimeInterval elapsedTime) {
-        self.resultsTableViewController.representedObject = resultSet;
+        self.resultsViewController.representedObject = resultSet;
     } failure:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];

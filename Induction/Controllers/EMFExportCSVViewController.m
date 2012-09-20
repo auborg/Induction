@@ -91,7 +91,7 @@
             [self.delegate.dataSource fetchResultSetForRecordsAtIndexes:resultIndexSet success:^(id<DBResultSet> resultSet) {
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-                    NSString *CSV = [EMFResultSetSerializer tabulatedStringFromResultSet:resultSet fromRecordsAtIndexes:resultIndexSet withFields:[[self.fieldsArrayController.arrangedObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"enabled == YES"]] valueForKeyPath:@"name"] showHeaders:(self.optionShowHeadersCheckBoxButton.state == NSOnState) delimiter:[self.optionDelimiterComboBox stringValue] enclosingString:[self.optionEnclosingStringComboBox stringValue] NULLToken:[self.optionNULLRepresentationComboBox stringValue] stringEncoding:NSUTF8StringEncoding];
+                    NSString *CSV = [EMFResultSetSerializer tabulatedStringFromRecords:[resultSet recordsAtIndexes:resultIndexSet] withFields:[[self.fieldsArrayController.arrangedObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"enabled == YES"]] valueForKeyPath:@"name"] showHeaders:(self.optionShowHeadersCheckBoxButton.state == NSOnState) delimiter:[self.optionDelimiterComboBox stringValue] enclosingString:[self.optionEnclosingStringComboBox stringValue] NULLToken:[self.optionNULLRepresentationComboBox stringValue] stringEncoding:NSUTF8StringEncoding];
                     
                     dispatch_async(dispatch_get_main_queue(), ^(void) {
                         [CSV writeToURL:[savePanel URL] atomically:YES encoding:NSUTF8StringEncoding error:nil];

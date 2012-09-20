@@ -22,47 +22,49 @@
 
 #import "EMFDatabaseViewController.h"
 
-#import "EMFExploreTableViewController.h"
+#import "EMFResultSetViewController.h"
 #import "EMFQueryViewController.h"
 #import "EMFVisualizeViewController.h"
+
+#import "EMFPaginator.h"
 
 #import "DBAdapter.h"
 #import "SQLAdapter.h"
 
+static NSUInteger const kExploreDefaultPageSize = 1000;
+
 @interface EMFDatabaseViewController ()
 @property (strong, nonatomic, readwrite) NSArray *sourceListNodes;
+@property (readonly) NSRange currentPageRange;
+
 @end
 
-@implementation EMFDatabaseViewController
-@synthesize database = _database;
-@synthesize outlineView = _outlineView;
-@synthesize tabView = _tabView;
-@synthesize toolbar = _toolbar;
-@synthesize databasesToolbarItem = _databasesToolbarItem;
-@synthesize exploreViewController = _exploreViewController;
-@synthesize queryViewController = _queryViewController;
-@synthesize visualizeViewController = _visualizeViewController;
-@synthesize sourceListNodes = _sourceListNodes;
+@implementation EMFDatabaseViewController {
+    NSUInteger _pageSize;
+    NSUInteger _currentPage;
+    EMFPaginator *_paginator;
+}
 
 - (void)awakeFromNib {
-    NSTabViewItem *exploreTabViewItem = [[NSTabViewItem alloc] initWithIdentifier:@"Explore"];
-    exploreTabViewItem.view = self.exploreViewController.view;
-    [self.tabView addTabViewItem:exploreTabViewItem];
+    self.queryBox.contentView = self.queryViewController.view;
+    self.resultSetBox.contentView = self.resultSetViewController.view;
+    self.visualizeBox.contentView = self.visualizeViewController.view;
     
-    NSTabViewItem *queryTabViewItem = [[NSTabViewItem alloc] initWithIdentifier:@"Query"];
-    queryTabViewItem.view = self.queryViewController.view;
-    [self.tabView addTabViewItem:queryTabViewItem];
+    self.queryViewController.resultsViewController = self.resultSetViewController;
     
-    NSTabViewItem *visualizeTabViewItem = [[NSTabViewItem alloc] initWithIdentifier:@"Visualize"];
-    visualizeTabViewItem.view = self.visualizeViewController.view;
-    [self.tabView addTabViewItem:visualizeTabViewItem];
+    // TODO: I'm sure there's a correct way to do this
+    [[self.resultSetViewController.outlineView enclosingScrollView] setNextResponder:self];
     
     @try {
-        [self.outlineView expandItem:nil expandChildren:YES];
+        [self.dataSourceOutlineView expandItem:nil expandChildren:YES];
     }
     @catch (NSException *exception) {
         NSLog(@"Exception: %@", exception);
     }
+}
+
+- (NSRange)currentPageRange {
+    return NSMakeRange(_currentPage * _pageSize, _pageSize);
 }
 
 - (void)setDatabase:(id <DBDatabase>)database {
@@ -82,7 +84,7 @@
     }];
     
     self.sourceListNodes = [NSArray arrayWithArray:mutableNodes];
-    [self.outlineView expandItem:nil expandChildren:YES];
+    [self.dataSourceOutlineView expandItem:nil expandChildren:YES];
     
     [self explore:nil];
 }
@@ -90,17 +92,17 @@
 #pragma mark - IBAction
 
 - (IBAction)explore:(id)sender {
-    [self.tabView selectTabViewItemWithIdentifier:@"Explore"];
+//    [self.tabView selectTabViewItemWithIdentifier:@"Explore"];
     [self.toolbar setSelectedItemIdentifier:@"Explore"];
 }
 
 - (IBAction)query:(id)sender {
-    [self.tabView selectTabViewItemWithIdentifier:@"Query"];
+//    [self.tabView selectTabViewItemWithIdentifier:@"Query"];
     [self.toolbar setSelectedItemIdentifier:@"Query"];
 }
 
 - (IBAction)visualize:(id)sender {
-    [self.tabView selectTabViewItemWithIdentifier:@"Visualize"];
+//    [self.tabView selectTabViewItemWithIdentifier:@"Visualize"];
     [self.toolbar setSelectedItemIdentifier:@"Visualize"];
 }
 
@@ -110,11 +112,16 @@
     NSOutlineView *outlineView = [notification object];
     
     id <DBDataSource> dataSource = [[[outlineView itemAtRow:[outlineView selectedRow]] representedObject] representedObject];
-    self.exploreViewController.representedObject = dataSource;
-    self.queryViewController.representedObject = dataSource;
-    self.visualizeViewController.representedObject = dataSource;
     
-    [self explore:nil];
+    self.queryViewController.representedObject = dataSource;
+    
+    _paginator = [[EMFPaginator alloc] initWithNumberOfIndexes:[(id <DBDataSource>)dataSource numberOfRecords] pageSize:kExploreDefaultPageSize];
+    
+    [(id <DBExplorableDataSource>)dataSource fetchResultSetForRecordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:[_paginator currentRange]] success:^(id <DBResultSet> resultSet) {
+        self.resultSetViewController.representedObject = resultSet;
+    } failure:^(NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 - (NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item {

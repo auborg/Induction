@@ -32,8 +32,6 @@
 		F8202FD214D0C2DC00950BAF /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202FBC14D0C2DC00950BAF /* DateCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F820300B14D20FF600950BAF /* EMFConnectionConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */; };
 		F820300C14D20FF600950BAF /* EMFConnectionConfigurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */; };
-		F820301014D217C800950BAF /* EMFExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300E14D217C700950BAF /* EMFExploreTableViewController.m */; };
-		F820301114D217C800950BAF /* EMFExploreTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300F14D217C800950BAF /* EMFExploreTableView.xib */; };
 		F820301514D21BEA00950BAF /* EMFDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */; };
 		F820301614D21BEA00950BAF /* EMFDatabaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301414D21BEA00950BAF /* EMFDatabaseView.xib */; };
 		F820301914D2218200950BAF /* EMFConnectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301814D2218100950BAF /* EMFConnectionWindowController.m */; };
@@ -66,7 +64,6 @@
 		F8ABFC5215601461005F0AA7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202F8D14D0C2DC00950BAF /* AppDelegate.m */; };
 		F8ABFC5315601461005F0AA7 /* DateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8202FBC14D0C2DC00950BAF /* DateCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F8ABFC5415601461005F0AA7 /* EMFConnectionConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */; };
-		F8ABFC5515601461005F0AA7 /* EMFExploreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820300E14D217C700950BAF /* EMFExploreTableViewController.m */; };
 		F8ABFC5615601461005F0AA7 /* EMFDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */; };
 		F8ABFC5715601461005F0AA7 /* EMFConnectionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F820301814D2218100950BAF /* EMFConnectionWindowController.m */; };
 		F8ABFC5815601461005F0AA7 /* EMFQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCEC14D35D7E00C029C8 /* EMFQueryViewController.m */; };
@@ -86,7 +83,6 @@
 		F8ABFC6915601461005F0AA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
 		F8ABFC6A15601461005F0AA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9714D0C2DC00950BAF /* MainMenu.xib */; };
 		F8ABFC6B15601461005F0AA7 /* EMFConnectionConfigurationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */; };
-		F8ABFC6C15601461005F0AA7 /* EMFExploreTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820300F14D217C800950BAF /* EMFExploreTableView.xib */; };
 		F8ABFC6D15601461005F0AA7 /* EMFDatabaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301414D21BEA00950BAF /* EMFDatabaseView.xib */; };
 		F8ABFC6E15601461005F0AA7 /* EMFConnectionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F820301A14D2235100950BAF /* EMFConnectionWindow.xib */; };
 		F8ABFC6F15601461005F0AA7 /* EMFQueryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */; };
@@ -219,9 +215,6 @@
 		F820300814D20FF600950BAF /* EMFConnectionConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFConnectionConfigurationViewController.h; sourceTree = "<group>"; };
 		F820300914D20FF600950BAF /* EMFConnectionConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFConnectionConfigurationViewController.m; sourceTree = "<group>"; };
 		F820300A14D20FF600950BAF /* EMFConnectionConfigurationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFConnectionConfigurationView.xib; sourceTree = "<group>"; };
-		F820300D14D217C700950BAF /* EMFExploreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFExploreTableViewController.h; sourceTree = "<group>"; };
-		F820300E14D217C700950BAF /* EMFExploreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFExploreTableViewController.m; sourceTree = "<group>"; };
-		F820300F14D217C800950BAF /* EMFExploreTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExploreTableView.xib; sourceTree = "<group>"; };
 		F820301214D21BE900950BAF /* EMFDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFDatabaseViewController.h; sourceTree = "<group>"; };
 		F820301314D21BEA00950BAF /* EMFDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFDatabaseViewController.m; sourceTree = "<group>"; };
 		F820301414D21BEA00950BAF /* EMFDatabaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFDatabaseView.xib; sourceTree = "<group>"; };
@@ -332,15 +325,9 @@
 			children = (
 				F888F57C14DB40990094B805 /* SQLSyntaxHighlighter.h */,
 				F888F57D14DB40990094B805 /* SQLSyntaxHighlighter.m */,
-				F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */,
-				F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */,
-				F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */,
-				F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */,
-				F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */,
-				F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */,
 				F842904F14F30F1500B1CDFB /* Connection */,
 				F842905014F30F1F00B1CDFB /* Database */,
-				F842905114F30F2700B1CDFB /* Explore */,
+				F842905114F30F2700B1CDFB /* Result Set */,
 				F8B3FB8D15347DAC0007712F /* Export */,
 				F842905214F30F2F00B1CDFB /* Query */,
 				F842905314F30F3900B1CDFB /* Visualize */,
@@ -401,14 +388,17 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
-		F842905114F30F2700B1CDFB /* Explore */ = {
+		F842905114F30F2700B1CDFB /* Result Set */ = {
 			isa = PBXGroup;
 			children = (
-				F820300D14D217C700950BAF /* EMFExploreTableViewController.h */,
-				F820300E14D217C700950BAF /* EMFExploreTableViewController.m */,
-				F820300F14D217C800950BAF /* EMFExploreTableView.xib */,
+				F8662EEC14EC8E5B00F0520B /* EMFResultSetViewController.h */,
+				F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */,
+				F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */,
+				F837FD201517D30E0003BED6 /* EMFResultSetPopoverViewController.h */,
+				F837FD211517D30E0003BED6 /* EMFResultSetPopoverViewController.m */,
+				F837FD221517D30E0003BED6 /* EMFResultSetPopoverView.xib */,
 			);
-			name = Explore;
+			name = "Result Set";
 			sourceTree = "<group>";
 		};
 		F842905214F30F2F00B1CDFB /* Query */ = {
@@ -713,7 +703,6 @@
 				F8202FC114D0C2DC00950BAF /* InfoPlist.strings in Resources */,
 				F8202FC214D0C2DC00950BAF /* MainMenu.xib in Resources */,
 				F820300C14D20FF600950BAF /* EMFConnectionConfigurationView.xib in Resources */,
-				F820301114D217C800950BAF /* EMFExploreTableView.xib in Resources */,
 				F820301614D21BEA00950BAF /* EMFDatabaseView.xib in Resources */,
 				F820301B14D2235100950BAF /* EMFConnectionWindow.xib in Resources */,
 				F852DCEF14D35D7E00C029C8 /* EMFQueryView.xib in Resources */,
@@ -735,7 +724,6 @@
 				F8ABFC6915601461005F0AA7 /* InfoPlist.strings in Resources */,
 				F8ABFC6A15601461005F0AA7 /* MainMenu.xib in Resources */,
 				F8ABFC6B15601461005F0AA7 /* EMFConnectionConfigurationView.xib in Resources */,
-				F8ABFC6C15601461005F0AA7 /* EMFExploreTableView.xib in Resources */,
 				F8ABFC6D15601461005F0AA7 /* EMFDatabaseView.xib in Resources */,
 				F8ABFC6E15601461005F0AA7 /* EMFConnectionWindow.xib in Resources */,
 				F8ABFC6F15601461005F0AA7 /* EMFQueryView.xib in Resources */,
@@ -805,7 +793,6 @@
 				F8202FBD14D0C2DC00950BAF /* AppDelegate.m in Sources */,
 				F8202FD214D0C2DC00950BAF /* DateCell.m in Sources */,
 				F820300B14D20FF600950BAF /* EMFConnectionConfigurationViewController.m in Sources */,
-				F820301014D217C800950BAF /* EMFExploreTableViewController.m in Sources */,
 				F820301514D21BEA00950BAF /* EMFDatabaseViewController.m in Sources */,
 				F820301914D2218200950BAF /* EMFConnectionWindowController.m in Sources */,
 				F852DCEE14D35D7E00C029C8 /* EMFQueryViewController.m in Sources */,
@@ -829,7 +816,6 @@
 				F8ABFC5115601461005F0AA7 /* main.m in Sources */,
 				F8ABFC5215601461005F0AA7 /* AppDelegate.m in Sources */,
 				F8ABFC5415601461005F0AA7 /* EMFConnectionConfigurationViewController.m in Sources */,
-				F8ABFC5515601461005F0AA7 /* EMFExploreTableViewController.m in Sources */,
 				F8ABFC5615601461005F0AA7 /* EMFDatabaseViewController.m in Sources */,
 				F8ABFC5715601461005F0AA7 /* EMFConnectionWindowController.m in Sources */,
 				F8ABFC5815601461005F0AA7 /* EMFQueryViewController.m in Sources */,

@@ -29,8 +29,7 @@
 @interface EMFQueryViewController : NSViewController
 
 @property (strong) IBOutlet EMFDatabaseViewController *databaseViewController;
-@property (strong) IBOutlet EMFResultSetViewController *resultsTableViewController;
-@property (strong) IBOutlet NSBox *contentBox;
+@property (strong) IBOutlet EMFResultSetViewController *resultsViewController;
 @property (strong) IBOutlet NSTextView *textView;
 @property (strong) IBOutlet NoodleLineNumberView *lineNumberView;
 
