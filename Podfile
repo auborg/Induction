@@ -22,4 +22,15 @@ pod do |spec|
                         :git => 'https://github.com/malcommac/DMInspectorPalette.git'
                       }
   spec.source_files = 'DMInspectorPalette/core'
+  spec.requires_arc = true
+end
+
+pod do |spec|
+  spec.name         = "InspectorTabBar"
+  spec.version      = '0.0.1'
+  spec.source       = {
+                        :git => 'https://github.com/smic/InspectorTabBar.git'
+                      }
+  spec.source_files = ['InspectorTabBar/SMBar.{h,m}', 'InspectorTabBar/SMTabBar.{h,m}', 'InspectorTabBar/SMTabBarItem.{h,m}', 'InspectorTabBar/SMTabBarButtonCell.{h,m}', 'InspectorTabBar/NSDictionary+SMKeyValueObserving.{h,m}']
+  spec.requires_arc = true
 end

@@ -6,21 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		F81386731539731F003A83F9 /* Lies Damned Lies */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = F81386741539731F003A83F9 /* Build configuration list for PBXAggregateTarget "Lies Damned Lies" */;
-			buildPhases = (
-				F81386771539732E003A83F9 /* ShellScript */,
-				F813867D153976E1003A83F9 /* CopyFiles */,
-			);
-			dependencies = (
-			);
-			name = "Lies Damned Lies";
-			productName = "Lies Damned Lies";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
 		F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8129AED158EB991009BFE23 /* Sparkle.framework */; };
@@ -42,7 +27,6 @@
 		F852DCEF14D35D7E00C029C8 /* EMFQueryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCED14D35D7E00C029C8 /* EMFQueryView.xib */; };
 		F852DCF314D35E4E00C029C8 /* EMFVisualizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */; };
 		F852DCF414D35E4E00C029C8 /* EMFVisualizeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */; };
-		F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F852DCF514D3609A00C029C8 /* WebKit.framework */; };
 		F854FB3F14ECAB44009AEDAB /* EMFResultSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */; };
 		F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
 		F8662EEE14EC8E5B00F0520B /* EMFResultSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8662EED14EC8E5B00F0520B /* EMFResultSetViewController.m */; };
@@ -78,7 +62,6 @@
 		F8ABFC6115601461005F0AA7 /* EMFExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC15153745330007712F /* EMFExportViewController.m */; };
 		F8ABFC6215601461005F0AA7 /* NSIndexSet+BatchedEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */; };
 		F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8595FB714C34BB100FD15BE /* Cocoa.framework */; };
-		F8ABFC6515601461005F0AA7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F852DCF514D3609A00C029C8 /* WebKit.framework */; };
 		F8ABFC6615601461005F0AA7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8495A64B8D754525BD0656FB /* libPods.a */; };
 		F8ABFC6915601461005F0AA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9514D0C2DC00950BAF /* InfoPlist.strings */; };
 		F8ABFC6A15601461005F0AA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8202F9714D0C2DC00950BAF /* MainMenu.xib */; };
@@ -106,6 +89,7 @@
 		F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC15153745330007712F /* EMFExportViewController.m */; };
 		F8B3FC18153745330007712F /* EMFExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FC16153745330007712F /* EMFExportView.xib */; };
 		F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */; };
+		F8E10589160BD208005CC3B1 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E10588160BD207005CC3B1 /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,15 +157,6 @@
 			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F813867D153976E1003A83F9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = HTML/js;
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F8ABFC7715601461005F0AA7 /* Copy Database Adapters */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -232,7 +207,6 @@
 		F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFVisualizeViewController.h; sourceTree = "<group>"; };
 		F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFVisualizeViewController.m; sourceTree = "<group>"; };
 		F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFVisualizeView.xib; sourceTree = "<group>"; };
-		F852DCF514D3609A00C029C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F854FB3E14ECAB44009AEDAB /* EMFResultSetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFResultSetView.xib; sourceTree = "<group>"; };
 		F8595FB314C34BB100FD15BE /* Induction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Induction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8595FB714C34BB100FD15BE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -273,6 +247,7 @@
 		F8B3FC16153745330007712F /* EMFExportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportView.xib; sourceTree = "<group>"; };
 		F8B3FC1915377CC30007712F /* NSIndexSet+BatchedEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexSet+BatchedEnumeration.h"; path = "Categories/NSIndexSet+BatchedEnumeration.h"; sourceTree = "<group>"; };
 		F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexSet+BatchedEnumeration.m"; path = "Categories/NSIndexSet+BatchedEnumeration.m"; sourceTree = "<group>"; };
+		F8E10588160BD207005CC3B1 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,8 +255,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8E10589160BD208005CC3B1 /* Quartz.framework in Frameworks */,
 				F8595FB814C34BB100FD15BE /* Cocoa.framework in Frameworks */,
-				F852DCF614D3609A00C029C8 /* WebKit.framework in Frameworks */,
 				D29CA614178041A29B9ECEB9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,7 +268,6 @@
 				F86CEC5F157318CE00F6AD9E /* SystemConfiguration.framework in Frameworks */,
 				F86CEC5D157318C900F6AD9E /* Security.framework in Frameworks */,
 				F8ABFC6415601461005F0AA7 /* Cocoa.framework in Frameworks */,
-				F8ABFC6515601461005F0AA7 /* WebKit.framework in Frameworks */,
 				F8ABFC6615601461005F0AA7 /* libPods.a in Frameworks */,
 				F8129AEE158EB991009BFE23 /* Sparkle.framework in Frameworks */,
 			);
@@ -417,6 +391,7 @@
 				F852DCF014D35E4E00C029C8 /* EMFVisualizeViewController.h */,
 				F852DCF114D35E4E00C029C8 /* EMFVisualizeViewController.m */,
 				F852DCF214D35E4E00C029C8 /* EMFVisualizeView.xib */,
+				F8E10511160BC80B005CC3B1 /* Statistics */,
 			);
 			name = Visualize;
 			sourceTree = "<group>";
@@ -449,10 +424,10 @@
 		F8595FB614C34BB100FD15BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8E10588160BD207005CC3B1 /* Quartz.framework */,
 				F8129AED158EB991009BFE23 /* Sparkle.framework */,
 				F86CEC5E157318CE00F6AD9E /* SystemConfiguration.framework */,
 				F86CEC5C157318C900F6AD9E /* Security.framework */,
-				F852DCF514D3609A00C029C8 /* WebKit.framework */,
 				F8595FB714C34BB100FD15BE /* Cocoa.framework */,
 				F8595FB914C34BB100FD15BE /* Other Frameworks */,
 				8495A64B8D754525BD0656FB /* libPods.a */,
@@ -566,6 +541,13 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		F8E10511160BC80B005CC3B1 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Statistics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -652,7 +634,6 @@
 			targets = (
 				F8595FB214C34BB100FD15BE /* Induction */,
 				F8ABFC4F15601461005F0AA7 /* Induction+Sparkle */,
-				F81386731539731F003A83F9 /* Lies Damned Lies */,
 			);
 		};
 /* End PBXProject section */
@@ -755,19 +736,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
-		F81386771539732E003A83F9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\ncd ${PROJECT_DIR}/LiesDamnedLies\nsudo gem install bundler\nbundle\nbundle exec rake\n";
-		};
 		F8ABFC7D15601461005F0AA7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -857,22 +825,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F81386751539731F003A83F9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		F81386761539731F003A83F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		F8595FCF14C34BB100FD15BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1040,15 +992,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F81386741539731F003A83F9 /* Build configuration list for PBXAggregateTarget "Lies Damned Lies" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F81386751539731F003A83F9 /* Debug */,
-				F81386761539731F003A83F9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F8595FAD14C34BB100FD15BE /* Build configuration list for PBXProject "Induction" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -21,12 +21,14 @@
 // THE SOFTWARE.
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
+
+@class SMTabBar;
 
 @class EMFResultSetViewController;
 
 @interface EMFVisualizeViewController : NSViewController
 
-@property (strong, nonatomic) IBOutlet WebView *webView;
+@property (weak) IBOutlet SMTabBar *tabBar;
+@property (weak) IBOutlet NSBox *statisticsBox;
 
 @end
