@@ -212,11 +212,6 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
     
     _records = [(id <DBResultSet>)self.representedObject recordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [(id <DBResultSet>)self.representedObject numberOfRecords])]];
     
-    NSSortDescriptor *outlineTableColumnSortDescriptorPrototype = [[self.outlineView outlineTableColumn] sortDescriptorPrototype];
-    if (outlineTableColumnSortDescriptorPrototype) {
-        [self.outlineView setSortDescriptors:[NSArray arrayWithObject:outlineTableColumnSortDescriptorPrototype]];
-    }
-    
     [self.outlineView reloadData];
     [self.outlineView expandItem:nil expandChildren:YES];
     

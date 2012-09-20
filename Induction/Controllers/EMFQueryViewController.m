@@ -60,6 +60,7 @@
         self.elapsedTimeLabel.stringValue = [NSString stringWithFormat:NSLocalizedString(@"Elapsed Time: %@ seconds", nil), [_elapsedTimeNumberFormatter stringFromNumber:[NSNumber numberWithDouble:elapsedTime]]];
     } failure:^(NSError *error) {
         NSLog(@"Error: %@", error);
+        NSBeep();
     }];
 }
 
