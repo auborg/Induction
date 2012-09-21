@@ -31,4 +31,6 @@
 @property (weak) IBOutlet SMTabBar *tabBar;
 @property (weak) IBOutlet NSBox *statisticsBox;
 
+- (void)setRepresentedRecords:(NSArray *)records fields:(NSArray *)fields;
+
 @end

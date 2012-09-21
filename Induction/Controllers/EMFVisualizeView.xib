@@ -36,12 +36,13 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="NSCustomView" id="524824954">
+					<object class="NSCustomView" id="289846243">
 						<reference key="NSNextResponder" ref="618153094"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 630}, {443, 22}}</string>
+						<string key="NSFrame">{{0, 627}, {443, 25}}</string>
 						<reference key="NSSuperview" ref="618153094"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="53490875"/>
 						<string key="NSReuseIdentifierKey">_NS:1192</string>
 						<string key="NSClassName">SMTabBar</string>
 					</object>
@@ -52,13 +53,14 @@
 							<object class="NSView" id="958134054">
 								<reference key="NSNextResponder" ref="53490875"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{443, 632}</string>
+								<string key="NSFrameSize">{443, 625}</string>
 								<reference key="NSSuperview" ref="53490875"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 							</object>
 						</array>
-						<string key="NSFrameSize">{443, 632}</string>
+						<string key="NSFrameSize">{443, 625}</string>
 						<reference key="NSSuperview" ref="618153094"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="958134054"/>
@@ -97,6 +99,7 @@
 				<string key="NSFrameSize">{443, 652}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="289846243"/>
 				<string key="NSReuseIdentifierKey">_NS:1113</string>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -131,7 +134,7 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">tabBar</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="524824954"/>
+						<reference key="destination" ref="289846243"/>
 					</object>
 					<int key="connectionID">101</int>
 				</object>
@@ -167,7 +170,7 @@
 						<reference key="object" ref="618153094"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="53490875"/>
-							<reference ref="524824954"/>
+							<reference ref="289846243"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -178,7 +181,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100</int>
-						<reference key="object" ref="524824954"/>
+						<reference key="object" ref="289846243"/>
 						<reference key="parent" ref="618153094"/>
 						<string key="objectName">Tab Bar</string>
 					</object>

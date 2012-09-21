@@ -24,6 +24,7 @@
 
 #import "DBAdapter.h"
 #import "EMFResultSetViewController.h"
+#import "EMFSummaryViewController.h"
 
 #import "SMTabBar.h"
 #import "SMTabBarItem.h"
@@ -35,16 +36,25 @@
 }
 
 - (void)awakeFromNib {
-    SMTabBarItem *item0 = [[SMTabBarItem alloc] initWithImage:nil tag:0];
-    SMTabBarItem *item1 = [[SMTabBarItem alloc] initWithImage:nil tag:1];
+    SMTabBarItem *item0 = [[SMTabBarItem alloc] initWithImage:[NSImage imageNamed:@"detail.png"] tag:0];
+    SMTabBarItem *item1 = [[SMTabBarItem alloc] initWithImage:[NSImage imageNamed:@"chart.png"] tag:1];
 
     self.tabBar.items = @[item0, item1];
     
     
     _paletteContainer = [[DMPaletteContainer alloc] initWithFrame:self.statisticsBox.bounds];
     
-    DMPaletteSectionView *summarySectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 200.0f)] andTitle:NSLocalizedString(@"Summary", nil)];
-    _paletteContainer.sectionViews = @[summarySectionView];
+    EMFSummaryViewController *summaryViewController = [[EMFSummaryViewController alloc] initWithNibName:@"EMFSummaryView" bundle:nil];
+        
+    
+    DMPaletteSectionView *summarySectionView = [[DMPaletteSectionView alloc] initWithContentView:summaryViewController.view andTitle:NSLocalizedString(@"Summary", nil)];
+    DMPaletteSectionView *codeSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"code"];
+    DMPaletteSectionView *continentSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"continent"];
+
+    DMPaletteSectionView *indepyearSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"indepyear"];
+    DMPaletteSectionView *populationSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"population"];
+
+    _paletteContainer.sectionViews = @[summarySectionView, codeSectionView, continentSectionView, indepyearSectionView, populationSectionView];
     
     self.statisticsBox.contentView = _paletteContainer;
 }
