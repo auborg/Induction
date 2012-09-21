@@ -53,14 +53,13 @@
 							<object class="NSView" id="958134054">
 								<reference key="NSNextResponder" ref="53490875"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{443, 625}</string>
+								<string key="NSFrameSize">{443, 605}</string>
 								<reference key="NSSuperview" ref="53490875"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 							</object>
 						</array>
-						<string key="NSFrameSize">{443, 625}</string>
+						<string key="NSFrame">{{0, 24}, {443, 605}}</string>
 						<reference key="NSSuperview" ref="618153094"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="958134054"/>
@@ -94,6 +93,15 @@
 						<int key="NSBoxType">4</int>
 						<int key="NSTitlePosition">0</int>
 						<bool key="NSTransparent">NO</bool>
+						<object class="NSColor" key="NSFillColor2">
+							<int key="NSColorSpace">6</int>
+							<string key="NSCatalogName">System</string>
+							<string key="NSColorName">controlBackgroundColor</string>
+							<object class="NSColor" key="NSColor">
+								<int key="NSColorSpace">3</int>
+								<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+							</object>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrameSize">{443, 652}</string>
@@ -169,8 +177,8 @@
 						<int key="objectID">17</int>
 						<reference key="object" ref="618153094"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="53490875"/>
 							<reference ref="289846243"/>
+							<reference ref="53490875"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

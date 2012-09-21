@@ -151,4 +151,16 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
     [self.databasesToolbarItem setMinSize:NSMakeSize(frame.size.width - 10.0f, minSize.height)];
 }
 
+- (BOOL)splitView:(NSSplitView *)splitView shouldCollapseSubview:(NSView *)subview forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {
+    return YES;
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview {
+    return ![subview isKindOfClass:[NSSplitView class]];
+}
+
+- (BOOL)splitView:(NSSplitView *)splitView shouldHideDividerAtIndex:(NSInteger)dividerIndex {
+    return YES;
+}
+
 @end
