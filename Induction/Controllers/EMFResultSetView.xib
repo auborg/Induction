@@ -63,7 +63,7 @@
 					<object class="NSSegmentedControl" id="677263988">
 						<reference key="NSNextResponder" ref="325234706"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{307, 6}, {171, 24}}</string>
+						<string key="NSFrame">{{323, 1}, {155, 20}}</string>
 						<reference key="NSSuperview" ref="325234706"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -71,11 +71,11 @@
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSegmentedCell" key="NSCell" id="13767733">
 							<int key="NSCellFlags">67108864</int>
-							<int key="NSCellFlags2">0</int>
-							<object class="NSFont" key="NSSupport">
+							<int key="NSCellFlags2">131072</int>
+							<object class="NSFont" key="NSSupport" id="26">
 								<string key="NSName">LucidaGrande</string>
-								<double key="NSSize">12</double>
-								<int key="NSfFlags">16</int>
+								<double key="NSSize">11</double>
+								<int key="NSfFlags">3100</int>
 							</object>
 							<string key="NSCellIdentifier">_NS:9</string>
 							<reference key="NSControlView" ref="677263988"/>
@@ -150,11 +150,7 @@
 													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents"/>
-													<object class="NSFont" key="NSSupport" id="26">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">11</double>
-														<int key="NSfFlags">3100</int>
-													</object>
+													<reference key="NSSupport" ref="26"/>
 													<object class="NSColor" key="NSBackgroundColor" id="391631406">
 														<int key="NSColorSpace">3</int>
 														<bytes key="NSWhite">MC4zMzMzMzI5ODU2AA</bytes>
@@ -308,7 +304,7 @@
 								<int key="NScvFlags">4</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 35}, {486, 273}}</string>
+						<string key="NSFrame">{{0, 23}, {486, 273}}</string>
 						<reference key="NSSuperview" ref="325234706"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="213309694"/>
@@ -324,7 +320,7 @@
 						<double key="NSMagnification">1</double>
 					</object>
 				</object>
-				<string key="NSFrameSize">{486, 309}</string>
+				<string key="NSFrameSize">{486, 297}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="471789961"/>
