@@ -39,7 +39,7 @@
 					<object class="NSCustomView" id="289846243">
 						<reference key="NSNextResponder" ref="618153094"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 627}, {443, 25}}</string>
+						<string key="NSFrame">{{0, 628}, {443, 25}}</string>
 						<reference key="NSSuperview" ref="618153094"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="53490875"/>
@@ -53,13 +53,13 @@
 							<object class="NSView" id="958134054">
 								<reference key="NSNextResponder" ref="53490875"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{443, 605}</string>
+								<string key="NSFrameSize">{443, 606}</string>
 								<reference key="NSSuperview" ref="53490875"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, 24}, {443, 605}}</string>
+						<string key="NSFrame">{{0, 23}, {443, 606}}</string>
 						<reference key="NSSuperview" ref="618153094"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="958134054"/>

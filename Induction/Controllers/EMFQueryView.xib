@@ -21,7 +21,6 @@
 			<string>NSTextField</string>
 			<string>NSTextFieldCell</string>
 			<string>NSTextView</string>
-			<string>NSViewController</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -42,7 +41,7 @@
 			</object>
 			<object class="NSCustomView" id="347522371">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">256</int>
+				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="628175123">
 						<reference key="NSNextResponder" ref="347522371"/>
@@ -143,10 +142,10 @@
 													<string>WebURLsWithTitlesPboardType</string>
 													<string>public.url</string>
 												</set>
-												<string key="NSFrameSize">{701, 214}</string>
+												<string key="NSFrameSize">{703, 216}</string>
 												<reference key="NSSuperview" ref="79570708"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="93259487"/>
+												<reference key="NSNextKeyView" ref="587753568"/>
 												<string key="NSReuseIdentifierKey">_NS:1480</string>
 												<object class="NSTextContainer" key="NSTextContainer" id="306863256">
 													<object class="NSLayoutManager" key="NSLayoutManager">
@@ -163,7 +162,7 @@
 														<nil key="NSDelegate"/>
 													</object>
 													<reference key="NSTextView" ref="328919762"/>
-													<double key="NSWidth">701</double>
+													<double key="NSWidth">703</double>
 													<int key="NSTCFlags">1</int>
 												</object>
 												<object class="NSTextViewSharedData" key="NSSharedData">
@@ -208,11 +207,11 @@
 													<int key="NSPreferredTextFinderStyle">1</int>
 												</object>
 												<int key="NSTVFlags">6</int>
-												<string key="NSMaxSize">{702, 10000000}</string>
+												<string key="NSMaxSize">{703, 10000000}</string>
 												<nil key="NSDelegate"/>
 											</object>
 										</array>
-										<string key="NSFrame">{{1, 1}, {701, 214}}</string>
+										<string key="NSFrameSize">{703, 216}</string>
 										<reference key="NSSuperview" ref="38899622"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="328919762"/>
@@ -248,7 +247,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<object class="NSScroller" id="93259487">
 										<reference key="NSNextResponder" ref="38899622"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrame">{{686, 1}, {16, 214}}</string>
+										<string key="NSFrame">{{687, 0}, {16, 216}}</string>
 										<reference key="NSSuperview" ref="38899622"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="659512376"/>
@@ -257,7 +256,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 										<reference key="NSTarget" ref="38899622"/>
 										<string key="NSAction">_doScroller:</string>
 										<double key="NSCurValue">1</double>
-										<double key="NSPercent">0.85256409645080566</double>
+										<double key="NSPercent">0.9907407407407407</double>
 									</object>
 									<object class="NSScroller" id="587753568">
 										<reference key="NSNextResponder" ref="38899622"/>
@@ -278,9 +277,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 								<string key="NSFrameSize">{703, 216}</string>
 								<reference key="NSSuperview" ref="630155803"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="587753568"/>
+								<reference key="NSNextKeyView" ref="79570708"/>
 								<string key="NSReuseIdentifierKey">_NS:940</string>
-								<int key="NSsFlags">133138</int>
+								<int key="NSsFlags">133136</int>
 								<reference key="NSVScroller" ref="93259487"/>
 								<reference key="NSHScroller" ref="587753568"/>
 								<reference key="NSContentView" ref="79570708"/>
@@ -299,10 +298,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 											<object class="NSTextView" id="157457552">
 												<reference key="NSNextResponder" ref="244629845"/>
 												<int key="NSvFlags">2322</int>
-												<string key="NSFrameSize">{0, 214}</string>
+												<string key="NSFrameSize">{0, 216}</string>
 												<reference key="NSSuperview" ref="244629845"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="781383266"/>
+												<reference key="NSNextKeyView" ref="47020435"/>
 												<string key="NSReuseIdentifierKey">_NS:13</string>
 												<object class="NSTextContainer" key="NSTextContainer" id="817300404">
 													<object class="NSLayoutManager" key="NSLayoutManager">
@@ -354,7 +353,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 												<nil key="NSDelegate"/>
 											</object>
 										</array>
-										<string key="NSFrame">{{1, 1}, {0, 214}}</string>
+										<string key="NSFrameSize">{0, 216}</string>
 										<reference key="NSSuperview" ref="659512376"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="157457552"/>
@@ -511,12 +510,12 @@ wGw</bytes>
 												<reference key="NSColor" ref="713673256"/>
 											</object>
 										</object>
-										<int key="NScvFlags">4</int>
+										<int key="NScvFlags">2</int>
 									</object>
 									<object class="NSScroller" id="180906435">
 										<reference key="NSNextResponder" ref="659512376"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrame">{{-15, 1}, {16, 214}}</string>
+										<string key="NSFrame">{{-16, 0}, {16, 216}}</string>
 										<reference key="NSSuperview" ref="659512376"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="244629845"/>
@@ -546,9 +545,9 @@ wGw</bytes>
 								<string key="NSFrame">{{704, 0}, {0, 216}}</string>
 								<reference key="NSSuperview" ref="630155803"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="47020435"/>
+								<reference key="NSNextKeyView" ref="244629845"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<int key="NSsFlags">133138</int>
+								<int key="NSsFlags">133136</int>
 								<reference key="NSVScroller" ref="180906435"/>
 								<reference key="NSHScroller" ref="47020435"/>
 								<reference key="NSContentView" ref="244629845"/>
@@ -576,9 +575,6 @@ wGw</bytes>
 			<object class="NSCustomObject" id="18589484">
 				<string key="NSClassName">SQLSyntaxHighlighter</string>
 			</object>
-			<object class="NSViewController" id="918971287">
-				<string key="NSNibName">EMFResultSetView</string>
-			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -597,14 +593,6 @@ wGw</bytes>
 						<reference key="destination" ref="347522371"/>
 					</object>
 					<int key="connectionID">93</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">resultsViewController</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="918971287"/>
-					</object>
-					<int key="connectionID">94</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -660,11 +648,6 @@ wGw</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">76</int>
 						<reference key="object" ref="18589484"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">84</int>
-						<reference key="object" ref="918971287"/>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -781,8 +764,6 @@ wGw</bytes>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="76.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="84.CustomClassName">EMFResultSetViewController</string>
-				<string key="84.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="95.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -794,82 +775,6 @@ wGw</bytes>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">EMFDatabaseViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="explore:">id</string>
-						<string key="query:">id</string>
-						<string key="visualize:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="explore:">
-							<string key="name">explore:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="query:">
-							<string key="name">query:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="visualize:">
-							<string key="name">visualize:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="dataSourceOutlineView">NSOutlineView</string>
-						<string key="databasesToolbarItem">NSToolbarItem</string>
-						<string key="queryBox">NSBox</string>
-						<string key="queryViewController">EMFQueryViewController</string>
-						<string key="resultSetBox">NSBox</string>
-						<string key="resultSetViewController">EMFResultSetViewController</string>
-						<string key="toolbar">NSToolbar</string>
-						<string key="visualizeBox">NSBox</string>
-						<string key="visualizeViewController">EMFVisualizeViewController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="dataSourceOutlineView">
-							<string key="name">dataSourceOutlineView</string>
-							<string key="candidateClassName">NSOutlineView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="databasesToolbarItem">
-							<string key="name">databasesToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="queryBox">
-							<string key="name">queryBox</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="queryViewController">
-							<string key="name">queryViewController</string>
-							<string key="candidateClassName">EMFQueryViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="resultSetBox">
-							<string key="name">resultSetBox</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="resultSetViewController">
-							<string key="name">resultSetViewController</string>
-							<string key="candidateClassName">EMFResultSetViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="toolbar">
-							<string key="name">toolbar</string>
-							<string key="candidateClassName">NSToolbar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="visualizeBox">
-							<string key="name">visualizeBox</string>
-							<string key="candidateClassName">NSBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="visualizeViewController">
-							<string key="name">visualizeViewController</string>
-							<string key="candidateClassName">EMFVisualizeViewController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/EMFDatabaseViewController.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">EMFQueryViewController</string>
 					<string key="superclassName">NSViewController</string>
@@ -885,24 +790,14 @@ wGw</bytes>
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="databaseViewController">EMFDatabaseViewController</string>
 						<string key="elapsedTimeLabel">NSTextField</string>
-						<string key="lineNumberView">NoodleLineNumberView</string>
 						<string key="resultsViewController">EMFResultSetViewController</string>
 						<string key="textView">NSTextView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="databaseViewController">
-							<string key="name">databaseViewController</string>
-							<string key="candidateClassName">EMFDatabaseViewController</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="elapsedTimeLabel">
 							<string key="name">elapsedTimeLabel</string>
 							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="lineNumberView">
-							<string key="name">lineNumberView</string>
-							<string key="candidateClassName">NoodleLineNumberView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="resultsViewController">
 							<string key="name">resultsViewController</string>
@@ -975,25 +870,6 @@ wGw</bytes>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">EMFVisualizeViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">webView</string>
-						<string key="NS.object.0">WebView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">webView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">webView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/EMFVisualizeViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">NSTableView</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">scrollToStickyRow:</string>
@@ -1009,14 +885,6 @@ wGw</bytes>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NSTableView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NoodleLineNumberView</string>
-					<string key="superclassName">NSRulerView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NoodleLineNumberView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

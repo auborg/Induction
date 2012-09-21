@@ -63,10 +63,9 @@
 					<object class="NSSegmentedControl" id="677263988">
 						<reference key="NSNextResponder" ref="325234706"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{323, 1}, {155, 20}}</string>
+						<string key="NSFrame">{{333, 1}, {155, 20}}</string>
 						<reference key="NSSuperview" ref="325234706"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSegmentedCell" key="NSCell" id="13767733">
@@ -116,7 +115,7 @@
 									<object class="NSOutlineView" id="279812057">
 										<reference key="NSNextResponder" ref="380343669"/>
 										<int key="NSvFlags">4352</int>
-										<string key="NSFrameSize">{484, 255}</string>
+										<string key="NSFrameSize">{486, 256}</string>
 										<reference key="NSSuperview" ref="380343669"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="1027229760"/>
@@ -127,7 +126,7 @@
 										<object class="NSTableHeaderView" key="NSHeaderView" id="560536575">
 											<reference key="NSNextResponder" ref="213309694"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{484, 17}</string>
+											<string key="NSFrameSize">{486, 17}</string>
 											<reference key="NSSuperview" ref="213309694"/>
 											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="380343669"/>
@@ -250,7 +249,7 @@
 										<int key="NSTableViewGroupRowStyle">1</int>
 									</object>
 								</object>
-								<string key="NSFrame">{{1, 17}, {484, 255}}</string>
+								<string key="NSFrame">{{0, 17}, {486, 256}}</string>
 								<reference key="NSSuperview" ref="471789961"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="279812057"/>
@@ -294,7 +293,7 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<reference ref="560536575"/>
 								</object>
-								<string key="NSFrame">{{1, 0}, {484, 17}}</string>
+								<string key="NSFrameSize">{486, 17}</string>
 								<reference key="NSSuperview" ref="471789961"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="560536575"/>
@@ -309,7 +308,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="213309694"/>
 						<string key="NSReuseIdentifierKey">_NS:1699</string>
-						<int key="NSsFlags">133682</int>
+						<int key="NSsFlags">133680</int>
 						<reference key="NSVScroller" ref="1027229760"/>
 						<reference key="NSHScroller" ref="46009400"/>
 						<reference key="NSContentView" ref="380343669"/>
