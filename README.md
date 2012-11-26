@@ -17,7 +17,7 @@ The full source code for Induction [is available on GitHub](https://github.com/I
 
 <dl>
   <dt>
-    Induction <em class="pronunciation">(ən"dʌk'ʃən)</em>
+    Induction <em class="pronunciation">(In"dʌk'ʃən)</em>
   </dt>
   <dd>The generation of an electric current by a varying magnetic field</dd>
   <dd>The derivation of general principles from specific instances</dd>
@@ -27,7 +27,7 @@ Data is like electricity: It appears in endless variety, employing adapters and 
 
 ## Roadmap
 
-Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta. There is no official ETA, other than "it will ship when it's ready". But if you're looking a (totally off-the-record) timeframe, I'd say we're on track to ship something stable by the end of the Summer.
+Induction is already quite useful, but there's a long way to go before it's ready for a public release--let alone a beta. After a brief hiatus, it's now steadily being developed, so you should be able to 
 
 To get a better idea of what's planned, here's a list of features expected to ship before an official release (tentative / less likely features indicated by †):
 
@@ -59,12 +59,13 @@ To get a better idea of what's planned, here's a list of features expected to sh
 
 ### Visualize
 
-- Integration of visualization framework ([Lies, Damned lies (coming soon)](https://github.com/Induction/LiesDamnedLies))
+- Integration of visualization framework
 - Query builder (no SQL / commands)
 - Share as image, data, web page, etc.
 
 ### General
 
+- [Unified Redesign](https://gist.github.com/3762989)
 - Overhauled connection configuration panel
   - Improved UI
   - Favorites
