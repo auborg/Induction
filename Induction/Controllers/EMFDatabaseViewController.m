@@ -89,26 +89,7 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
     }];
     
     self.sourceListNodes = [NSArray arrayWithArray:mutableNodes];
-    [self.dataSourceOutlineView expandItem:nil expandChildren:YES];
-    
-    [self explore:nil];
-}
-
-#pragma mark - IBAction
-
-- (IBAction)explore:(id)sender {
-//    [self.tabView selectTabViewItemWithIdentifier:@"Explore"];
-    [self.toolbar setSelectedItemIdentifier:@"Explore"];
-}
-
-- (IBAction)query:(id)sender {
-//    [self.tabView selectTabViewItemWithIdentifier:@"Query"];
-    [self.toolbar setSelectedItemIdentifier:@"Query"];
-}
-
-- (IBAction)visualize:(id)sender {
-//    [self.tabView selectTabViewItemWithIdentifier:@"Visualize"];
-    [self.toolbar setSelectedItemIdentifier:@"Visualize"];
+    [self.dataSourceOutlineView expandItem:nil expandChildren:YES];    
 }
 
 #pragma mark - NSOutlineViewDelegate
@@ -148,7 +129,7 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
     NSSplitView *splitView = (NSSplitView *)self.view;
     NSRect frame = [[splitView.subviews objectAtIndex:0] frame];
     NSSize minSize = [self.databasesToolbarItem minSize];
-    [self.databasesToolbarItem setMinSize:NSMakeSize(frame.size.width - 10.0f, minSize.height)];
+    [self.databasesToolbarItem setMinSize:NSMakeSize(frame.size.width - 12.0f, minSize.height)];
 }
 
 - (BOOL)splitView:(NSSplitView *)splitView shouldCollapseSubview:(NSView *)subview forDoubleClickOnDividerAtIndex:(NSInteger)dividerIndex {

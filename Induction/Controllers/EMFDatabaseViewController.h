@@ -51,8 +51,4 @@ enum _DBDatabaseViewTabs {
 @property (strong, nonatomic) IBOutlet EMFQueryViewController *queryViewController;
 @property (strong, nonatomic) IBOutlet EMFVisualizeViewController *visualizeViewController;
 
-- (IBAction)explore:(id)sender;
-- (IBAction)query:(id)sender;
-- (IBAction)visualize:(id)sender;
-
 @end

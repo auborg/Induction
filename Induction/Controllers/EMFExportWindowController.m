@@ -83,4 +83,8 @@
     [NSApp endSheet:self.window];
 }
 
+- (void)exportViewController:(EMFExportViewController *)viewController didFailWithError:(NSError *)error {
+    NSLog(@"Error: %@", error);
+}
+
 @end

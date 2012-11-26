@@ -66,6 +66,11 @@
     }
 }
 
+- (IBAction)openInTerminal:(id)sender {
+    NSLog(@"%@ %@", [self class], NSStringFromSelector(_cmd));
+    [[NSWorkspace sharedWorkspace] openFile:[[self.connection class] terminalCommandForSessionWithConnection:self.connection] withApplication:@"Terminal"];
+}
+
 #pragma mark - NSWindowController
 
 - (void)windowDidLoad {
