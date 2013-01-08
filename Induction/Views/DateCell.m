@@ -140,11 +140,11 @@
 }
 
 - (NSString *)todayString {
-    return NSLocalizedString(@"Today", @"Today title string");
+    return NSLocalizedString(@"Today", nil);
 }
 
 - (NSString *)yesterdayString {
-    return NSLocalizedString(@"Yesterday", @"Yesterday title string");
+    return NSLocalizedString(@"Yesterday", nil);
 }
 
 
@@ -242,7 +242,6 @@ static CGFloat gDetailNaturalWidths[DateCellDetailNumberOfTodayAndYesterdays];
         [self updateDetailLevel];
     } 
 
-    bounds = NSInsetRect(bounds, 2, 2);
 
     // First, if we don't have a valid date, then draw "---", like what finder does
     if (![[self objectValue] isKindOfClass:[NSDate class]]) 
