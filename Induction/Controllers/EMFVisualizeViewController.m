@@ -31,6 +31,8 @@
 #import "DMPaletteContainer.h"
 #import "DMPaletteSectionView.h"
 
+#import "DBAdapter.h"
+
 @implementation EMFVisualizeViewController {
     DMPaletteContainer *_paletteContainer;
 }
@@ -44,23 +46,27 @@
     
     _paletteContainer = [[DMPaletteContainer alloc] initWithFrame:self.statisticsBox.bounds];
     
-    EMFSummaryViewController *summaryViewController = [[EMFSummaryViewController alloc] initWithNibName:@"EMFSummaryView" bundle:nil];
-        
-    
-    DMPaletteSectionView *summarySectionView = [[DMPaletteSectionView alloc] initWithContentView:summaryViewController.view andTitle:NSLocalizedString(@"Summary", nil)];
-    DMPaletteSectionView *codeSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"code"];
-    DMPaletteSectionView *continentSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"continent"];
-
-    DMPaletteSectionView *indepyearSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"indepyear"];
-    DMPaletteSectionView *populationSectionView = [[DMPaletteSectionView alloc] initWithContentView:[[NSView alloc] initWithFrame:NSMakeRect(0.0f, 0.0f, 200.0f, 100.0f)] andTitle:@"population"];
-
-    _paletteContainer.sectionViews = @[summarySectionView, codeSectionView, continentSectionView, indepyearSectionView, populationSectionView];
-    
     self.statisticsBox.contentView = _paletteContainer;
 }
 
 - (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];    
+    [super setRepresentedObject:representedObject];
+
+    if (![representedObject conformsToProtocol:@protocol(DBResultSet)]) {
+        return;
+    }
+
+    NSMutableArray *mutableSectionViews = [NSMutableArray array];
+    NSIndexSet *fieldIndexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange(0, [representedObject numberOfFields])];
+    [fieldIndexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        NSString *identifier = [representedObject identifierForTableColumnAtIndex:idx];
+        EMFSummaryViewController *summaryViewController = [[EMFSummaryViewController alloc] initWithNibName:@"EMFSummaryView" bundle:nil];
+        summaryViewController.valueType = [representedObject valueTypeForTableColumnAtIndex:idx];
+        DMPaletteSectionView *sectionView = [[DMPaletteSectionView alloc] initWithContentView:summaryViewController.view andTitle:identifier];
+        [mutableSectionViews addObject:sectionView];
+    }];
+    _paletteContainer.sectionViews = mutableSectionViews;
+    self.statisticsBox.contentView = _paletteContainer;
 }
 
 @end

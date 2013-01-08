@@ -91,6 +91,7 @@
 		F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC15153745330007712F /* EMFExportViewController.m */; };
 		F8B3FC18153745330007712F /* EMFExportView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8B3FC16153745330007712F /* EMFExportView.xib */; };
 		F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */; };
+		F8BFC049169C8A3E005C46B1 /* EMFOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFC048169C8A3E005C46B1 /* EMFOutlineView.m */; };
 		F8E10589160BD208005CC3B1 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E10588160BD207005CC3B1 /* Quartz.framework */; };
 		F8E1058E160BD60A005CC3B1 /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1058C160BD60A005CC3B1 /* detail.png */; };
 		F8E1058F160BD60A005CC3B1 /* detail.png in Resources */ = {isa = PBXBuildFile; fileRef = F8E1058C160BD60A005CC3B1 /* detail.png */; };
@@ -255,6 +256,8 @@
 		F8B3FC16153745330007712F /* EMFExportView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMFExportView.xib; sourceTree = "<group>"; };
 		F8B3FC1915377CC30007712F /* NSIndexSet+BatchedEnumeration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSIndexSet+BatchedEnumeration.h"; path = "Categories/NSIndexSet+BatchedEnumeration.h"; sourceTree = "<group>"; };
 		F8B3FC1A15377CC40007712F /* NSIndexSet+BatchedEnumeration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSIndexSet+BatchedEnumeration.m"; path = "Categories/NSIndexSet+BatchedEnumeration.m"; sourceTree = "<group>"; };
+		F8BFC047169C8A3E005C46B1 /* EMFOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFOutlineView.h; sourceTree = "<group>"; };
+		F8BFC048169C8A3E005C46B1 /* EMFOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFOutlineView.m; sourceTree = "<group>"; };
 		F8E10588160BD207005CC3B1 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F8E1058C160BD60A005CC3B1 /* detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail.png; sourceTree = "<group>"; };
 		F8E1058D160BD60A005CC3B1 /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart.png; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 			children = (
 				F8202FBB14D0C2DC00950BAF /* DateCell.h */,
 				F8202FBC14D0C2DC00950BAF /* DateCell.m */,
+				F8BFC047169C8A3E005C46B1 /* EMFOutlineView.h */,
+				F8BFC048169C8A3E005C46B1 /* EMFOutlineView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -810,6 +815,7 @@
 				F8B3FC17153745330007712F /* EMFExportViewController.m in Sources */,
 				F8B3FC1B15377CC50007712F /* NSIndexSet+BatchedEnumeration.m in Sources */,
 				F8B33960160CBD2C001A2679 /* EMFSummaryViewController.m in Sources */,
+				F8BFC049169C8A3E005C46B1 /* EMFOutlineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

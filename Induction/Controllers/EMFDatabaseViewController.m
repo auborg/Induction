@@ -105,6 +105,7 @@ static NSUInteger const kExploreDefaultPageSize = 1000;
     
     [(id <DBExplorableDataSource>)dataSource fetchResultSetForRecordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:[_paginator currentRange]] success:^(id <DBResultSet> resultSet) {
         self.resultSetViewController.representedObject = resultSet;
+        self.visualizeViewController.representedObject = resultSet;
     } failure:^(NSError *error) {
         NSLog(@"Error: %@", error);
     }];

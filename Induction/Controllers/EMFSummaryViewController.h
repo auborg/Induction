@@ -7,7 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "DBAdapter.h"
 
 @interface EMFSummaryViewController : NSViewController
+
+@property (assign) DBValueType valueType;
+@property (weak) IBOutlet NSTextField *valueTextField;
 
 @end
