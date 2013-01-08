@@ -90,7 +90,11 @@
     [records enumerateObjectsUsingBlock:^(id record, NSUInteger idx, BOOL *stop) {
         NSMutableDictionary *mutableKeyedValues = [NSMutableDictionary dictionary];
         [fields enumerateObjectsUsingBlock:^(id field, NSUInteger idx, BOOL *stop) {
-            [mutableKeyedValues setValue:[record valueForKey:field] forKey:field];
+            id value = [record valueForKey:field];
+            if (![value isKindOfClass:[NSNumber class]] && ![value isKindOfClass:[NSArray class]] && ![value isKindOfClass:[NSDictionary class]] ) {
+                value = [value description];
+            }
+            [mutableKeyedValues setValue:value forKey:field];
         }];
         [mutableObjects addObject:mutableKeyedValues];
     }];
