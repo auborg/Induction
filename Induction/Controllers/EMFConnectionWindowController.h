@@ -37,4 +37,6 @@
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender;
 
+- (IBAction)openInTerminal:(id)sender;
+
 @end

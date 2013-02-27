@@ -1,7 +1,7 @@
-// EMFExploreViewController.h
-//
-// Copyright (c) 2012 Mattt Thompson (http://mattt.me)
+// EMFOutlineView.h
 // 
+// Copyright (c) 2013年 __MyCompanyName__
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -22,21 +22,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "SQLAdapter.h"
-
-@class EMFResultSetViewController;
-
-@interface EMFExploreTableViewController : NSViewController <NSTableViewDelegate>
-
-@property (strong, nonatomic) IBOutlet EMFResultSetViewController *resultSetViewController;
-@property (strong, nonatomic) IBOutlet NSBox *contentBox;
-
-@property (strong, nonatomic) IBOutlet NSButton *leftArrowPageButton;
-@property (strong, nonatomic) IBOutlet NSButton *rightArrowPageButton;
-@property (strong, nonatomic) IBOutlet NSTextField *pageTextField;
-
-- (IBAction)changePage:(id)sender;
-
-- (IBAction)exportDocument:(id)sender;
+@interface EMFOutlineView : NSOutlineView
 
 @end

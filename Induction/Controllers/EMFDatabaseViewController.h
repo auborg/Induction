@@ -24,10 +24,9 @@
 
 #import "DBAdapter.h"
 
-@class EMFExploreTableViewController;
+@class EMFResultSetViewController;
 @class EMFQueryViewController;
 @class EMFVisualizeViewController;
-@class SQLResultsTableViewController;
 
 enum _DBDatabaseViewTabs {
     ExploreTab,
@@ -41,17 +40,15 @@ enum _DBDatabaseViewTabs {
 @property (strong, nonatomic, readonly) NSArray *sourceListNodes;
 
 @property (weak, nonatomic) IBOutlet NSToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet NSOutlineView *outlineView;
-@property (weak, nonatomic) IBOutlet NSTabView *tabView;
+@property (weak, nonatomic) IBOutlet NSOutlineView *dataSourceOutlineView;
+@property (weak, nonatomic) IBOutlet NSBox *queryBox;
+@property (weak, nonatomic) IBOutlet NSBox *resultSetBox;
+@property (weak, nonatomic) IBOutlet NSBox *visualizeBox;
 
 @property (weak, nonatomic) IBOutlet NSToolbarItem *databasesToolbarItem;
 
-@property (strong, nonatomic) IBOutlet EMFExploreTableViewController *exploreViewController;
+@property (strong, nonatomic) IBOutlet EMFResultSetViewController *resultSetViewController;
 @property (strong, nonatomic) IBOutlet EMFQueryViewController *queryViewController;
 @property (strong, nonatomic) IBOutlet EMFVisualizeViewController *visualizeViewController;
-
-- (IBAction)explore:(id)sender;
-- (IBAction)query:(id)sender;
-- (IBAction)visualize:(id)sender;
 
 @end

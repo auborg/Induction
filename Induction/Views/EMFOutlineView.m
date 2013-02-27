@@ -1,7 +1,7 @@
-// EMFVisualizeViewController.h
-//
-// Copyright (c) 2012 Mattt Thompson (http://mattt.me)
+// EMFOutlineView.m
 // 
+// Copyright (c) 2013年 __MyCompanyName__
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -20,17 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Cocoa/Cocoa.h>
+#import "EMFOutlineView.h"
 
-@class SMTabBar;
+@implementation EMFOutlineView
 
-@class EMFResultSetViewController;
-
-@interface EMFVisualizeViewController : NSViewController
-
-@property (weak) IBOutlet SMTabBar *tabBar;
-@property (weak) IBOutlet NSBox *statisticsBox;
-
-- (void)setRepresentedRecords:(NSArray *)records fields:(NSArray *)fields;
+//- (void)drawBackgroundInClipRect:(NSRect)clipRect {
+//    [[NSColor darkGrayColor] drawSwatchInRect:self.frame];
+//}
 
 @end

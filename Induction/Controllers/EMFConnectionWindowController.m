@@ -39,7 +39,7 @@
 //    self.databasesPopUpButton bind:@"hidden" toObject:self withKeyPath:@"connection.availableDatabases" options:nil];
 }
 
-- (void)setConnection:(id<DBConnection>)connection {
+- (void)setConnection:(id<DBConnection>)connection {    
     [self willChangeValueForKey:@"connection"];
     _connection = connection;
     [self didChangeValueForKey:@"connection"];
@@ -48,20 +48,27 @@
         self.databaseViewController.database = [(id <DBConnection>)self.connection database];
     }
     
-    [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-    [self.window.toolbar setVisible:YES];
-    [self.window setContentView:self.databaseViewController.view];
-    [self.databaseViewController explore:nil];
+    if (![self.window.toolbar isVisible]) {
+        [self.window.toolbar setVisible:YES];
+        [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+        [self.window setContentView:self.databaseViewController.view];
+    }
 }
 
 #pragma mark - IBAction
 
 - (IBAction)databasePopupButtonSelectionDidChange:(id)sender {
-    id <DBDatabase> database = [[sender selectedItem] representedObject];
-    [self.connection connectionBySelectingDatabase:database];
-        
-    self.databaseViewController.database = [(id <DBConnection>)self.connection database];
-//    [self.databaseViewController explore:nil];
+    @try {
+        id <DBDatabase> database = [[sender selectedItem] representedObject];
+        self.connection = [self.connection connectionBySelectingDatabase:database];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+    }
+}
+
+- (IBAction)openInTerminal:(id)sender {
+    NSLog(@"%@ %@", [self class], NSStringFromSelector(_cmd));
+    [[NSWorkspace sharedWorkspace] openFile:[[self.connection class] terminalCommandForSessionWithConnection:self.connection] withApplication:@"Terminal"];
 }
 
 #pragma mark - NSWindowController

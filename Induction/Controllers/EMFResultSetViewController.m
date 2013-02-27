@@ -212,11 +212,6 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
     
     _records = [(id <DBResultSet>)self.representedObject recordsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [(id <DBResultSet>)self.representedObject numberOfRecords])]];
     
-    NSSortDescriptor *outlineTableColumnSortDescriptorPrototype = [[self.outlineView outlineTableColumn] sortDescriptorPrototype];
-    if (outlineTableColumnSortDescriptorPrototype) {
-        [self.outlineView setSortDescriptors:[NSArray arrayWithObject:outlineTableColumnSortDescriptorPrototype]];
-    }
-    
     [self.outlineView reloadData];
     [self.outlineView expandItem:nil expandChildren:YES];
     
@@ -241,7 +236,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsJSON:(id)sender {
-    NSString *JSON = [EMFResultSetSerializer JSONFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
+    NSString *JSON = [EMFResultSetSerializer JSONFromRecords:[[_records objectsAtIndexes:[self.outlineView selectedRowIndexes]] sortedArrayUsingDescriptors:self.outlineView.sortDescriptors] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
 
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -250,7 +245,7 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsXML:(id)sender {
-    NSString *XML = [EMFResultSetSerializer XMLFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
+    NSString *XML = [EMFResultSetSerializer XMLFromRecords:[[_records objectsAtIndexes:[self.outlineView selectedRowIndexes]] sortedArrayUsingDescriptors:self.outlineView.sortDescriptors] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
     
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
@@ -259,8 +254,8 @@ static NSString * const kDBResultSetOutlineViewFontSize = @"com.induction.result
 }
 
 - (IBAction)copyAsTSV:(id)sender {
-    NSString *TSV = [EMFResultSetSerializer TSVFromResultSet:self.representedObject fromRecordsAtIndexes:[self.outlineView selectedRowIndexes] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
-
+    NSString *TSV = [EMFResultSetSerializer TSVFromRecords:[[_records objectsAtIndexes:[self.outlineView selectedRowIndexes]] sortedArrayUsingDescriptors:self.outlineView.sortDescriptors] withFields:[[self.outlineView tableColumns] valueForKeyPath:@"identifier"] stringEncoding:NSUTF8StringEncoding];
+    
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
     [pasteboard clearContents];
     [pasteboard declareTypes: [NSArray arrayWithObjects:NSPasteboardTypeTabularText, NSPasteboardTypeString, nil] owner:nil];

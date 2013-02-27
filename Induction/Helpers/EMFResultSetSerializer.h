@@ -25,33 +25,28 @@
 
 @interface EMFResultSetSerializer : NSObject
 
-+ (NSString *)CSVFromResultSet:(id <DBResultSet>)resultSet
-          fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
++ (NSString *)CSVFromResultSet:(NSArray *)records
                     withFields:(NSArray *)fields
                 stringEncoding:(NSStringEncoding)stringEncoding;
 
-+ (NSString *)TSVFromResultSet:(id <DBResultSet>)resultSet
-          fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
-                    withFields:(NSArray *)fields
-                stringEncoding:(NSStringEncoding)stringEncoding;
++ (NSString *)TSVFromRecords:(NSArray *)records
+                  withFields:(NSArray *)fields
+              stringEncoding:(NSStringEncoding)stringEncoding;
 
-+ (NSString *)tabulatedStringFromResultSet:(id <DBResultSet>)resultSet
-                      fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
-                                withFields:(NSArray *)fields
-                               showHeaders:(BOOL)showHeaders
-                                 delimiter:(NSString *)delimiter
-                           enclosingString:(NSString *)enclosingString
-                                 NULLToken:(NSString *)NULLToken
-                            stringEncoding:(NSStringEncoding)stringEncoding;
++ (NSString *)tabulatedStringFromRecords:(NSArray *)records
+                              withFields:(NSArray *)fields
+                             showHeaders:(BOOL)showHeaders
+                               delimiter:(NSString *)delimiter
+                         enclosingString:(NSString *)enclosingString
+                               NULLToken:(NSString *)NULLToken
+                          stringEncoding:(NSStringEncoding)stringEncoding;
 
-+ (NSString *)JSONFromResultSet:(id <DBResultSet>)resultSet
-           fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
-                     withFields:(NSArray *)fields
-                 stringEncoding:(NSStringEncoding)stringEncoding;
++ (NSString *)JSONFromRecords:(NSArray *)records
+                   withFields:(NSArray *)fields
+               stringEncoding:(NSStringEncoding)stringEncoding;
 
-+ (NSString *)XMLFromResultSet:(id <DBResultSet>)resultSet
-          fromRecordsAtIndexes:(NSIndexSet *)recordsIndexSet
-                    withFields:(NSArray *)fields
-                stringEncoding:(NSStringEncoding)stringEncoding;
++ (NSString *)XMLFromRecords:(NSArray *)records
+                  withFields:(NSArray *)fields
+              stringEncoding:(NSStringEncoding)stringEncoding;
 
 @end
