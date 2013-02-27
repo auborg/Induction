@@ -8,8 +8,8 @@ pod 'ISO8601DateFormatter'
 pod do |spec|
   spec.name         = 'NoodleKit'
   spec.version      = '0.0.1'
-  spec.source       = { :git => 'https://github.com/mattt/NoodleKit.git',
-                        :commit => '35d87663e359fe18d5cedb6818a446042dea5ed8'
+  spec.source       = { :git => 'https://github.com/Induction/NoodleKit.git',
+                        :commit => '85a3ddbb5b0f7bf117e120a8febb3c1b62192a4e'
                       }
   spec.source_files = '*.{h,m}'
   spec.clean_paths  = %w{English.lproj Examples NoodleKit.xcodeproj Info.plist README.md version.plist}
