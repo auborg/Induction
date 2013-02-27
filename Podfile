@@ -1,9 +1,9 @@
-platform :osx
+platform :osx, '10.7'
 
-pod 'AFNetworking', '1.0'
-pod 'FormatterKit', '1.0.1'
-pod 'ISO8601DateFormatter', '0.6'
-pod 'CorePlot', '1.0'
+pod 'AFNetworking'
+pod 'FormatterKit'
+pod 'ISO8601DateFormatter'
+#pod 'CorePlot', '1.0'
 
 pod do |spec|
   spec.name         = 'NoodleKit'
