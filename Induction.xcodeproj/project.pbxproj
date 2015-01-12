@@ -182,8 +182,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		71AFCA200E516D3F427DA8A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8495A64B8D754525BD0656FB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FB50C9B7842542FAA342A75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		92B7A9431A51CB98004A990B /* postgres_ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postgres_ext.h; sourceTree = "<group>"; };
+		92B7A94A1A522538004A990B /* libpq-fe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libpq-fe.h"; sourceTree = "<group>"; };
 		F8129AED158EB991009BFE23 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		F8202F8C14D0C2DC00950BAF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8202F8D14D0C2DC00950BAF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -289,9 +292,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B45578A02F5AE1456A4B8F1A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71AFCA200E516D3F427DA8A3 /* Pods.debug.xcconfig */,
+				8FB50C9B7842542FAA342A75 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F8202F8B14D0C2DC00950BAF /* Induction */ = {
 			isa = PBXGroup;
 			children = (
+				92B7A94A1A522538004A990B /* libpq-fe.h */,
+				92B7A9431A51CB98004A990B /* postgres_ext.h */,
 				F88BA90115A3F089005DFDCE /* Induction.entitlements */,
 				F8202F8C14D0C2DC00950BAF /* AppDelegate.h */,
 				F8202F8D14D0C2DC00950BAF /* AppDelegate.m */,
@@ -423,7 +437,7 @@
 				F87EE36F15082F970023C67D /* SQLiteAdapter.xcodeproj */,
 				F87EE36615082F920023C67D /* RedisAdapter.xcodeproj */,
 				F87EE34A15082F7C0023C67D /* MongoDBAdapter.xcodeproj */,
-				1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */,
+				B45578A02F5AE1456A4B8F1A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -774,7 +788,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 		};
 		F8ABFC7D15601461005F0AA7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -889,7 +903,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -910,17 +924,16 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		F8595FD214C34BB100FD15BE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
+			baseConfigurationReference = 71AFCA200E516D3F427DA8A3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -936,6 +949,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
@@ -944,10 +958,9 @@
 		};
 		F8595FD314C34BB100FD15BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
+			baseConfigurationReference = 8FB50C9B7842542FAA342A75 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Induction/Induction.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -963,6 +976,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
@@ -971,7 +985,6 @@
 		};
 		F8ABFC7F15601461005F0AA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
@@ -996,6 +1009,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;
@@ -1004,7 +1018,6 @@
 		};
 		F8ABFC8015601461005F0AA7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1446BC8BD8344CF9BC6D08A6 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
@@ -1026,6 +1039,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Adapters/MySQLAdapter/Vendor/mysql-connector-c/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = Induction;
 				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = app;

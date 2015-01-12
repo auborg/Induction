@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EBA24625-8049-4A3F-A108-6B61E2851F35</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Induction</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>56D53E27B937F4D90591A837A72AF09446BEF5BF</key>
+		<string>git://github.com/Induction/Induction.git</string>
+		<key>7DCEFF906E970CA2747894171EA32A5639CFF2B0</key>
+		<string>https://github.com/Induction/Adapters.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Induction.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>56D53E27B937F4D90591A837A72AF09446BEF5BF</key>
+		<string>../..</string>
+		<key>7DCEFF906E970CA2747894171EA32A5639CFF2B0</key>
+		<string>../..Adapters/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>git://github.com/Induction/Induction.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>56D53E27B937F4D90591A837A72AF09446BEF5BF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7DCEFF906E970CA2747894171EA32A5639CFF2B0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Adapters</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>56D53E27B937F4D90591A837A72AF09446BEF5BF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Induction</string>
+		</dict>
+	</array>
+</dict>
+</plist>
